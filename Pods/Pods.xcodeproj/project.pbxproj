@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		003AF3C120288E037C48576B2243E471 /* Compass@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4FF3607472CCDA1B5755A187DA1157 /* Compass@3x.png */; };
-		0CAC0CC4DCAC675916FCBCA05B638C9F /* default_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39A63FB1CC3B2A32EC2664D6CB871026 /* default_marker@3x.png */; };
+		003AF3C120288E037C48576B2243E471 /* Compass@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF3C86BD039076B284BB855327F8306A /* Compass@3x.png */; };
+		0CAC0CC4DCAC675916FCBCA05B638C9F /* default_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDC2F1A63FCC4EA80D4000E010C3F29 /* default_marker@3x.png */; };
 		15B50EEBBC1C7366F1686C1B4FE67D50 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
-		196AB93D6F91BD3B8A662E3BABF3D5AE /* mapbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9347919B27A256008FC54F72636139 /* mapbox@2x.png */; };
-		22A156810076F6D1A7E3B62042878526 /* mapbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CC6506850A421823D1B24EAAE0C70D /* mapbox.png */; };
-		2F3EF98D44B18A5738B996EB7851B102 /* Compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B6FD07B36A68BB0692B56E00E7CC7B86 /* Compass@2x.png */; };
-		4105F60998DB316B7E205F0F58E8C621 /* api_mapbox_com-digicert.der in Resources */ = {isa = PBXBuildFile; fileRef = 78433CA397963A7595070A794E06AEF6 /* api_mapbox_com-digicert.der */; };
-		45627E38A4C02F4306763B7180CA5707 /* star_tilestream_net.der in Resources */ = {isa = PBXBuildFile; fileRef = 6B773DD530347670484F11B7B5C827A5 /* star_tilestream_net.der */; };
-		4E86E4895AED1D572EF89E302F6172FB /* default_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7BA904C4D630A549E77E6DD2D5CD56 /* default_marker.png */; };
-		5D896DFB8B4FAA92F11E7346A0330E3B /* mapbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A613BAD7833E68BAD26BB6A76CF98F8A /* mapbox@3x.png */; };
+		196AB93D6F91BD3B8A662E3BABF3D5AE /* mapbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 081EF62CBE9320AB08D86557806987E1 /* mapbox@2x.png */; };
+		22A156810076F6D1A7E3B62042878526 /* mapbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C94F4DD52273AC783698D2E8E6B394 /* mapbox.png */; };
+		2F3EF98D44B18A5738B996EB7851B102 /* Compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBDFDF5C829F37113CB09C65B11EF550 /* Compass@2x.png */; };
+		4105F60998DB316B7E205F0F58E8C621 /* api_mapbox_com-digicert.der in Resources */ = {isa = PBXBuildFile; fileRef = 1153E0267529656E00748A5871676132 /* api_mapbox_com-digicert.der */; };
+		45627E38A4C02F4306763B7180CA5707 /* star_tilestream_net.der in Resources */ = {isa = PBXBuildFile; fileRef = 5A0DC9C46F41DD419D810A84793CF8B0 /* star_tilestream_net.der */; };
+		4E86E4895AED1D572EF89E302F6172FB /* default_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F314941B430E6F2A9262B04A0706254 /* default_marker.png */; };
+		5D896DFB8B4FAA92F11E7346A0330E3B /* mapbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 034B5C18B14C74F272BD2B235A440BA6 /* mapbox@3x.png */; };
 		6797E13E4B11C1B0FF46D7076D99CC4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		7989D4F9853F98F4DF075B628E507802 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		89CD532FBF48416A5AEB3725C68AA5F6 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 1AAF7C7ACFC0D551C89617C157C32689 /* README */; };
-		8BC6C182AC595289B59FACD63C86218B /* api_mapbox_com-geotrust.der in Resources */ = {isa = PBXBuildFile; fileRef = 9DA64BC4F26A81CC704DAEBFF8D30B71 /* api_mapbox_com-geotrust.der */; };
-		A1C0DC366F36DA278187B54336AB6182 /* default_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D23CD7B786FC42255AE143A5C8D2E385 /* default_marker@2x.png */; };
-		B43BD2816013609E80E66FEEB585FF96 /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 85C2E0E1C063A540434D86B9A8D05FD2 /* Compass.png */; };
+		89CD532FBF48416A5AEB3725C68AA5F6 /* README in Resources */ = {isa = PBXBuildFile; fileRef = FB76273D197D5E883CA67B7926CE850D /* README */; };
+		8BC6C182AC595289B59FACD63C86218B /* api_mapbox_com-geotrust.der in Resources */ = {isa = PBXBuildFile; fileRef = 69346075F1E5E04A1EB06F674C6E0DF7 /* api_mapbox_com-geotrust.der */; };
+		A1C0DC366F36DA278187B54336AB6182 /* default_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB187D359CD774311C4F0BDABC15A003 /* default_marker@2x.png */; };
+		B43BD2816013609E80E66FEEB585FF96 /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FA976463D5A3741EA0A13A445E53360 /* Compass.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,38 +36,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1AAF7C7ACFC0D551C89617C157C32689 /* README */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README; path = Mapbox.framework/Mapbox.bundle/README; sourceTree = "<group>"; };
-		2099FAD66511BC40113A8F64F2BBEA6B /* TwitterKitResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
-		2357B1741C88C40495BA7178D14885CA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		034B5C18B14C74F272BD2B235A440BA6 /* mapbox@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@3x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@3x.png"; sourceTree = "<group>"; };
+		05480946D56283D901E01287637C650E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		081EF62CBE9320AB08D86557806987E1 /* mapbox@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@2x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@2x.png"; sourceTree = "<group>"; };
+		0BDBD13733BB39AEF32BFD30AA765DF9 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = iOS/TwitterCore.framework; sourceTree = "<group>"; };
+		1153E0267529656E00748A5871676132 /* api_mapbox_com-digicert.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-digicert.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-digicert.der"; sourceTree = "<group>"; };
+		1D537E3D6A54F73C6EEF0F4F82D748CF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		24F4FB53E01A68364BF295CBCADDA07E /* Mapbox.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mapbox.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		36CC6506850A421823D1B24EAAE0C70D /* mapbox.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = mapbox.png; path = Mapbox.framework/Mapbox.bundle/mapbox.png; sourceTree = "<group>"; };
-		39A63FB1CC3B2A32EC2664D6CB871026 /* default_marker@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@3x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@3x.png"; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6B773DD530347670484F11B7B5C827A5 /* star_tilestream_net.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = star_tilestream_net.der; path = Mapbox.framework/Mapbox.bundle/star_tilestream_net.der; sourceTree = "<group>"; };
-		78433CA397963A7595070A794E06AEF6 /* api_mapbox_com-digicert.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-digicert.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-digicert.der"; sourceTree = "<group>"; };
+		4F314941B430E6F2A9262B04A0706254 /* default_marker.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = default_marker.png; path = Mapbox.framework/Mapbox.bundle/default_marker.png; sourceTree = "<group>"; };
+		5A0DC9C46F41DD419D810A84793CF8B0 /* star_tilestream_net.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = star_tilestream_net.der; path = Mapbox.framework/Mapbox.bundle/star_tilestream_net.der; sourceTree = "<group>"; };
+		5A6D5FB2F53A1427788D557C1827B2F6 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		69346075F1E5E04A1EB06F674C6E0DF7 /* api_mapbox_com-geotrust.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-geotrust.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-geotrust.der"; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		85C2E0E1C063A540434D86B9A8D05FD2 /* Compass.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Compass.png; path = Mapbox.framework/Mapbox.bundle/Compass.png; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		87C94F4DD52273AC783698D2E8E6B394 /* mapbox.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = mapbox.png; path = Mapbox.framework/Mapbox.bundle/mapbox.png; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		8A7BA904C4D630A549E77E6DD2D5CD56 /* default_marker.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = default_marker.png; path = Mapbox.framework/Mapbox.bundle/default_marker.png; sourceTree = "<group>"; };
+		8FA976463D5A3741EA0A13A445E53360 /* Compass.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Compass.png; path = Mapbox.framework/Mapbox.bundle/Compass.png; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		9DA64BC4F26A81CC704DAEBFF8D30B71 /* api_mapbox_com-geotrust.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-geotrust.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-geotrust.der"; sourceTree = "<group>"; };
-		A613BAD7833E68BAD26BB6A76CF98F8A /* mapbox@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@3x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@3x.png"; sourceTree = "<group>"; };
-		A6145B1AD1BCA113D5677D2B2F0B5E89 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = iOS/TwitterCore.framework; sourceTree = "<group>"; };
-		B6FD07B36A68BB0692B56E00E7CC7B86 /* Compass@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@2x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@2x.png"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BFDC2F1A63FCC4EA80D4000E010C3F29 /* default_marker@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@3x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@3x.png"; sourceTree = "<group>"; };
+		C55D1AEFDB26E78302196C264DE9DDAC /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D23CD7B786FC42255AE143A5C8D2E385 /* default_marker@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@2x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@2x.png"; sourceTree = "<group>"; };
-		D425039C6B876B87BC63E596FFAEE121 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		DB4FF3607472CCDA1B5755A187DA1157 /* Compass@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@3x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@3x.png"; sourceTree = "<group>"; };
+		DB187D359CD774311C4F0BDABC15A003 /* default_marker@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@2x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@2x.png"; sourceTree = "<group>"; };
+		DF3C86BD039076B284BB855327F8306A /* Compass@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@3x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@3x.png"; sourceTree = "<group>"; };
 		E24DD451AF8E384CFD0CB3B44355F7D5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0351805839233D11694819C4BE50852 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
-		FC9347919B27A256008FC54F72636139 /* mapbox@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@2x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@2x.png"; sourceTree = "<group>"; };
+		F8EBD55BE24E75EC81638A5E0EAB6F47 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
+		FB76273D197D5E883CA67B7926CE850D /* README */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README; path = Mapbox.framework/Mapbox.bundle/README; sourceTree = "<group>"; };
+		FBDFDF5C829F37113CB09C65B11EF550 /* Compass@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@2x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,85 +90,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03E4B48F4D7A5F3AC2BF8582EA920A9D /* Mapbox-iOS-SDK */ = {
+		044DD4F256CAE1FCDE0C514047EB6282 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A9D3D1D4908E716C04436A7B3EF107E /* Frameworks */,
-				0815F7414198C738482B894FF44A8359 /* Resources */,
-			);
-			path = "Mapbox-iOS-SDK";
-			sourceTree = "<group>";
-		};
-		058137E3D6F29DAE8DFFF99B186D2B9B /* Fabric */ = {
-			isa = PBXGroup;
-			children = (
-				5149D70609439E6D362C71E8649DE277 /* Frameworks */,
-			);
-			path = Fabric;
-			sourceTree = "<group>";
-		};
-		0770DC1BAA1F78FE8A88D4B0A6D54CEE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				2099FAD66511BC40113A8F64F2BBEA6B /* TwitterKitResources.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		0815F7414198C738482B894FF44A8359 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				78433CA397963A7595070A794E06AEF6 /* api_mapbox_com-digicert.der */,
-				9DA64BC4F26A81CC704DAEBFF8D30B71 /* api_mapbox_com-geotrust.der */,
-				85C2E0E1C063A540434D86B9A8D05FD2 /* Compass.png */,
-				B6FD07B36A68BB0692B56E00E7CC7B86 /* Compass@2x.png */,
-				DB4FF3607472CCDA1B5755A187DA1157 /* Compass@3x.png */,
-				8A7BA904C4D630A549E77E6DD2D5CD56 /* default_marker.png */,
-				D23CD7B786FC42255AE143A5C8D2E385 /* default_marker@2x.png */,
-				39A63FB1CC3B2A32EC2664D6CB871026 /* default_marker@3x.png */,
-				36CC6506850A421823D1B24EAAE0C70D /* mapbox.png */,
-				FC9347919B27A256008FC54F72636139 /* mapbox@2x.png */,
-				A613BAD7833E68BAD26BB6A76CF98F8A /* mapbox@3x.png */,
-				1AAF7C7ACFC0D551C89617C157C32689 /* README */,
-				6B773DD530347670484F11B7B5C827A5 /* star_tilestream_net.der */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		1B6C903B357C9DD58F3268D0C845B857 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A6145B1AD1BCA113D5677D2B2F0B5E89 /* TwitterCore.framework */,
+				F8EBD55BE24E75EC81638A5E0EAB6F47 /* Mapbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		47118FE99FC398D87BB710191F03ADDA /* TwitterKit */ = {
+		0681288A89E5A618468CFB467EC5CC5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F5B029EA1545F18B6C8A95DB2E0D6930 /* Frameworks */,
-				0770DC1BAA1F78FE8A88D4B0A6D54CEE /* Resources */,
-			);
-			path = TwitterKit;
-			sourceTree = "<group>";
-		};
-		5149D70609439E6D362C71E8649DE277 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2357B1741C88C40495BA7178D14885CA /* Fabric.framework */,
+				1D537E3D6A54F73C6EEF0F4F82D748CF /* Crashlytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		71FA75C7D6381EE328B9120BAE288D42 /* Pods */ = {
+		4DF67BDA9C6D024191D5E7049E41784A /* Crashlytics */ = {
 			isa = PBXGroup;
 			children = (
-				058137E3D6F29DAE8DFFF99B186D2B9B /* Fabric */,
-				03E4B48F4D7A5F3AC2BF8582EA920A9D /* Mapbox-iOS-SDK */,
-				BB09E8DABD2EB69E5E77135FDB02FBDB /* TwitterCore */,
-				47118FE99FC398D87BB710191F03ADDA /* TwitterKit */,
+				0681288A89E5A618468CFB467EC5CC5A /* Frameworks */,
 			);
-			name = Pods;
+			path = Crashlytics;
+			sourceTree = "<group>";
+		};
+		68F6D8E2A438D8991074FFB6EE89EFD3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5A6D5FB2F53A1427788D557C1827B2F6 /* TwitterKitResources.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -188,23 +140,31 @@
 			path = "Target Support Files/Pods";
 			sourceTree = "<group>";
 		};
+		7A4172931EDD7CF269876DA20807C53B /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				FABCC39D892B99F64FF3AC7A03F3B25B /* Frameworks */,
+			);
+			path = Fabric;
+			sourceTree = "<group>";
+		};
+		7AFC235BB1BEDF2355C64F5DEFE0B897 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BDBD13733BB39AEF32BFD30AA765DF9 /* TwitterCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				71FA75C7D6381EE328B9120BAE288D42 /* Pods */,
+				B90DFE619E37F74721A35FAF2125AD4B /* Pods */,
 				CEDDBD12F2B0C6FD48261850288983C3 /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		9A9D3D1D4908E716C04436A7B3EF107E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D425039C6B876B87BC63E596FFAEE121 /* Mapbox.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -215,12 +175,16 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BB09E8DABD2EB69E5E77135FDB02FBDB /* TwitterCore */ = {
+		B90DFE619E37F74721A35FAF2125AD4B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1B6C903B357C9DD58F3268D0C845B857 /* Frameworks */,
+				4DF67BDA9C6D024191D5E7049E41784A /* Crashlytics */,
+				7A4172931EDD7CF269876DA20807C53B /* Fabric */,
+				C3FAC61674858A2CA51CCB0774F34957 /* Mapbox-iOS-SDK */,
+				FD8FA9EF7B0D1C0A20B38540BAEFF9CD /* TwitterCore */,
+				CEF8C2B861774DD02A9A1E5B357E2928 /* TwitterKit */,
 			);
-			path = TwitterCore;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -239,6 +203,15 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		C3FAC61674858A2CA51CCB0774F34957 /* Mapbox-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				044DD4F256CAE1FCDE0C514047EB6282 /* Frameworks */,
+				F4E2EFCBF00782393CE84092355A485E /* Resources */,
+			);
+			path = "Mapbox-iOS-SDK";
+			sourceTree = "<group>";
+		};
 		CEDDBD12F2B0C6FD48261850288983C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,12 +221,57 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F5B029EA1545F18B6C8A95DB2E0D6930 /* Frameworks */ = {
+		CEF8C2B861774DD02A9A1E5B357E2928 /* TwitterKit */ = {
 			isa = PBXGroup;
 			children = (
-				F0351805839233D11694819C4BE50852 /* TwitterKit.framework */,
+				F7819D6C2C284E22CCEDAE1ED6770528 /* Frameworks */,
+				68F6D8E2A438D8991074FFB6EE89EFD3 /* Resources */,
+			);
+			path = TwitterKit;
+			sourceTree = "<group>";
+		};
+		F4E2EFCBF00782393CE84092355A485E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1153E0267529656E00748A5871676132 /* api_mapbox_com-digicert.der */,
+				69346075F1E5E04A1EB06F674C6E0DF7 /* api_mapbox_com-geotrust.der */,
+				8FA976463D5A3741EA0A13A445E53360 /* Compass.png */,
+				FBDFDF5C829F37113CB09C65B11EF550 /* Compass@2x.png */,
+				DF3C86BD039076B284BB855327F8306A /* Compass@3x.png */,
+				4F314941B430E6F2A9262B04A0706254 /* default_marker.png */,
+				DB187D359CD774311C4F0BDABC15A003 /* default_marker@2x.png */,
+				BFDC2F1A63FCC4EA80D4000E010C3F29 /* default_marker@3x.png */,
+				87C94F4DD52273AC783698D2E8E6B394 /* mapbox.png */,
+				081EF62CBE9320AB08D86557806987E1 /* mapbox@2x.png */,
+				034B5C18B14C74F272BD2B235A440BA6 /* mapbox@3x.png */,
+				FB76273D197D5E883CA67B7926CE850D /* README */,
+				5A0DC9C46F41DD419D810A84793CF8B0 /* star_tilestream_net.der */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F7819D6C2C284E22CCEDAE1ED6770528 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C55D1AEFDB26E78302196C264DE9DDAC /* TwitterKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FABCC39D892B99F64FF3AC7A03F3B25B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05480946D56283D901E01287637C650E /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD8FA9EF7B0D1C0A20B38540BAEFF9CD /* TwitterCore */ = {
+			isa = PBXGroup;
+			children = (
+				7AFC235BB1BEDF2355C64F5DEFE0B897 /* Frameworks */,
+			);
+			path = TwitterCore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
