@@ -5,7 +5,10 @@ use_frameworks!
 
 pod 'Fabric'
 
+pod 'Crashlytics'
+
 pod 'TwitterKit'
+
 pod 'TwitterCore'
 
 pod 'Mapbox-iOS-SDK'
