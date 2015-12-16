@@ -10,11 +10,27 @@ import UIKit
 import Mapbox
 
 class MapViewController: UIViewController {
+    
+    var mapView: MGLMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // initialize the map view
+        mapView = MGLMapView(frame: view.bounds)
+        mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        
+        // Default coordinates for Detroit
+        let coordinates = (42.3314, -83.0458)
+        
+        // set the map's center coordinate
+        mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: coordinates.0,
+            longitude: coordinates.1),
+            zoomLevel: 8, animated: false)
+        view.addSubview(mapView)
 
-        // Do any additional setup after loading the view.
+        // Set map to user's current location
+        mapView.userTrackingMode = .None
     }
 
     override func didReceiveMemoryWarning() {
