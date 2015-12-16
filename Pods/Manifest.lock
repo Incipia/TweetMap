@@ -1,0 +1,21 @@
+PODS:
+  - Fabric (1.6.1)
+  - Mapbox-iOS-SDK (3.0.1)
+  - TwitterCore (1.14.6):
+    - Fabric
+  - TwitterKit (1.14.6):
+    - TwitterCore (= 1.14.6)
+
+DEPENDENCIES:
+  - Fabric
+  - Mapbox-iOS-SDK
+  - TwitterCore
+  - TwitterKit
+
+SPEC CHECKSUMS:
+  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
+  Mapbox-iOS-SDK: 61e79f3dd8432617bd1a66b2d7273ab5ce923ca9
+  TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
+  TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
+
+COCOAPODS: 0.39.0
