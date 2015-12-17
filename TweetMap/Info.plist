@@ -39,7 +39,7 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location will be shown on the map and your map usage will anonymously improve the map.</string>
 	<key>UIBackgroundModes</key>
 	<array>
