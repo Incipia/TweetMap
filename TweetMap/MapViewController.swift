@@ -12,36 +12,38 @@ import CoreLocation
 
 class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
     
+    @IBOutlet weak var map: MGLMapView!
+    
+    
     var mapView: MGLMapView!
     
     let locationManager = CLLocationManager()
-
+    
+    @IBOutlet weak var zoomControl: UIStepper!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getUserLocation()
+        self.view.bringSubviewToFront(zoomControl)
         
-        // initialize the map view
-        mapView = MGLMapView(frame: view.bounds)
-        mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        getUserLocation()
         
         // Default coordinates for Detroit
         let coordinates = (42.3314, -83.0458)
         
         // set the map's center coordinate
-        mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: coordinates.0,
+        map.setCenterCoordinate(CLLocationCoordinate2D(latitude: coordinates.0,
             longitude: coordinates.1),
             zoomLevel: 8, animated: false)
-        view.addSubview(mapView)
         
-        mapView.delegate = self
-        mapView.showsUserLocation = true
+        map.delegate = self
+        map.showsUserLocation = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     
     func getUserLocation(){
         print("get user location function is being called")
@@ -56,11 +58,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         
         print("location manager function is being called")
         
-        let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: location.latitude,
-            longitude: location.longitude),
-            zoomLevel: 8, animated: false)
-        view.addSubview(mapView)
+        let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
+                                            longitude: userLocation.coordinate.longitude)
+        map.setCenterCoordinate(location, animated: true)
     }
+    
+    @IBAction func zoomControlPressed(sender: AnyObject) {
+            map.setZoomLevel(Double(self.zoomControl.value + 4), animated: true)
+    }
+    
 
 }
