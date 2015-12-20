@@ -13,18 +13,13 @@ import CoreLocation
 class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var map: MGLMapView!
-    
-    
-    var mapView: MGLMapView!
+    @IBOutlet weak var zoomControl: UIStepper!
     
     let locationManager = CLLocationManager()
-    
-    @IBOutlet weak var zoomControl: UIStepper!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.bringSubviewToFront(zoomControl)
         
         getUserLocation()
         
