@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2318696A1C2930160088F76E /* LocationTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231869691C2930160088F76E /* LocationTrends.swift */; };
+		2318696C1C2931170088F76E /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2318696B1C2931170088F76E /* Trend.swift */; };
 		23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */; };
 		23F1B8301C21F0A9003BB13A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B82E1C21F0A9003BB13A /* Main.storyboard */; };
 		23F1B8321C21F0A9003BB13A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B8311C21F0A9003BB13A /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		231869691C2930160088F76E /* LocationTrends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrends.swift; sourceTree = "<group>"; };
+		2318696B1C2931170088F76E /* Trend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		23F1B8271C21F0A9003BB13A /* TweetMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23F1B82F1C21F0A9003BB13A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */,
 				23F1B8361C21F0A9003BB13A /* Info.plist */,
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
+				231869691C2930160088F76E /* LocationTrends.swift */,
+				2318696B1C2931170088F76E /* Trend.swift */,
 			);
 			path = TweetMap;
 			sourceTree = "<group>";
@@ -347,6 +353,8 @@
 			files = (
 				23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */,
 				23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */,
+				2318696A1C2930160088F76E /* LocationTrends.swift in Sources */,
+				2318696C1C2931170088F76E /* Trend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
