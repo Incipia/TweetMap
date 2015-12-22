@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().translucent = true
+        
         Fabric.with([Twitter.self, MGLAccountManager.self, Crashlytics.self])
         
         return true
