@@ -36,7 +36,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         map.logoView.hidden = true
 
         drawRegion()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,6 +80,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                                             longitude: userLocation.coordinate.longitude)
         map.setCenterCoordinate(location, animated: true)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     @IBAction func zoomControlPressed(sender: AnyObject) {
