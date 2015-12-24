@@ -150,6 +150,7 @@ extension MapViewController: UITableViewDelegate {
             default:
                 self.map.setZoomLevel(10.1, animated: true)
             }
+        self.podButton.titleLabel!.text = radiusMenuOptions[indexPath.row]
         self.popover.dismiss()
     }
 }
