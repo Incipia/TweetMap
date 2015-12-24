@@ -14,30 +14,32 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     @IBOutlet weak var map: MGLMapView!
     @IBOutlet weak var layerView: UIView!
-    @IBOutlet weak var podButton: UIButton!
+    @IBOutlet weak var radiusMenuButton: UIButton!
     
-    // For experimental pod in bottom left menu
-    private var popover: Popover!
+    // For popover menu for radiusMenuButton
+    private var radiusMenuPopover: Popover!
     private var radiusMenuOptions = ["10 km", "20 km", "50 km"]
     
     let locationManager = CLLocationManager()
     var screenwidth : CGFloat!
     var screenheight : CGFloat!
     
-    var searchRadius = 11.1
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         drawRegion()
         
-        podButton.layer.cornerRadius = 15
+        radiusMenuButton.layer.cornerRadius = 15
         
-        layerView.bringSubviewToFront(podButton)
+        layerView.bringSubviewToFront(radiusMenuButton)
         
         getUserLocation()
         
-        // Default coordinates for Detroit
+        // Default coordinates for Detroit if location not established
         let coordinates = (42.3314, -83.0458)
         
         // set the map's center coordinate
@@ -48,39 +50,16 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
-    }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        print("The MAP is going to appear")
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        print("The MAP is going away now")
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-        map.setZoomLevel(searchRadius, animated: true)
-        print(searchRadius)
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-
-        super.didReceiveMemoryWarning()
+        map.setZoomLevel(11.1, animated: true)
     }
     
     func drawRegion() {
         
-        var fillLayer = CAShapeLayer()
+        let fillLayer = CAShapeLayer()
         fillLayer.fillColor = UIColor.grayColor().CGColor
         
         let size = UIScreen.mainScreen().bounds
-        var rad: CGFloat = min(size.height, size.width)
+        let rad: CGFloat = min(size.height, size.width)
         
         let path = UIBezierPath(roundedRect: CGRectMake(0, 0, size.width, size.height), cornerRadius: 0.0)
         let circlePath = UIBezierPath(roundedRect: CGRectMake(size.width/2.55-(rad/2.0), size.height/2.3-(rad/2.0), rad/0.81, rad/0.81), cornerRadius: rad)
@@ -92,6 +71,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         fillLayer.fillRule = kCAFillRuleEvenOdd
         fillLayer.fillColor = UIColor.grayColor().CGColor
         fillLayer.opacity = 0.7
+        fillLayer.mask
         layerView.layer.addSublayer(fillLayer)
     }
     
@@ -114,11 +94,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         map.setCenterCoordinate(location, animated: true)
     }
     
-
-    // For experimental pod in bottom left
-
-
-    @IBAction func podButtonPressed(sender: AnyObject) {
+    @IBAction func radiusMenuButtonPressed(sender: AnyObject) {
         let options = [
             .Type(.Up),
             .CornerRadius(4.0),
@@ -129,13 +105,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         tableView.delegate = self
         tableView.dataSource = self
         tableView.scrollEnabled = false
-        self.popover = Popover(options: options, showHandler: nil, dismissHandler: {
-            
-        })
-        self.popover.show(tableView, fromView: podButton)
+        self.radiusMenuPopover = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        self.radiusMenuPopover.show(tableView, fromView: radiusMenuButton)
     }
 }
 
+
+////// TableView Data Source and delegate for searchRadiusMenu choices ///////
 
 extension MapViewController: UITableViewDelegate {
     
@@ -150,8 +126,8 @@ extension MapViewController: UITableViewDelegate {
             default:
                 self.map.setZoomLevel(10.1, animated: true)
             }
-        self.podButton.titleLabel!.text = radiusMenuOptions[indexPath.row]
-        self.popover.dismiss()
+        self.radiusMenuButton.titleLabel!.text = radiusMenuOptions[indexPath.row]
+        self.radiusMenuPopover.dismiss()
     }
 }
 
