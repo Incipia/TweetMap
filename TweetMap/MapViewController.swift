@@ -10,16 +10,30 @@ import UIKit
 import Mapbox
 import CoreLocation
 
-class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var map: MGLMapView!
-    @IBOutlet weak var zoomControl: UIStepper!
     @IBOutlet weak var layerView: UIView!
+    @IBOutlet weak var podButton: UIButton!
+    
+    // For experimental pod in bottom left menu
+    private var popover: Popover!
+    private var radiusMenuOptions = ["10 km", "20 km", "50 km"]
     
     let locationManager = CLLocationManager()
+    var screenwidth : CGFloat!
+    var screenheight : CGFloat!
+    
+    var searchRadius = 11.1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        drawRegion()
+        
+        podButton.layer.cornerRadius = 15
+        
+        layerView.bringSubviewToFront(podButton)
         
         getUserLocation()
         
@@ -29,16 +43,34 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         // set the map's center coordinate
         map.setCenterCoordinate(CLLocationCoordinate2D(latitude: coordinates.0,
             longitude: coordinates.1),
-            zoomLevel: 8, animated: false)
+            zoomLevel: 13, animated: false)
         
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
-
-        drawRegion()
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("The MAP is going to appear")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        print("The MAP is going away now")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        map.setZoomLevel(searchRadius, animated: true)
+        print(searchRadius)
+    }
+    
 
     override func didReceiveMemoryWarning() {
+
         super.didReceiveMemoryWarning()
     }
     
@@ -82,13 +114,55 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         map.setCenterCoordinate(location, animated: true)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
-    
-    @IBAction func zoomControlPressed(sender: AnyObject) {
-            map.setZoomLevel(Double(self.zoomControl.value + 4), animated: true)
-    }
-    
 
+    // For experimental pod in bottom left
+
+
+    @IBAction func podButtonPressed(sender: AnyObject) {
+        let options = [
+            .Type(.Up),
+            .CornerRadius(4.0),
+            .AnimationIn(0.5),
+            .ArrowSize(CGSizeMake(10.0, 10.0))
+            ] as [PopoverOption]
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: 135))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.scrollEnabled = false
+        self.popover = Popover(options: options, showHandler: nil, dismissHandler: {
+            
+        })
+        self.popover.show(tableView, fromView: podButton)
+    }
+}
+
+
+extension MapViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            switch indexPath.row   {
+            case 0:
+                self.map.setZoomLevel(9.1, animated: true)
+            case 1:
+                self.map.setZoomLevel(10.1, animated: true)
+            case 2:
+                self.map.setZoomLevel(11.1, animated: true)
+            default:
+                self.map.setZoomLevel(10.1, animated: true)
+            }
+        self.popover.dismiss()
+    }
+}
+
+extension MapViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
+        cell.textLabel?.text = self.radiusMenuOptions[indexPath.row]
+        return cell
+    }
 }

@@ -7,89 +7,108 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		003AF3C120288E037C48576B2243E471 /* Compass@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8EABCAD87FADBC9C4BD41CF89E08658 /* Compass@3x.png */; };
-		01C57309E2EF9E7025552938EFD9E244 /* BTNavigationDropdownMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85335635CAC32BC18206A5ED081B41F9 /* BTNavigationDropdownMenu-dummy.m */; };
+		003AF3C120288E037C48576B2243E471 /* Compass@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B6499B67D7BE0ECB6316CE2F3183AF /* Compass@3x.png */; };
+		01C57309E2EF9E7025552938EFD9E244 /* BTNavigationDropdownMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E06F656DCF1564C054949196215919 /* BTNavigationDropdownMenu-dummy.m */; };
 		02FB512C984962CF03D5183C7108132C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		064537A4D2690D42BA12CB6F36EA8914 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 92F3301697A3E784C5DF2D9EF53AD921 /* BTNavigationDropdownMenu.bundle */; };
-		0CAC0CC4DCAC675916FCBCA05B638C9F /* default_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79F0D8A7756163478931B9D6C24CE553 /* default_marker@3x.png */; };
-		196AB93D6F91BD3B8A662E3BABF3D5AE /* mapbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA5D10C19BDAFA3783F85BF451F0F952 /* mapbox@2x.png */; };
-		22A156810076F6D1A7E3B62042878526 /* mapbox.png in Resources */ = {isa = PBXBuildFile; fileRef = DFFEAE9DB15F75D9EDD637CB661C3E55 /* mapbox.png */; };
-		2F3EF98D44B18A5738B996EB7851B102 /* Compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1FAC796F5DD72A7195E58CD76E0548 /* Compass@2x.png */; };
-		31375D677778F2B217957BFB3AAAB316 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CA9AEEBC55683469653620A574FD05 /* BTNavigationDropdownMenu.swift */; };
-		4105F60998DB316B7E205F0F58E8C621 /* api_mapbox_com-digicert.der in Resources */ = {isa = PBXBuildFile; fileRef = FB978148A02FA52BD164A7EC05F1C1DE /* api_mapbox_com-digicert.der */; };
-		45627E38A4C02F4306763B7180CA5707 /* star_tilestream_net.der in Resources */ = {isa = PBXBuildFile; fileRef = 5D784FCF24EC251F4413E0DF2E6CCCE6 /* star_tilestream_net.der */; };
-		4E86E4895AED1D572EF89E302F6172FB /* default_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = CD805A13902CA27CACA7CCC7150F3713 /* default_marker.png */; };
-		5D896DFB8B4FAA92F11E7346A0330E3B /* mapbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE486B2A32274350FAC0A0FD47C6A58 /* mapbox@3x.png */; };
-		752E6B42E6206B1EA6B016B19AAF4652 /* BTNavigationDropdownMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB8441AC5922B8D80513EC95DFDFC68 /* BTNavigationDropdownMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7745ACACF94AFFBC35C0485E5495DA5B /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
-		777529A4C051066CC836BE02808B132C /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		89CD532FBF48416A5AEB3725C68AA5F6 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 7AE92B4036D1DFA13B909CD6D7893AEC /* README */; };
-		8BC6C182AC595289B59FACD63C86218B /* api_mapbox_com-geotrust.der in Resources */ = {isa = PBXBuildFile; fileRef = 9230E0FB0A4CEC832E3BB674BA011AC0 /* api_mapbox_com-geotrust.der */; };
-		A1C0DC366F36DA278187B54336AB6182 /* default_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C070A468F0B96A373266875A6E64693 /* default_marker@2x.png */; };
-		B43BD2816013609E80E66FEEB585FF96 /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0DBB565CA08863967422CA987634C2 /* Compass.png */; };
-		B4634115C76B8584F30D4831186860D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		064537A4D2690D42BA12CB6F36EA8914 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 172AA4B3D278B981D0F5EC85B9B4B6CA /* BTNavigationDropdownMenu.bundle */; };
+		0CAC0CC4DCAC675916FCBCA05B638C9F /* default_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B9C8A62B1BD3912663D787ED29C7F /* default_marker@3x.png */; };
+		196AB93D6F91BD3B8A662E3BABF3D5AE /* mapbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05CEF192643A1E231064F6E912613D0C /* mapbox@2x.png */; };
+		22A156810076F6D1A7E3B62042878526 /* mapbox.png in Resources */ = {isa = PBXBuildFile; fileRef = C26E95586F5CA0B0C8406D5CE9BD0F8F /* mapbox.png */; };
+		233E1A5127FCEE32182CAF832EE8BA7E /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
+		2F3EF98D44B18A5738B996EB7851B102 /* Compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 797E05DF629D81FFA9CC9F4F88F90CF3 /* Compass@2x.png */; };
+		31375D677778F2B217957BFB3AAAB316 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B45501082A73B0A68DB8235AA96521 /* BTNavigationDropdownMenu.swift */; };
+		38D8F3DE71367271A43A2A8239C60E3F /* Popover-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD987740F1184A5A4A6478EC219B72D2 /* Popover-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F775F7B204297308B97C35C1EF99A39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		4105F60998DB316B7E205F0F58E8C621 /* api_mapbox_com-digicert.der in Resources */ = {isa = PBXBuildFile; fileRef = D0EF2E77AF301F95F46C928BD3F8EE7B /* api_mapbox_com-digicert.der */; };
+		45627E38A4C02F4306763B7180CA5707 /* star_tilestream_net.der in Resources */ = {isa = PBXBuildFile; fileRef = 4334C047FA51FB7A0A74079383E93E7F /* star_tilestream_net.der */; };
+		4E86E4895AED1D572EF89E302F6172FB /* default_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = D74DAA799F49FC2A7E9709AB5DFB4DE9 /* default_marker.png */; };
+		5D896DFB8B4FAA92F11E7346A0330E3B /* mapbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCA3024D985DC25037BECB8206959438 /* mapbox@3x.png */; };
+		702742E0C157EB56415A468F164A8BB9 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFC33102ACF21008F367D83E7808DC8 /* Popover.swift */; };
+		752E6B42E6206B1EA6B016B19AAF4652 /* BTNavigationDropdownMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EAB31C7F7FC1317E95D25B348E4A8503 /* BTNavigationDropdownMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		792A57DB68248D7046D0520D89009203 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89CD532FBF48416A5AEB3725C68AA5F6 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3273B32AE8BB0F770282FB10367ED448 /* README */; };
+		8BC6C182AC595289B59FACD63C86218B /* api_mapbox_com-geotrust.der in Resources */ = {isa = PBXBuildFile; fileRef = 3A2A5A63797169D2131FC29C4D8D63EA /* api_mapbox_com-geotrust.der */; };
+		A1C0DC366F36DA278187B54336AB6182 /* default_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1025183C5AD8A5127CBBB5D894A7B967 /* default_marker@2x.png */; };
+		A8C4407C4E0390E54F88BFB892E56B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		B43BD2816013609E80E66FEEB585FF96 /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 378D1A7A00B3016F920A9557AD0F2B54 /* Compass.png */; };
+		F0581578C5F45DDE9E96FB2890C54C01 /* Popover-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB0EAE0336386777906FC33AAE89D44 /* Popover-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		64431948DAF8566310FD544855184F25 /* PBXContainerItemProxy */ = {
+		19A51DEDFBA66C537872733344673966 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FD23F1DA220A44C7E84F356B64871271;
-			remoteInfo = BTNavigationDropdownMenu;
+			remoteGlobalIDString = 0B7763E83CF545182471FCDC1F5C948D;
+			remoteInfo = Popover;
 		};
-		F560B6CC82F4ED6072A5864CACCD837A /* PBXContainerItemProxy */ = {
+		6578B5BD2C88D2E0E15E130B52F1FF09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2DB59219DEF5D393F19F0753F2D9C161;
 			remoteInfo = "Mapbox-iOS-SDK-Mapbox";
 		};
+		B4CEFCA7C2FA857AD162A242BE160BD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD23F1DA220A44C7E84F356B64871271;
+			remoteInfo = BTNavigationDropdownMenu;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1BA9EC3F83702A789471A191625FCEFA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
-		21FFEAA587AAACBF229C6955E7BD5FAD /* BTNavigationDropdownMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BTNavigationDropdownMenu-prefix.pch"; sourceTree = "<group>"; };
-		28248A6BEEA35FF764C7ABA407492502 /* Mapbox.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mapbox.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		05CEF192643A1E231064F6E912613D0C /* mapbox@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@2x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@2x.png"; sourceTree = "<group>"; };
+		0BD7A5A0C4549229D105371D88BADAFD /* Popover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Popover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E6B9C8A62B1BD3912663D787ED29C7F /* default_marker@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@3x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@3x.png"; sourceTree = "<group>"; };
+		1025183C5AD8A5127CBBB5D894A7B967 /* default_marker@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@2x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@2x.png"; sourceTree = "<group>"; };
+		172AA4B3D278B981D0F5EC85B9B4B6CA /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = BTNavigationDropdownMenu.bundle; path = Source/BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
+		1B374331FAD3114F622A5D8755FD024E /* BTNavigationDropdownMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BTNavigationDropdownMenu-prefix.pch"; sourceTree = "<group>"; };
+		2438832A772844491BFC92A2A73FC55B /* TwitterKitResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		24B7FAFD65DE14B78FE620A1AB985F5D /* BTNavigationDropdownMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BTNavigationDropdownMenu.modulemap; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
-		3B3F266EF8BB3B6EE0AE0FB37FFF11C2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FFC33102ACF21008F367D83E7808DC8 /* Popover.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Popover.swift; path = Classes/Popover.swift; sourceTree = "<group>"; };
+		3273B32AE8BB0F770282FB10367ED448 /* README */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README; path = Mapbox.framework/Mapbox.bundle/README; sourceTree = "<group>"; };
+		378D1A7A00B3016F920A9557AD0F2B54 /* Compass.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Compass.png; path = Mapbox.framework/Mapbox.bundle/Compass.png; sourceTree = "<group>"; };
+		3A2A5A63797169D2131FC29C4D8D63EA /* api_mapbox_com-geotrust.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-geotrust.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-geotrust.der"; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		419C2F29D5D36009AD14CD058C6373BD /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTNavigationDropdownMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		590092F9188C455B657BFD91F8F949CA /* TwitterKitResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
-		5D784FCF24EC251F4413E0DF2E6CCCE6 /* star_tilestream_net.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = star_tilestream_net.der; path = Mapbox.framework/Mapbox.bundle/star_tilestream_net.der; sourceTree = "<group>"; };
-		63EA9F0309E06CECED23794E996412B9 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = iOS/TwitterCore.framework; sourceTree = "<group>"; };
-		6783F5F1D6A5C147F8465260A11C12CF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C070A468F0B96A373266875A6E64693 /* default_marker@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@2x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@2x.png"; sourceTree = "<group>"; };
+		4334C047FA51FB7A0A74079383E93E7F /* star_tilestream_net.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = star_tilestream_net.der; path = Mapbox.framework/Mapbox.bundle/star_tilestream_net.der; sourceTree = "<group>"; };
+		50A922AED5C103F36B95B7C77C803393 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = iOS/TwitterCore.framework; sourceTree = "<group>"; };
+		54298F0B1363D30C47B3712192221340 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		71B6499B67D7BE0ECB6316CE2F3183AF /* Compass@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@3x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@3x.png"; sourceTree = "<group>"; };
+		797E05DF629D81FFA9CC9F4F88F90CF3 /* Compass@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@2x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@2x.png"; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		79F0D8A7756163478931B9D6C24CE553 /* default_marker@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "default_marker@3x.png"; path = "Mapbox.framework/Mapbox.bundle/default_marker@3x.png"; sourceTree = "<group>"; };
-		7AE92B4036D1DFA13B909CD6D7893AEC /* README */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README; path = Mapbox.framework/Mapbox.bundle/README; sourceTree = "<group>"; };
-		85335635CAC32BC18206A5ED081B41F9 /* BTNavigationDropdownMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BTNavigationDropdownMenu-dummy.m"; sourceTree = "<group>"; };
+		84720231AB55DC0DB09250AAC9D0F620 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		8FD12B93CC5CB373F080311F78C4A303 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
-		9230E0FB0A4CEC832E3BB674BA011AC0 /* api_mapbox_com-geotrust.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-geotrust.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-geotrust.der"; sourceTree = "<group>"; };
-		92F3301697A3E784C5DF2D9EF53AD921 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = BTNavigationDropdownMenu.bundle; path = Source/BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		9EFE0567B1CD519384AB4C0D3F94811F /* BTNavigationDropdownMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BTNavigationDropdownMenu.modulemap; sourceTree = "<group>"; };
-		A6CA9AEEBC55683469653620A574FD05 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BTNavigationDropdownMenu.swift; path = Source/BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
-		AA5D10C19BDAFA3783F85BF451F0F952 /* mapbox@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@2x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@2x.png"; sourceTree = "<group>"; };
-		AA60025BD61C7FE55AD200DFAEEC87D2 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
-		AD0DBB565CA08863967422CA987634C2 /* Compass.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Compass.png; path = Mapbox.framework/Mapbox.bundle/Compass.png; sourceTree = "<group>"; };
-		AEE486B2A32274350FAC0A0FD47C6A58 /* mapbox@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@3x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@3x.png"; sourceTree = "<group>"; };
-		B8EABCAD87FADBC9C4BD41CF89E08658 /* Compass@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@3x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@3x.png"; sourceTree = "<group>"; };
+		98DFA1D7B46FE13BC0F1DC12990DD72C /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
+		A81BDF0F62327D97C4FC8FC2910A97D0 /* Popover.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Popover.modulemap; sourceTree = "<group>"; };
+		AABC967A9E13D9E7641BCD98BB1CA646 /* BTNavigationDropdownMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTNavigationDropdownMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1729F220433C80220C51BCFC61CD4B0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BB1FAC796F5DD72A7195E58CD76E0548 /* Compass@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Compass@2x.png"; path = "Mapbox.framework/Mapbox.bundle/Compass@2x.png"; sourceTree = "<group>"; };
-		C517FD05DE78B02180497AC351AD7ADE /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		BCA3024D985DC25037BECB8206959438 /* mapbox@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mapbox@3x.png"; path = "Mapbox.framework/Mapbox.bundle/mapbox@3x.png"; sourceTree = "<group>"; };
+		C25DB296B8B2E40940003A1F30E5769A /* Popover.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Popover.xcconfig; sourceTree = "<group>"; };
+		C26E95586F5CA0B0C8406D5CE9BD0F8F /* mapbox.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = mapbox.png; path = Mapbox.framework/Mapbox.bundle/mapbox.png; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		CCB8441AC5922B8D80513EC95DFDFC68 /* BTNavigationDropdownMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BTNavigationDropdownMenu-umbrella.h"; sourceTree = "<group>"; };
-		CD805A13902CA27CACA7CCC7150F3713 /* default_marker.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = default_marker.png; path = Mapbox.framework/Mapbox.bundle/default_marker.png; sourceTree = "<group>"; };
+		CE98C8AB218688C923ED43152A040A7B /* Popover-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Popover-prefix.pch"; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D972963A534729737072E8E4D08CC384 /* BTNavigationDropdownMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BTNavigationDropdownMenu.xcconfig; sourceTree = "<group>"; };
+		D0EF2E77AF301F95F46C928BD3F8EE7B /* api_mapbox_com-digicert.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-digicert.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-digicert.der"; sourceTree = "<group>"; };
+		D5A4B8EF785173D8C7492EE52EA1D4F2 /* BTNavigationDropdownMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BTNavigationDropdownMenu.xcconfig; sourceTree = "<group>"; };
+		D5C9940B7AE6EBF36A17B47F190B6648 /* Mapbox.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mapbox.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D74DAA799F49FC2A7E9709AB5DFB4DE9 /* default_marker.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = default_marker.png; path = Mapbox.framework/Mapbox.bundle/default_marker.png; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		DFFEAE9DB15F75D9EDD637CB661C3E55 /* mapbox.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = mapbox.png; path = Mapbox.framework/Mapbox.bundle/mapbox.png; sourceTree = "<group>"; };
+		E00C880E0AA11E985455ECD615DCDC78 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
+		E7F7ACE6512CFC88E290E785791F5B1C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB978148A02FA52BD164A7EC05F1C1DE /* api_mapbox_com-digicert.der */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "api_mapbox_com-digicert.der"; path = "Mapbox.framework/Mapbox.bundle/api_mapbox_com-digicert.der"; sourceTree = "<group>"; };
+		EAB0EAE0336386777906FC33AAE89D44 /* Popover-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Popover-dummy.m"; sourceTree = "<group>"; };
+		EAB31C7F7FC1317E95D25B348E4A8503 /* BTNavigationDropdownMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BTNavigationDropdownMenu-umbrella.h"; sourceTree = "<group>"; };
+		F2E06F656DCF1564C054949196215919 /* BTNavigationDropdownMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BTNavigationDropdownMenu-dummy.m"; sourceTree = "<group>"; };
+		F4A53903690B55C24E77951A20B8E4D1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B45501082A73B0A68DB8235AA96521 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BTNavigationDropdownMenu.swift; path = Source/BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		FD987740F1184A5A4A6478EC219B72D2 /* Popover-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Popover-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +119,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BBCA9D0771293D10A58A04789D5E8312 /* Frameworks */ = {
+		34CDE46883D83BBE63BAD7D3A095566C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4634115C76B8584F30D4831186860D4 /* Foundation.framework in Frameworks */,
+				3F775F7B204297308B97C35C1EF99A39 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A60C8B1CCF7F96F6837EC168BD82B4BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8C4407C4E0390E54F88BFB892E56B28 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,54 +146,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		056F249721CE6AC7B16CBE750EDD22DE /* Frameworks */ = {
+		066E9425FBFF0DAE48442A44AD57B94E /* Popover */ = {
 			isa = PBXGroup;
 			children = (
-				63EA9F0309E06CECED23794E996412B9 /* TwitterCore.framework */,
+				2FFC33102ACF21008F367D83E7808DC8 /* Popover.swift */,
+				089615BE7EF9C810495956E8FAD9C175 /* Support Files */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
+		089615BE7EF9C810495956E8FAD9C175 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E7F7ACE6512CFC88E290E785791F5B1C /* Info.plist */,
+				A81BDF0F62327D97C4FC8FC2910A97D0 /* Popover.modulemap */,
+				C25DB296B8B2E40940003A1F30E5769A /* Popover.xcconfig */,
+				EAB0EAE0336386777906FC33AAE89D44 /* Popover-dummy.m */,
+				CE98C8AB218688C923ED43152A040A7B /* Popover-prefix.pch */,
+				FD987740F1184A5A4A6478EC219B72D2 /* Popover-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Popover";
+			sourceTree = "<group>";
+		};
+		110619D1D8E497873079B30B2B41C980 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1729F220433C80220C51BCFC61CD4B0 /* Crashlytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1C2F8E117A25399834AC81FD3C1EF72C /* Fabric */ = {
+		18C855D57971022E7ECE8AFCAA49BAF3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2DF8CB2B27C45F1EC3403CD759BE92D1 /* Frameworks */,
+				9B62D828A1E7555BEBF3272B17D2954C /* BTNavigationDropdownMenu */,
+				93CDFD5DDEBEAEA7BD60385F2BAB28DA /* Crashlytics */,
+				6CAC4E47E9E04134954651A7A6FAF942 /* Fabric */,
+				A03841A6603EB179CB98302CF396FFEE /* Mapbox-iOS-SDK */,
+				066E9425FBFF0DAE48442A44AD57B94E /* Popover */,
+				215F05A7993AF052DB3EE2524C1C0D56 /* TwitterCore */,
+				D4B0A6EDAB248B8EFEF547CF91C6F1BC /* TwitterKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1C3B5674B89E34B1B6579C0436A00BB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E00C880E0AA11E985455ECD615DCDC78 /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		215F05A7993AF052DB3EE2524C1C0D56 /* TwitterCore */ = {
+			isa = PBXGroup;
+			children = (
+				8745A2A41CF9573561FDD2ED7208424E /* Frameworks */,
+			);
+			path = TwitterCore;
+			sourceTree = "<group>";
+		};
+		2604F6A0498A70C0B3719602AEB793D3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				24B7FAFD65DE14B78FE620A1AB985F5D /* BTNavigationDropdownMenu.modulemap */,
+				D5A4B8EF785173D8C7492EE52EA1D4F2 /* BTNavigationDropdownMenu.xcconfig */,
+				F2E06F656DCF1564C054949196215919 /* BTNavigationDropdownMenu-dummy.m */,
+				1B374331FAD3114F622A5D8755FD024E /* BTNavigationDropdownMenu-prefix.pch */,
+				EAB31C7F7FC1317E95D25B348E4A8503 /* BTNavigationDropdownMenu-umbrella.h */,
+				84720231AB55DC0DB09250AAC9D0F620 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BTNavigationDropdownMenu";
+			sourceTree = "<group>";
+		};
+		37376B5AA4D7424B6A20DE668F9B52DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2438832A772844491BFC92A2A73FC55B /* TwitterKitResources.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		44DDCAA8E31447CEE84DD52BE36FB910 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				54298F0B1363D30C47B3712192221340 /* TwitterKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6CAC4E47E9E04134954651A7A6FAF942 /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				1C3B5674B89E34B1B6579C0436A00BB3 /* Frameworks */,
 			);
 			path = Fabric;
-			sourceTree = "<group>";
-		};
-		1F63F6685073B6E5E249863DE7E1BDEA /* TwitterKit */ = {
-			isa = PBXGroup;
-			children = (
-				D8A060445AC0E6C99F986CAE1B8C4B5A /* Frameworks */,
-				8E347A3D8643AA0B33E6DD187B04A7A3 /* Resources */,
-			);
-			path = TwitterKit;
-			sourceTree = "<group>";
-		};
-		2DF8CB2B27C45F1EC3403CD759BE92D1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1BA9EC3F83702A789471A191625FCEFA /* Fabric.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		592231D68E0DFE2BB79A45243958D1C7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8FD12B93CC5CB373F080311F78C4A303 /* Crashlytics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5FC35C96B54E8684369D38CF72605998 /* Mapbox-iOS-SDK */ = {
-			isa = PBXGroup;
-			children = (
-				D8129CC6A7DB676E339D60CD6646ECA9 /* Frameworks */,
-				DAAE532491B5FC51A9F754699889D782 /* Resources */,
-			);
-			path = "Mapbox-iOS-SDK";
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -187,51 +263,77 @@
 			path = "Target Support Files/Pods";
 			sourceTree = "<group>";
 		};
-		76DF6ECCC31F61362F4A49653C25B183 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				419C2F29D5D36009AD14CD058C6373BD /* BTNavigationDropdownMenu.framework */,
-				28248A6BEEA35FF764C7ABA407492502 /* Mapbox.bundle */,
-				3B3F266EF8BB3B6EE0AE0FB37FFF11C2 /* Pods.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				F6163DC1604C244BB712F5B4495F018D /* Pods */,
-				76DF6ECCC31F61362F4A49653C25B183 /* Products */,
+				18C855D57971022E7ECE8AFCAA49BAF3 /* Pods */,
+				A3AB083F00F9239B9048D65DE85C723B /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8BC100C03B9E44AF1D2AF419C68FC0F4 /* Resources */ = {
+		8745A2A41CF9573561FDD2ED7208424E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				92F3301697A3E784C5DF2D9EF53AD921 /* BTNavigationDropdownMenu.bundle */,
+				50A922AED5C103F36B95B7C77C803393 /* TwitterCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D90F07D6A220E8AFE7A55786EE557FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98DFA1D7B46FE13BC0F1DC12990DD72C /* Mapbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F602DADAB06B88CB1BCD4AFD9C1BF2D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				172AA4B3D278B981D0F5EC85B9B4B6CA /* BTNavigationDropdownMenu.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		8E347A3D8643AA0B33E6DD187B04A7A3 /* Resources */ = {
+		93CDFD5DDEBEAEA7BD60385F2BAB28DA /* Crashlytics */ = {
 			isa = PBXGroup;
 			children = (
-				590092F9188C455B657BFD91F8F949CA /* TwitterKitResources.bundle */,
+				110619D1D8E497873079B30B2B41C980 /* Frameworks */,
 			);
-			name = Resources;
+			path = Crashlytics;
 			sourceTree = "<group>";
 		};
-		B090AB920778229F8C360F3BB58088AA /* BTNavigationDropdownMenu */ = {
+		9B62D828A1E7555BEBF3272B17D2954C /* BTNavigationDropdownMenu */ = {
 			isa = PBXGroup;
 			children = (
-				A6CA9AEEBC55683469653620A574FD05 /* BTNavigationDropdownMenu.swift */,
-				8BC100C03B9E44AF1D2AF419C68FC0F4 /* Resources */,
-				C76163E682EA156D3671F9E3A6CCB472 /* Support Files */,
+				F5B45501082A73B0A68DB8235AA96521 /* BTNavigationDropdownMenu.swift */,
+				8F602DADAB06B88CB1BCD4AFD9C1BF2D /* Resources */,
+				2604F6A0498A70C0B3719602AEB793D3 /* Support Files */,
 			);
 			path = BTNavigationDropdownMenu;
+			sourceTree = "<group>";
+		};
+		A03841A6603EB179CB98302CF396FFEE /* Mapbox-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				8D90F07D6A220E8AFE7A55786EE557FD /* Frameworks */,
+				F30D6E75B9DB082139EDC1E2B81E3F25 /* Resources */,
+			);
+			path = "Mapbox-iOS-SDK";
+			sourceTree = "<group>";
+		};
+		A3AB083F00F9239B9048D65DE85C723B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AABC967A9E13D9E7641BCD98BB1CA646 /* BTNavigationDropdownMenu.framework */,
+				D5C9940B7AE6EBF36A17B47F190B6648 /* Mapbox.bundle */,
+				F4A53903690B55C24E77951A20B8E4D1 /* Pods.framework */,
+				0BD7A5A0C4549229D105371D88BADAFD /* Popover.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -258,88 +360,46 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C1EB8226A23FB3A4DC1688D3122D3D0D /* TwitterCore */ = {
+		D4B0A6EDAB248B8EFEF547CF91C6F1BC /* TwitterKit */ = {
 			isa = PBXGroup;
 			children = (
-				056F249721CE6AC7B16CBE750EDD22DE /* Frameworks */,
+				44DDCAA8E31447CEE84DD52BE36FB910 /* Frameworks */,
+				37376B5AA4D7424B6A20DE668F9B52DD /* Resources */,
 			);
-			path = TwitterCore;
+			path = TwitterKit;
 			sourceTree = "<group>";
 		};
-		C76163E682EA156D3671F9E3A6CCB472 /* Support Files */ = {
+		F30D6E75B9DB082139EDC1E2B81E3F25 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9EFE0567B1CD519384AB4C0D3F94811F /* BTNavigationDropdownMenu.modulemap */,
-				D972963A534729737072E8E4D08CC384 /* BTNavigationDropdownMenu.xcconfig */,
-				85335635CAC32BC18206A5ED081B41F9 /* BTNavigationDropdownMenu-dummy.m */,
-				21FFEAA587AAACBF229C6955E7BD5FAD /* BTNavigationDropdownMenu-prefix.pch */,
-				CCB8441AC5922B8D80513EC95DFDFC68 /* BTNavigationDropdownMenu-umbrella.h */,
-				6783F5F1D6A5C147F8465260A11C12CF /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/BTNavigationDropdownMenu";
-			sourceTree = "<group>";
-		};
-		D8129CC6A7DB676E339D60CD6646ECA9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AA60025BD61C7FE55AD200DFAEEC87D2 /* Mapbox.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D8A060445AC0E6C99F986CAE1B8C4B5A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C517FD05DE78B02180497AC351AD7ADE /* TwitterKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DAAE532491B5FC51A9F754699889D782 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FB978148A02FA52BD164A7EC05F1C1DE /* api_mapbox_com-digicert.der */,
-				9230E0FB0A4CEC832E3BB674BA011AC0 /* api_mapbox_com-geotrust.der */,
-				AD0DBB565CA08863967422CA987634C2 /* Compass.png */,
-				BB1FAC796F5DD72A7195E58CD76E0548 /* Compass@2x.png */,
-				B8EABCAD87FADBC9C4BD41CF89E08658 /* Compass@3x.png */,
-				CD805A13902CA27CACA7CCC7150F3713 /* default_marker.png */,
-				6C070A468F0B96A373266875A6E64693 /* default_marker@2x.png */,
-				79F0D8A7756163478931B9D6C24CE553 /* default_marker@3x.png */,
-				DFFEAE9DB15F75D9EDD637CB661C3E55 /* mapbox.png */,
-				AA5D10C19BDAFA3783F85BF451F0F952 /* mapbox@2x.png */,
-				AEE486B2A32274350FAC0A0FD47C6A58 /* mapbox@3x.png */,
-				7AE92B4036D1DFA13B909CD6D7893AEC /* README */,
-				5D784FCF24EC251F4413E0DF2E6CCCE6 /* star_tilestream_net.der */,
+				D0EF2E77AF301F95F46C928BD3F8EE7B /* api_mapbox_com-digicert.der */,
+				3A2A5A63797169D2131FC29C4D8D63EA /* api_mapbox_com-geotrust.der */,
+				378D1A7A00B3016F920A9557AD0F2B54 /* Compass.png */,
+				797E05DF629D81FFA9CC9F4F88F90CF3 /* Compass@2x.png */,
+				71B6499B67D7BE0ECB6316CE2F3183AF /* Compass@3x.png */,
+				D74DAA799F49FC2A7E9709AB5DFB4DE9 /* default_marker.png */,
+				1025183C5AD8A5127CBBB5D894A7B967 /* default_marker@2x.png */,
+				0E6B9C8A62B1BD3912663D787ED29C7F /* default_marker@3x.png */,
+				C26E95586F5CA0B0C8406D5CE9BD0F8F /* mapbox.png */,
+				05CEF192643A1E231064F6E912613D0C /* mapbox@2x.png */,
+				BCA3024D985DC25037BECB8206959438 /* mapbox@3x.png */,
+				3273B32AE8BB0F770282FB10367ED448 /* README */,
+				4334C047FA51FB7A0A74079383E93E7F /* star_tilestream_net.der */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		F6163DC1604C244BB712F5B4495F018D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B090AB920778229F8C360F3BB58088AA /* BTNavigationDropdownMenu */,
-				FE9A1EA86E923E03400A4FCAF1315271 /* Crashlytics */,
-				1C2F8E117A25399834AC81FD3C1EF72C /* Fabric */,
-				5FC35C96B54E8684369D38CF72605998 /* Mapbox-iOS-SDK */,
-				C1EB8226A23FB3A4DC1688D3122D3D0D /* TwitterCore */,
-				1F63F6685073B6E5E249863DE7E1BDEA /* TwitterKit */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		FE9A1EA86E923E03400A4FCAF1315271 /* Crashlytics */ = {
-			isa = PBXGroup;
-			children = (
-				592231D68E0DFE2BB79A45243958D1C7 /* Frameworks */,
-			);
-			path = Crashlytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		9BEF95DE9585A85B2AF2EBAA47741A79 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38D8F3DE71367271A43A2A8239C60E3F /* Popover-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D56E6C57C581156BA5B9D5E2E3301A66 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,17 +408,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F3D5EB6E42D734E25090578BF9567363 /* Headers */ = {
+		F538D3051E55BD66C38D2CB707B62970 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				777529A4C051066CC836BE02808B132C /* Pods-umbrella.h in Headers */,
+				792A57DB68248D7046D0520D89009203 /* Pods-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0B7763E83CF545182471FCDC1F5C948D /* Popover */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEAA36A953F9DC5F998C09B8F26BFFA2 /* Build configuration list for PBXNativeTarget "Popover" */;
+			buildPhases = (
+				906B1E339048D73CF89E769A51BC488C /* Sources */,
+				A60C8B1CCF7F96F6837EC168BD82B4BD /* Frameworks */,
+				9BEF95DE9585A85B2AF2EBAA47741A79 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Popover;
+			productName = Popover;
+			productReference = 0BD7A5A0C4549229D105371D88BADAFD /* Popover.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		2DB59219DEF5D393F19F0753F2D9C161 /* Mapbox-iOS-SDK-Mapbox */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18350CA88BA46CBE4A1796F0A918615E /* Build configuration list for PBXNativeTarget "Mapbox-iOS-SDK-Mapbox" */;
@@ -373,26 +450,27 @@
 			);
 			name = "Mapbox-iOS-SDK-Mapbox";
 			productName = "Mapbox-iOS-SDK-Mapbox";
-			productReference = 28248A6BEEA35FF764C7ABA407492502 /* Mapbox.bundle */;
+			productReference = D5C9940B7AE6EBF36A17B47F190B6648 /* Mapbox.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		B4F7EE57E4F7072EAAFB9E93F4FEE17E /* Pods */ = {
+		CD2967F0ECE2751782B3BEEAB4659C40 /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E85CEDC22829FE18B6D19751360B8A9 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = E83606059965708A45C47BCFE9832F29 /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				941743C3C4037945CF23A6054F1A962C /* Sources */,
-				BBCA9D0771293D10A58A04789D5E8312 /* Frameworks */,
-				F3D5EB6E42D734E25090578BF9567363 /* Headers */,
+				5468D47D0F9A8987B3E431A495046082 /* Sources */,
+				34CDE46883D83BBE63BAD7D3A095566C /* Frameworks */,
+				F538D3051E55BD66C38D2CB707B62970 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2F60400DD0F3DB0D13D4604C3B97DBA1 /* PBXTargetDependency */,
-				AA223AE132C4991B1EDE8B71D3AB32EC /* PBXTargetDependency */,
+				D93FAD00646B9E6366C1E43C84FDFA98 /* PBXTargetDependency */,
+				3A202C719B5FB2A56F7ABEECDBF71DF2 /* PBXTargetDependency */,
+				79FA3DB176D8A598906FC19E1BB030FD /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = 3B3F266EF8BB3B6EE0AE0FB37FFF11C2 /* Pods.framework */;
+			productReference = F4A53903690B55C24E77951A20B8E4D1 /* Pods.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FD23F1DA220A44C7E84F356B64871271 /* BTNavigationDropdownMenu */ = {
@@ -410,7 +488,7 @@
 			);
 			name = BTNavigationDropdownMenu;
 			productName = BTNavigationDropdownMenu;
-			productReference = 419C2F29D5D36009AD14CD058C6373BD /* BTNavigationDropdownMenu.framework */;
+			productReference = AABC967A9E13D9E7641BCD98BB1CA646 /* BTNavigationDropdownMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -430,13 +508,14 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 76DF6ECCC31F61362F4A49653C25B183 /* Products */;
+			productRefGroup = A3AB083F00F9239B9048D65DE85C723B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				FD23F1DA220A44C7E84F356B64871271 /* BTNavigationDropdownMenu */,
 				2DB59219DEF5D393F19F0753F2D9C161 /* Mapbox-iOS-SDK-Mapbox */,
-				B4F7EE57E4F7072EAAFB9E93F4FEE17E /* Pods */,
+				CD2967F0ECE2751782B3BEEAB4659C40 /* Pods */,
+				0B7763E83CF545182471FCDC1F5C948D /* Popover */,
 			);
 		};
 /* End PBXProject section */
@@ -482,11 +561,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		941743C3C4037945CF23A6054F1A962C /* Sources */ = {
+		5468D47D0F9A8987B3E431A495046082 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7745ACACF94AFFBC35C0485E5495DA5B /* Pods-dummy.m in Sources */,
+				233E1A5127FCEE32182CAF832EE8BA7E /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		906B1E339048D73CF89E769A51BC488C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0581578C5F45DDE9E96FB2890C54C01 /* Popover-dummy.m in Sources */,
+				702742E0C157EB56415A468F164A8BB9 /* Popover.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,17 +588,23 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2F60400DD0F3DB0D13D4604C3B97DBA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BTNavigationDropdownMenu;
-			target = FD23F1DA220A44C7E84F356B64871271 /* BTNavigationDropdownMenu */;
-			targetProxy = 64431948DAF8566310FD544855184F25 /* PBXContainerItemProxy */;
-		};
-		AA223AE132C4991B1EDE8B71D3AB32EC /* PBXTargetDependency */ = {
+		3A202C719B5FB2A56F7ABEECDBF71DF2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Mapbox-iOS-SDK-Mapbox";
 			target = 2DB59219DEF5D393F19F0753F2D9C161 /* Mapbox-iOS-SDK-Mapbox */;
-			targetProxy = F560B6CC82F4ED6072A5864CACCD837A /* PBXContainerItemProxy */;
+			targetProxy = 6578B5BD2C88D2E0E15E130B52F1FF09 /* PBXContainerItemProxy */;
+		};
+		79FA3DB176D8A598906FC19E1BB030FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Popover;
+			target = 0B7763E83CF545182471FCDC1F5C948D /* Popover */;
+			targetProxy = 19A51DEDFBA66C537872733344673966 /* PBXContainerItemProxy */;
+		};
+		D93FAD00646B9E6366C1E43C84FDFA98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BTNavigationDropdownMenu;
+			target = FD23F1DA220A44C7E84F356B64871271 /* BTNavigationDropdownMenu */;
+			targetProxy = B4CEFCA7C2FA857AD162A242BE160BD9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -526,9 +620,39 @@
 			};
 			name = Release;
 		};
+		09BD9F75682A701EC127A95F978AAFA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		0E48D834913DB2B7D3D674A8494ED9C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D972963A534729737072E8E4D08CC384 /* BTNavigationDropdownMenu.xcconfig */;
+			baseConfigurationReference = D5A4B8EF785173D8C7492EE52EA1D4F2 /* BTNavigationDropdownMenu.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -556,7 +680,7 @@
 		};
 		0EC0274281102C199141D5CDE226D1EE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D972963A534729737072E8E4D08CC384 /* BTNavigationDropdownMenu.xcconfig */;
+			baseConfigurationReference = D5A4B8EF785173D8C7492EE52EA1D4F2 /* BTNavigationDropdownMenu.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -581,9 +705,9 @@
 			};
 			name = Release;
 		};
-		3A35C7998F2A7EA15450AC4DBDCD9B60 /* Release */ = {
+		53870047CAE9144331EBE0A06FEEA52C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */;
+			baseConfigurationReference = C25DB296B8B2E40940003A1F30E5769A /* Popover.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -592,17 +716,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Popover/Popover-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Popover/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Popover/Popover.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods;
+				PRODUCT_NAME = Popover;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -647,37 +768,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		700437F3CFA8F6C8D416000A2DA64775 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -726,6 +816,65 @@
 			};
 			name = Debug;
 		};
+		E3BEF25D8BBFBF19E135D98C19166B09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods/Pods.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F53F48346F77C7314CF0F97D5A88F4F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C25DB296B8B2E40940003A1F30E5769A /* Popover.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Popover/Popover-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Popover/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Popover/Popover.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Popover;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -734,15 +883,6 @@
 			buildConfigurations = (
 				C4A2199EF0363F38958A1B4A108EF9B9 /* Debug */,
 				06238F5F7BE354A98A05700C4E4CE243 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1E85CEDC22829FE18B6D19751360B8A9 /* Build configuration list for PBXNativeTarget "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				700437F3CFA8F6C8D416000A2DA64775 /* Debug */,
-				3A35C7998F2A7EA15450AC4DBDCD9B60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -756,11 +896,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		E83606059965708A45C47BCFE9832F29 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3BEF25D8BBFBF19E135D98C19166B09 /* Debug */,
+				09BD9F75682A701EC127A95F978AAFA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EB28785AF4C163D5A2CE51D1AC9BA7E5 /* Build configuration list for PBXNativeTarget "BTNavigationDropdownMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E48D834913DB2B7D3D674A8494ED9C7 /* Debug */,
 				0EC0274281102C199141D5CDE226D1EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FEAA36A953F9DC5F998C09B8F26BFFA2 /* Build configuration list for PBXNativeTarget "Popover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F53F48346F77C7314CF0F97D5A88F4F6 /* Debug */,
+				53870047CAE9144331EBE0A06FEEA52C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

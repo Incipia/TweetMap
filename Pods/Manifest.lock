@@ -4,6 +4,7 @@ PODS:
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
   - Mapbox-iOS-SDK (3.0.1)
+  - Popover (0.8.0)
   - TwitterCore (1.14.6):
     - Fabric
   - TwitterKit (1.14.6):
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Mapbox-iOS-SDK
+  - Popover
   - TwitterCore
   - TwitterKit
 
@@ -22,6 +24,7 @@ SPEC CHECKSUMS:
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   Mapbox-iOS-SDK: 61e79f3dd8432617bd1a66b2d7273ab5ce923ca9
+  Popover: 666aeb02095fff5cbf6896548a92abc84c523b60
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
 

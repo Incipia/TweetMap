@@ -15,4 +15,6 @@ pod 'Mapbox-iOS-SDK'
 
 pod 'BTNavigationDropdownMenu'
 
+pod 'Popover'
+
 

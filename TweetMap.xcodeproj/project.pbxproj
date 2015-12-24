@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2318696A1C2930160088F76E /* LocationTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231869691C2930160088F76E /* LocationTrends.swift */; };
 		2318696C1C2931170088F76E /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2318696B1C2931170088F76E /* Trend.swift */; };
+		23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9F4A51C2B93FD0058B0FE /* Popover.swift */; };
 		23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */; };
 		23F1B8301C21F0A9003BB13A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B82E1C21F0A9003BB13A /* Main.storyboard */; };
 		23F1B8321C21F0A9003BB13A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B8311C21F0A9003BB13A /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		231869691C2930160088F76E /* LocationTrends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrends.swift; sourceTree = "<group>"; };
 		2318696B1C2931170088F76E /* Trend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		23B9F4A51C2B93FD0058B0FE /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Popover.swift; path = ../Pods/Popover/Classes/Popover.swift; sourceTree = "<group>"; };
 		23F1B8271C21F0A9003BB13A /* TweetMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23F1B82F1C21F0A9003BB13A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2318696D1C293A4E0088F76E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				231869691C2930160088F76E /* LocationTrends.swift */,
+				2318696B1C2931170088F76E /* Trend.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2318696E1C293A600088F76E /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				23B9F4A51C2B93FD0058B0FE /* Popover.swift */,
+				23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */,
+				23F1B82E1C21F0A9003BB13A /* Main.storyboard */,
+				23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */,
+				23F1B8361C21F0A9003BB13A /* Info.plist */,
+				23F1B8311C21F0A9003BB13A /* Assets.xcassets */,
+			);
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		23F1B81E1C21F0A9003BB13A = {
 			isa = PBXGroup;
 			children = (
@@ -108,14 +132,9 @@
 		23F1B8291C21F0A9003BB13A /* TweetMap */ = {
 			isa = PBXGroup;
 			children = (
-				23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */,
-				23F1B82E1C21F0A9003BB13A /* Main.storyboard */,
-				23F1B8311C21F0A9003BB13A /* Assets.xcassets */,
-				23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */,
-				23F1B8361C21F0A9003BB13A /* Info.plist */,
+				2318696E1C293A600088F76E /* SupportingFiles */,
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
-				231869691C2930160088F76E /* LocationTrends.swift */,
-				2318696B1C2931170088F76E /* Trend.swift */,
+				2318696D1C293A4E0088F76E /* Model */,
 			);
 			path = TweetMap;
 			sourceTree = "<group>";
@@ -352,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */,
+				23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */,
 				23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */,
 				2318696A1C2930160088F76E /* LocationTrends.swift in Sources */,
 				2318696C1C2931170088F76E /* Trend.swift in Sources */,
@@ -495,10 +515,12 @@
 			baseConfigurationReference = B85310E5FA3177DC20FA8ACE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TweetMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GLR.TweetMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -507,6 +529,7 @@
 			baseConfigurationReference = AE4591F95156D69147DB1D5C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TweetMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GLR.TweetMap;
