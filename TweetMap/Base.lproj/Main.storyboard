@@ -40,7 +40,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="podButtonPressed:" destination="PvW-rc-aFA" eventType="touchUpInside" id="4dT-fe-FC9"/>
+                                            <action selector="radiusMenuButtonPressed:" destination="PvW-rc-aFA" eventType="touchUpInside" id="C7m-L7-7DX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,7 +82,7 @@
                     <connections>
                         <outlet property="layerView" destination="8CK-1O-jUu" id="s8C-XC-6SA"/>
                         <outlet property="map" destination="RIx-dc-L82" id="yKQ-YB-93x"/>
-                        <outlet property="podButton" destination="fKK-Or-Djj" id="7Qm-UO-82o"/>
+                        <outlet property="radiusMenuButton" destination="fKK-Or-Djj" id="PbW-tK-pV9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2Z-JW-wwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
