@@ -132,8 +132,8 @@
 		23F1B8291C21F0A9003BB13A /* TweetMap */ = {
 			isa = PBXGroup;
 			children = (
-				2318696E1C293A600088F76E /* SupportingFiles */,
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
+				2318696E1C293A600088F76E /* SupportingFiles */,
 				2318696D1C293A4E0088F76E /* Model */,
 			);
 			path = TweetMap;

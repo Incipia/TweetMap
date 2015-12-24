@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Hashtags-->
         <scene sceneID="f0y-X8-fX6">
             <objects>
                 <viewController id="PvW-rc-aFA" customClass="MapViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,10 +29,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CK-1O-jUu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKK-Or-Djj">
-                                        <rect key="frame" x="8" y="530" width="94" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKK-Or-Djj">
+                                        <rect key="frame" x="20" y="518" width="94" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Pod Button">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="FJY-h0-xak"/>
+                                            <constraint firstAttribute="width" constant="94" id="daH-eh-Pao"/>
+                                        </constraints>
+                                        <state key="normal" title="20 km">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -40,6 +44,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="R3q-pJ-fA1"/>
+                                    <constraint firstItem="fKK-Or-Djj" firstAttribute="leading" secondItem="8CK-1O-jUu" secondAttribute="leading" constant="20" id="fOP-Vy-o31"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="tintColor" red="1" green="0.36109683390000002" blue="0.35541735200000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,7 +70,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="DnK-gT-SXz">
+                    <navigationItem key="navigationItem" title="Hashtags" id="DnK-gT-SXz">
                         <barButtonItem key="rightBarButtonItem" title="List" style="plain" id="e6C-gl-KMU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -81,7 +89,7 @@
             </objects>
             <point key="canvasLocation" x="1371" y="130"/>
         </scene>
-        <!--Title-->
+        <!--Hashtags-->
         <scene sceneID="Faz-KW-aof">
             <objects>
                 <tableViewController id="QRl-Mh-ueT" sceneMemberID="viewController">
@@ -107,7 +115,7 @@
                             <outlet property="delegate" destination="QRl-Mh-ueT" id="4yT-JD-rMa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="5c4-s2-Zeo"/>
+                    <navigationItem key="navigationItem" title="Hashtags" id="5c4-s2-Zeo"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q6f-UH-qYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,5 +172,5 @@
             <point key="canvasLocation" x="283" y="130"/>
         </scene>
     </scenes>
-    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>
 </document>
