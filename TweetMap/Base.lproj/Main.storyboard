@@ -28,15 +28,19 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CK-1O-jUu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKK-Or-Djj">
+                                        <rect key="frame" x="8" y="530" width="94" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Pod Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="podButtonPressed:" destination="PvW-rc-aFA" eventType="touchUpInside" id="4dT-fe-FC9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                             </view>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="hSJ-PS-jVo">
-                                <rect key="frame" x="20" y="519" width="94" height="29"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="zoomControlPressed:" destination="PvW-rc-aFA" eventType="valueChanged" id="sCT-JW-2BU"/>
-                                </connections>
-                            </stepper>
                         </subviews>
                         <color key="tintColor" red="1" green="0.36109683390000002" blue="0.35541735200000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -70,7 +74,7 @@
                     <connections>
                         <outlet property="layerView" destination="8CK-1O-jUu" id="s8C-XC-6SA"/>
                         <outlet property="map" destination="RIx-dc-L82" id="yKQ-YB-93x"/>
-                        <outlet property="zoomControl" destination="hSJ-PS-jVo" id="9TE-OB-Wrc"/>
+                        <outlet property="podButton" destination="fKK-Or-Djj" id="7Qm-UO-82o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2Z-JW-wwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
