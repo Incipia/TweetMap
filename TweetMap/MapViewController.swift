@@ -35,7 +35,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         
         radiusMenuButton.layer.cornerRadius = 15
         
-        layerView.bringSubviewToFront(radiusMenuButton)
+//        layerView.bringSubviewToFront(radiusMenuButton)
         
         getUserLocation()
         
@@ -71,7 +71,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         fillLayer.fillRule = kCAFillRuleEvenOdd
         fillLayer.fillColor = UIColor.grayColor().CGColor
         fillLayer.opacity = 0.7
-        fillLayer.mask
         layerView.layer.addSublayer(fillLayer)
     }
     

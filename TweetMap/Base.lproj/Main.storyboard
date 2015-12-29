@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Hashtags-->
@@ -28,30 +29,26 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CK-1O-jUu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKK-Or-Djj">
-                                        <rect key="frame" x="20" y="518" width="94" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="FJY-h0-xak"/>
-                                            <constraint firstAttribute="width" constant="94" id="daH-eh-Pao"/>
-                                        </constraints>
-                                        <state key="normal" title="20 km">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="radiusMenuButtonPressed:" destination="PvW-rc-aFA" eventType="touchUpInside" id="C7m-L7-7DX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="R3q-pJ-fA1"/>
-                                    <constraint firstItem="fKK-Or-Djj" firstAttribute="leading" secondItem="8CK-1O-jUu" secondAttribute="leading" constant="20" id="fOP-Vy-o31"/>
-                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKK-Or-Djj">
+                                <rect key="frame" x="20" y="518" width="94" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="FJY-h0-xak"/>
+                                    <constraint firstAttribute="width" constant="94" id="daH-eh-Pao"/>
+                                </constraints>
+                                <state key="normal" title="20 km">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="radiusMenuButtonPressed:" destination="PvW-rc-aFA" eventType="touchUpInside" id="C7m-L7-7DX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="tintColor" red="1" green="0.36109683390000002" blue="0.35541735200000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="3Cn-Xl-rXQ"/>
+                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="HVx-cX-qay"/>
                             <constraint firstItem="8CK-1O-jUu" firstAttribute="top" secondItem="uBa-3M-aeT" secondAttribute="top" id="Jms-aM-qj5"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="centerX" secondItem="uBa-3M-aeT" secondAttribute="centerX" id="Jry-Xf-SMg"/>
                             <constraint firstAttribute="trailing" secondItem="8CK-1O-jUu" secondAttribute="trailing" id="OUM-fk-RzL"/>
@@ -60,13 +57,17 @@
                             <constraint firstAttribute="trailing" secondItem="RIx-dc-L82" secondAttribute="trailing" id="XqM-SP-TDl"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="centerY" secondItem="uBa-3M-aeT" secondAttribute="centerY" id="cZf-cx-rmE"/>
                             <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="8CK-1O-jUu" secondAttribute="bottom" id="hFG-z1-qOw"/>
+                            <constraint firstItem="fKK-Or-Djj" firstAttribute="leading" secondItem="uBa-3M-aeT" secondAttribute="leadingMargin" id="knr-km-bpl"/>
                             <constraint firstItem="8CK-1O-jUu" firstAttribute="leading" secondItem="uBa-3M-aeT" secondAttribute="leading" id="pSq-Zg-Mjy"/>
+                            <constraint firstItem="fKK-Or-Djj" firstAttribute="leading" secondItem="uBa-3M-aeT" secondAttribute="leading" constant="20" id="sZC-eJ-79a"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="leading" secondItem="uBa-3M-aeT" secondAttribute="leading" id="wxz-WC-8bw"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Jry-Xf-SMg"/>
                                 <exclude reference="cZf-cx-rmE"/>
+                                <exclude reference="knr-km-bpl"/>
+                                <exclude reference="HVx-cX-qay"/>
                             </mask>
                         </variation>
                     </view>
