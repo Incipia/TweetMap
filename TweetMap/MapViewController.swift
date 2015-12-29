@@ -9,6 +9,7 @@
 import UIKit
 import Mapbox
 import CoreLocation
+import BTNavigationDropdownMenu
 
 class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
@@ -33,11 +34,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         
         drawRegion()
         
+        dropdown()
+        
         radiusMenuButton.layer.cornerRadius = 15
         
-//        layerView.bringSubviewToFront(radiusMenuButton)
-        
         getUserLocation()
+        
         
         // Default coordinates for Detroit if location not established
         let coordinates = (42.3314, -83.0458)
@@ -45,12 +47,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         // set the map's center coordinate
         map.setCenterCoordinate(CLLocationCoordinate2D(latitude: coordinates.0,
             longitude: coordinates.1),
-            zoomLevel: 13, animated: false)
+            zoomLevel: 10.1, animated: false)
         
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
-        map.setZoomLevel(11.1, animated: true)
     }
     
     func drawRegion() {
@@ -93,6 +94,30 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         map.setCenterCoordinate(location, animated: true)
     }
     
+    func dropdown() {
+        let items = ["Hashtags", "Words", "Users", "All"]
+
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
+        
+        self.navigationItem.titleView = menuView
+        
+        menuView.backgroundColor = UIColor.clearColor()
+        menuView.cellBackgroundColor = UIColor.darkGrayColor()
+        menuView.maskBackgroundColor = UIColor.clearColor()
+        menuView.cellSelectionColor = UIColor.darkGrayColor()
+        menuView.cellSeparatorColor = UIColor.whiteColor()
+        menuView.cellTextLabelColor = UIColor.whiteColor()
+        menuView.maskBackgroundOpacity = 0
+        menuView.menuTitleColor = UIColor.whiteColor()
+        
+        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+            print("Did select item at index: \(indexPath)")
+        }
+    }
+    
+    
+
+    
     @IBAction func radiusMenuButtonPressed(sender: AnyObject) {
         let options = [
             .Type(.Up),
@@ -117,13 +142,19 @@ extension MapViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
             switch indexPath.row   {
             case 0:
-                self.map.setZoomLevel(9.1, animated: true)
+                self.map.setZoomLevel(11.1, animated: true)
+                print("case 0 just happened, \(indexPath.row)")
             case 1:
                 self.map.setZoomLevel(10.1, animated: true)
+                print("case 1 just happened, \(indexPath.row)")
+
             case 2:
-                self.map.setZoomLevel(11.1, animated: true)
+                self.map.setZoomLevel(9.1, animated: true)
+                print("case 2 just happened, \(indexPath.row)")
+
             default:
-                self.map.setZoomLevel(10.1, animated: true)
+                print("default just happened, no case executed")
+//                self.map.setZoomLevel(10.1, animated: true)
             }
         self.radiusMenuButton.titleLabel!.text = radiusMenuOptions[indexPath.row]
         self.radiusMenuPopover.dismiss()
