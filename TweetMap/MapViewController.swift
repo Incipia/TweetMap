@@ -11,7 +11,7 @@ import Mapbox
 import CoreLocation
 import BTNavigationDropdownMenu
 
-class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var map: MGLMapView!
     @IBOutlet weak var layerView: UIView!
@@ -31,6 +31,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.addSlideMenuButton()
         
         drawRegion()
         

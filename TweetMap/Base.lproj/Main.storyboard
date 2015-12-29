@@ -73,7 +73,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Hashtags" id="DnK-gT-SXz">
                         <barButtonItem key="rightBarButtonItem" title="List" style="plain" id="e6C-gl-KMU">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="QRl-Mh-ueT" kind="show" id="rjL-i7-MFA"/>
                             </connections>
@@ -152,6 +151,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qy2-dg-8Hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2153" y="130"/>
+        </scene>
+        <!--SlideMenuViewController-->
+        <scene sceneID="D8R-YB-XZh">
+            <objects>
+                <viewController storyboardIdentifier="SlideMenuViewController" title="SlideMenuViewController" id="lfh-xH-UIp" customClass="SlideMenuViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S2b-Mf-f3p"/>
+                        <viewControllerLayoutGuide type="bottom" id="XJB-qa-Tnp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xFK-ra-xqc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cellMenu" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BRk-Lj-qxS">
+                                <rect key="frame" x="0.0" y="93" width="168" height="475"/>
+                                <color key="backgroundColor" white="0.5" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellMenu" textLabel="W6X-2v-7pq" style="IBUITableViewCellStyleDefault" id="5SW-PC-2JF">
+                                        <rect key="frame" x="0.0" y="28" width="168" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5SW-PC-2JF" id="3Mi-Mx-9jw">
+                                            <rect key="frame" x="0.0" y="0.0" width="168" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W6X-2v-7pq">
+                                                    <rect key="frame" x="15" y="0.0" width="138" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lfh-xH-UIp" id="BQl-IL-haB"/>
+                                    <outlet property="delegate" destination="lfh-xH-UIp" id="B1l-gm-tVb"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emB-gD-nCL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onCloseMenuClick:" destination="lfh-xH-UIp" eventType="touchUpInside" id="YvD-rT-smI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="btnCloseMenuOverlay" destination="emB-gD-nCL" id="jOh-12-Bxy"/>
+                        <outlet property="tblMenuOptions" destination="BRk-Lj-qxS" id="Qj7-Lp-Osx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2gt-7a-lns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1371" y="766"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s47-rG-XGd">
