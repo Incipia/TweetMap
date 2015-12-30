@@ -47,16 +47,16 @@
                         </subviews>
                         <color key="tintColor" red="1" green="0.36109683390000002" blue="0.35541735200000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="3Cn-Xl-rXQ"/>
-                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="HVx-cX-qay"/>
                             <constraint firstItem="8CK-1O-jUu" firstAttribute="top" secondItem="uBa-3M-aeT" secondAttribute="top" id="Jms-aM-qj5"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="centerX" secondItem="uBa-3M-aeT" secondAttribute="centerX" id="Jry-Xf-SMg"/>
+                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="Jwc-9z-gQa"/>
                             <constraint firstAttribute="trailing" secondItem="8CK-1O-jUu" secondAttribute="trailing" id="OUM-fk-RzL"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="top" secondItem="uBa-3M-aeT" secondAttribute="top" id="QmA-zN-gTG"/>
-                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="RIx-dc-L82" secondAttribute="bottom" id="WEV-GE-fvo"/>
+                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="8CK-1O-jUu" secondAttribute="bottom" id="X3S-3E-IJ8"/>
                             <constraint firstAttribute="trailing" secondItem="RIx-dc-L82" secondAttribute="trailing" id="XqM-SP-TDl"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="centerY" secondItem="uBa-3M-aeT" secondAttribute="centerY" id="cZf-cx-rmE"/>
-                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="8CK-1O-jUu" secondAttribute="bottom" id="hFG-z1-qOw"/>
+                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="ikI-8b-Fm5"/>
+                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="RIx-dc-L82" secondAttribute="bottom" id="iz1-Iw-Pgt"/>
                             <constraint firstItem="fKK-Or-Djj" firstAttribute="leading" secondItem="uBa-3M-aeT" secondAttribute="leadingMargin" id="knr-km-bpl"/>
                             <constraint firstItem="8CK-1O-jUu" firstAttribute="leading" secondItem="uBa-3M-aeT" secondAttribute="leading" id="pSq-Zg-Mjy"/>
                             <constraint firstItem="fKK-Or-Djj" firstAttribute="leading" secondItem="uBa-3M-aeT" secondAttribute="leading" constant="20" id="sZC-eJ-79a"/>
@@ -67,17 +67,19 @@
                                 <exclude reference="Jry-Xf-SMg"/>
                                 <exclude reference="cZf-cx-rmE"/>
                                 <exclude reference="knr-km-bpl"/>
-                                <exclude reference="HVx-cX-qay"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Hashtags" id="DnK-gT-SXz">
-                        <barButtonItem key="rightBarButtonItem" title="List" style="plain" id="e6C-gl-KMU">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Hashtags" id="SC2-zJ-kxE">
+                        <barButtonItem key="rightBarButtonItem" title="List" style="plain" id="S2N-d6-Kc8">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="QRl-Mh-ueT" kind="show" id="rjL-i7-MFA"/>
+                                <segue destination="QRl-Mh-ueT" kind="show" id="kJt-4s-Cw4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="layerView" destination="8CK-1O-jUu" id="s8C-XC-6SA"/>
@@ -131,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8uH-cT-Qqw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellDetail" id="8uH-cT-Qqw">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8uH-cT-Qqw" id="xCl-Yq-46r">
@@ -164,14 +166,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cellMenu" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BRk-Lj-qxS">
-                                <rect key="frame" x="0.0" y="93" width="168" height="475"/>
-                                <color key="backgroundColor" white="0.5" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="cellMenu" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BRk-Lj-qxS">
+                                <rect key="frame" x="0.0" y="60" width="168" height="508"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellMenu" textLabel="W6X-2v-7pq" style="IBUITableViewCellStyleDefault" id="5SW-PC-2JF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="cellMenu" textLabel="W6X-2v-7pq" style="IBUITableViewCellStyleDefault" id="5SW-PC-2JF">
                                         <rect key="frame" x="0.0" y="28" width="168" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5SW-PC-2JF" id="3Mi-Mx-9jw">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="5SW-PC-2JF" id="3Mi-Mx-9jw">
                                             <rect key="frame" x="0.0" y="0.0" width="168" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -184,6 +189,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -192,14 +198,21 @@
                                     <outlet property="delegate" destination="lfh-xH-UIp" id="B1l-gm-tVb"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emB-gD-nCL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emB-gD-nCL">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="onCloseMenuClick:" destination="lfh-xH-UIp" eventType="touchUpInside" id="YvD-rT-smI"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="emB-gD-nCL" firstAttribute="leading" secondItem="xFK-ra-xqc" secondAttribute="leading" id="E4E-Jj-dqU"/>
+                            <constraint firstItem="BRk-Lj-qxS" firstAttribute="top" secondItem="xFK-ra-xqc" secondAttribute="top" constant="60" id="NZ8-oR-VUM"/>
+                            <constraint firstItem="XJB-qa-Tnp" firstAttribute="top" secondItem="emB-gD-nCL" secondAttribute="bottom" id="WlU-bU-FBs"/>
+                            <constraint firstItem="XJB-qa-Tnp" firstAttribute="top" secondItem="BRk-Lj-qxS" secondAttribute="bottom" id="ZEc-Vg-peB"/>
+                            <constraint firstItem="emB-gD-nCL" firstAttribute="top" secondItem="xFK-ra-xqc" secondAttribute="top" id="idX-ng-Qw5"/>
+                            <constraint firstAttribute="trailing" secondItem="emB-gD-nCL" secondAttribute="trailing" id="jJb-PH-wXD"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>

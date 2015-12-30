@@ -41,8 +41,6 @@ class SlideMenuViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tblMenuOptions.tableFooterView = UIView()
-        print("menu loaded")
     }
     
     
@@ -59,7 +57,6 @@ class SlideMenuViewController: UIViewController, UITableViewDataSource, UITableV
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.view.frame = CGRectMake(-UIScreen.mainScreen().bounds.size.width, 0, UIScreen.mainScreen().bounds.size.width,UIScreen.mainScreen().bounds.size.height)
-//            self.view.layoutIfNeeded()
             self.view.backgroundColor = UIColor.clearColor()
             }, completion: { (finished) -> Void in
                 self.view.removeFromSuperview()
@@ -69,6 +66,8 @@ class SlideMenuViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cellMenu")!
+
+        cell.separatorInset = UIEdgeInsetsZero
 
         cell.backgroundColor = UIColor.clearColor()
 
@@ -89,5 +88,9 @@ class SlideMenuViewController: UIViewController, UITableViewDataSource, UITableV
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.separatorInset = UIEdgeInsetsZero
     }
 }

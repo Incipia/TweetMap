@@ -32,6 +32,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        print(self.bottomLayoutGuide)
+        
         self.addSlideMenuButton()
         
         drawRegion()
@@ -106,11 +108,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         menuView.backgroundColor = UIColor.clearColor()
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
         menuView.maskBackgroundColor = UIColor.clearColor()
-        menuView.cellSelectionColor = UIColor.darkGrayColor()
         menuView.cellSeparatorColor = UIColor.whiteColor()
-        menuView.cellTextLabelColor = UIColor.whiteColor()
-        menuView.maskBackgroundOpacity = 0
-        menuView.menuTitleColor = UIColor.whiteColor()
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
@@ -145,18 +143,12 @@ extension MapViewController: UITableViewDelegate {
             switch indexPath.row   {
             case 0:
                 self.map.setZoomLevel(11.1, animated: true)
-                print("case 0 just happened, \(indexPath.row)")
             case 1:
                 self.map.setZoomLevel(10.1, animated: true)
-                print("case 1 just happened, \(indexPath.row)")
-
             case 2:
                 self.map.setZoomLevel(9.1, animated: true)
-                print("case 2 just happened, \(indexPath.row)")
-
             default:
-                print("default just happened, no case executed")
-//                self.map.setZoomLevel(10.1, animated: true)
+                self.map.setZoomLevel(10.1, animated: true)
             }
         self.radiusMenuButton.titleLabel!.text = radiusMenuOptions[indexPath.row]
         self.radiusMenuPopover.dismiss()
