@@ -12,10 +12,16 @@ import CoreLocation
 import BTNavigationDropdownMenu
 
 class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+    @IBOutlet weak var label: UILabel!
     
     @IBOutlet weak var map: MGLMapView!
     @IBOutlet weak var layerView: UIView!
     @IBOutlet weak var radiusMenuButton: UIButton!
+    
+    @IBOutlet weak var viewContainerForTrends: UIView!
+    @IBOutlet var trendLabels: [UILabel]!
+    
+    var trends = [NBA, hiring, elect, ios, newYear]
     
     // For popover menu for radiusMenuButton
     private var radiusMenuPopover: Popover!
@@ -31,7 +37,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.addSlideMenuButton()
         
         drawRegion()
@@ -42,6 +48,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
         getUserLocation()
         
+        for each in trendLabels {
+            each.layer.cornerRadius = 8
+            each.clipsToBounds = true
+        }
         
         // Default coordinates for Detroit if location not established
         let coordinates = (42.3314, -83.0458)
@@ -54,6 +64,26 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        viewContainerForTrends.alpha = 0
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIView.animateWithDuration(2.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations:{
+            self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
+                self.loadTrends()
+        })
+    }
+    
+    func loadTrends()   {
+        trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+        
+        for i in 0..<trendLabels.count  {
+            trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
+        }
+        
     }
     
     func drawRegion() {
@@ -106,11 +136,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         menuView.backgroundColor = UIColor.clearColor()
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
         menuView.maskBackgroundColor = UIColor.clearColor()
-        menuView.cellSelectionColor = UIColor.darkGrayColor()
         menuView.cellSeparatorColor = UIColor.whiteColor()
-        menuView.cellTextLabelColor = UIColor.whiteColor()
-        menuView.maskBackgroundOpacity = 0
-        menuView.menuTitleColor = UIColor.whiteColor()
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
@@ -145,18 +171,12 @@ extension MapViewController: UITableViewDelegate {
             switch indexPath.row   {
             case 0:
                 self.map.setZoomLevel(11.1, animated: true)
-                print("case 0 just happened, \(indexPath.row)")
             case 1:
                 self.map.setZoomLevel(10.1, animated: true)
-                print("case 1 just happened, \(indexPath.row)")
-
             case 2:
                 self.map.setZoomLevel(9.1, animated: true)
-                print("case 2 just happened, \(indexPath.row)")
-
             default:
-                print("default just happened, no case executed")
-//                self.map.setZoomLevel(10.1, animated: true)
+                self.map.setZoomLevel(10.1, animated: true)
             }
         self.radiusMenuButton.titleLabel!.text = radiusMenuOptions[indexPath.row]
         self.radiusMenuPopover.dismiss()

@@ -101,12 +101,12 @@
 		2318696E1C293A600088F76E /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				23B9F4A51C2B93FD0058B0FE /* Popover.swift */,
 				23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */,
 				23F1B82E1C21F0A9003BB13A /* Main.storyboard */,
 				23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */,
 				23F1B8361C21F0A9003BB13A /* Info.plist */,
 				23F1B8311C21F0A9003BB13A /* Assets.xcassets */,
+				23B9F4A51C2B93FD0058B0FE /* Popover.swift */,
 				238831F11C322EE100AB0D60 /* SlideMenuViewController.swift */,
 				238831F31C32304300AB0D60 /* DrawerViewController.swift */,
 			);
