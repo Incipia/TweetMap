@@ -12,10 +12,16 @@ import CoreLocation
 import BTNavigationDropdownMenu
 
 class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+    @IBOutlet weak var label: UILabel!
     
     @IBOutlet weak var map: MGLMapView!
     @IBOutlet weak var layerView: UIView!
     @IBOutlet weak var radiusMenuButton: UIButton!
+    
+    @IBOutlet weak var viewContainerForTrends: UIView!
+    @IBOutlet var trendLabels: [UILabel]!
+    
+    var trends = [NBA, hiring, elect, ios, newYear]
     
     // For popover menu for radiusMenuButton
     private var radiusMenuPopover: Popover!
@@ -31,9 +37,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        print(self.bottomLayoutGuide)
-        
+                
         self.addSlideMenuButton()
         
         drawRegion()
@@ -44,6 +48,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
         getUserLocation()
         
+        for each in trendLabels {
+            each.layer.cornerRadius = 8
+            each.clipsToBounds = true
+        }
         
         // Default coordinates for Detroit if location not established
         let coordinates = (42.3314, -83.0458)
@@ -56,6 +64,26 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        viewContainerForTrends.alpha = 0
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIView.animateWithDuration(2.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations:{
+            self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
+                self.loadTrends()
+        })
+    }
+    
+    func loadTrends()   {
+        trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+        
+        for i in 0..<trendLabels.count  {
+            trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
+        }
+        
     }
     
     func drawRegion() {
