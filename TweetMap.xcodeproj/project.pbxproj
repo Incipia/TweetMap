@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2318696A1C2930160088F76E /* LocationTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231869691C2930160088F76E /* LocationTrends.swift */; };
 		2318696C1C2931170088F76E /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2318696B1C2931170088F76E /* Trend.swift */; };
+		2344905B1C3B2F5800A10C02 /* ListTrendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344905A1C3B2F5800A10C02 /* ListTrendsViewController.swift */; };
 		238831F21C322EE100AB0D60 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238831F11C322EE100AB0D60 /* SlideMenuViewController.swift */; };
 		238831F41C32304300AB0D60 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238831F31C32304300AB0D60 /* DrawerViewController.swift */; };
 		23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9F4A51C2B93FD0058B0FE /* Popover.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		231869691C2930160088F76E /* LocationTrends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrends.swift; sourceTree = "<group>"; };
 		2318696B1C2931170088F76E /* Trend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		2344905A1C3B2F5800A10C02 /* ListTrendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTrendsViewController.swift; sourceTree = "<group>"; };
 		238831F11C322EE100AB0D60 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		238831F31C32304300AB0D60 /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		23B9F4A51C2B93FD0058B0FE /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Popover.swift; path = ../Pods/Popover/Classes/Popover.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
+				2344905A1C3B2F5800A10C02 /* ListTrendsViewController.swift */,
 				2318696E1C293A600088F76E /* SupportingFiles */,
 				2318696D1C293A4E0088F76E /* Model */,
 			);
@@ -380,6 +383,7 @@
 				238831F21C322EE100AB0D60 /* SlideMenuViewController.swift in Sources */,
 				23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */,
 				23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */,
+				2344905B1C3B2F5800A10C02 /* ListTrendsViewController.swift in Sources */,
 				2318696A1C2930160088F76E /* LocationTrends.swift in Sources */,
 				238831F41C32304300AB0D60 /* DrawerViewController.swift in Sources */,
 				2318696C1C2931170088F76E /* Trend.swift in Sources */,

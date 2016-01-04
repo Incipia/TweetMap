@@ -22,6 +22,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     @IBOutlet var trendLabels: [UILabel]!
     
     var trends = [NBA, hiring, elect, ios, newYear]
+    var mapVCTitle = String()
     
     // For popover menu for radiusMenuButton
     private var radiusMenuPopover: Popover!
@@ -109,11 +110,11 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
     
     func getUserLocation(){
-        print("get user location function is being called")
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+//        print("get user location function is being called")
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -133,6 +134,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
         self.navigationItem.titleView = menuView
         
+        
         menuView.backgroundColor = UIColor.clearColor()
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
         menuView.maskBackgroundColor = UIColor.clearColor()
@@ -140,12 +142,18 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
+            self.navigationItem.title = items[indexPath]
+            
+            print(self.navigationItem.title)
+            
+            if self.navigationItem.title != nil {
+                self.mapVCTitle = self.navigationItem.title!
+                print(self.mapVCTitle)
+            }
         }
     }
     
-    
 
-    
     @IBAction func radiusMenuButtonPressed(sender: AnyObject) {
         let options = [
             .Type(.Up),
@@ -159,6 +167,19 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         tableView.scrollEnabled = false
         self.radiusMenuPopover = Popover(options: options, showHandler: nil, dismissHandler: nil)
         self.radiusMenuPopover.show(tableView, fromView: radiusMenuButton)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "mapList")  {
+            guard let destVC = segue.destinationViewController as? ListTrendsViewController else    {
+                print("there was an error grabbing ListTrendsVC")
+                return
+            }
+            destVC.navigationItem.title = self.mapVCTitle
+
+            print("mapVC:\(mapVCTitle): \n destVC:\(destVC.navigationItem.title)")
+        }
     }
 }
 

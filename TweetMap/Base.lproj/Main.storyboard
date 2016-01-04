@@ -173,7 +173,7 @@
                         <barButtonItem key="rightBarButtonItem" title="List" style="plain" id="S2N-d6-Kc8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="QRl-Mh-ueT" kind="show" id="kJt-4s-Cw4"/>
+                                <segue destination="QRl-Mh-ueT" kind="show" identifier="mapList" id="kJt-4s-Cw4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -198,7 +198,7 @@
         <!--Hashtags-->
         <scene sceneID="Faz-KW-aof">
             <objects>
-                <tableViewController id="QRl-Mh-ueT" sceneMemberID="viewController">
+                <tableViewController id="QRl-Mh-ueT" customClass="ListTrendsViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zZb-Br-sp9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
