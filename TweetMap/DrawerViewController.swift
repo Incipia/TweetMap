@@ -32,9 +32,9 @@ class DrawerViewController: UIViewController, SlideMenuDelegate {
         }
     }
     
-    func addSlideMenuButton(){
+    func addSlideMenuButtonWithColor() {
         let btnShowMenu = UIButton(type: UIButtonType.System)
-        btnShowMenu.setImage(self.defaultMenuImage(), forState: UIControlState.Normal)
+        btnShowMenu.setImage(self.defaultMenuImage().imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
         btnShowMenu.frame = CGRectMake(0, 0, 30, 30)
         btnShowMenu.addTarget(self, action: "onSlideMenuButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)

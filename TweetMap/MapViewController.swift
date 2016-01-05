@@ -11,6 +11,7 @@ import Mapbox
 import CoreLocation
 import BTNavigationDropdownMenu
 
+
 class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var label: UILabel!
     
@@ -25,8 +26,11 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     var mapVCTitle = String()
     
     // For popover menu for radiusMenuButton
-    private var radiusMenuPopover: Popover!
+    private let radiusMenuPopover = Popover(options: PopoverOption.defaultOptions, showHandler: nil, dismissHandler: nil)
+
     private var radiusMenuOptions = ["10 km", "20 km", "50 km"]
+    private var zoomLevelTableViewDataSource: ZoomLevelTableViewDataSource?
+    private var zoomLevelTableViewDelegate: ZoomLevelTableViewDelegate?
     
     let locationManager = CLLocationManager()
     var screenwidth : CGFloat!
@@ -38,8 +42,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        self.addSlideMenuButton()
+        
+        self.addSlideMenuButtonWithColor()
         
         drawRegion()
         
@@ -68,6 +72,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
     }
     
@@ -155,18 +160,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
 
     @IBAction func radiusMenuButtonPressed(sender: AnyObject) {
-        let options = [
-            .Type(.Up),
-            .CornerRadius(4.0),
-            .AnimationIn(0.5),
-            .ArrowSize(CGSizeMake(10.0, 10.0))
-            ] as [PopoverOption]
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: 135))
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.scrollEnabled = false
-        self.radiusMenuPopover = Popover(options: options, showHandler: nil, dismissHandler: nil)
-        self.radiusMenuPopover.show(tableView, fromView: radiusMenuButton)
+        
+        let zoomLevelTableView = createZoomLevelTableView()
+        setupDataSourceAndDelegateWithTableView(zoomLevelTableView)
+        radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
     }
     
     
@@ -181,38 +178,38 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
             print("mapVC:\(mapVCTitle): \n destVC:\(destVC.navigationItem.title)")
         }
     }
-}
-
-
-////// TableView Data Source and delegate for searchRadiusMenu choices ///////
-
-extension MapViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            switch indexPath.row   {
-            case 0:
-                self.map.setZoomLevel(11.1, animated: true)
-            case 1:
-                self.map.setZoomLevel(10.1, animated: true)
-            case 2:
-                self.map.setZoomLevel(9.1, animated: true)
-            default:
-                self.map.setZoomLevel(10.1, animated: true)
-            }
-        self.radiusMenuButton.titleLabel!.text = radiusMenuOptions[indexPath.row]
-        self.radiusMenuPopover.dismiss()
+    private func createZoomLevelTableView() -> UITableView
+    {
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: 135))
+        tableView.scrollEnabled = false
+        return tableView
+    }
+    
+    private func setupDataSourceAndDelegateWithTableView(tableView: UITableView)
+    {
+        zoomLevelTableViewDataSource = ZoomLevelTableViewDataSource(tableView: tableView)
+        zoomLevelTableViewDelegate = ZoomLevelTableViewDelegate(tableView: tableView)
+        
+        zoomLevelTableViewDelegate?.rowSelectionHandler =  { (indexPath: NSIndexPath) -> Void in
+            self.updateZoomLevelWithIndexPath(indexPath)
+            self.radiusMenuButton.titleLabel!.text = self.radiusMenuOptions[indexPath.row]
+            self.radiusMenuPopover.dismiss()
+        }
+    }
+    
+    private func updateZoomLevelWithIndexPath(indexPath: NSIndexPath)
+    {
+        switch indexPath.row   {
+        case 0:
+            self.map.setZoomLevel(11.1, animated: true)
+        case 1:
+            self.map.setZoomLevel(10.1, animated: true)
+        case 2:
+            self.map.setZoomLevel(9.1, animated: true)
+        default:
+            self.map.setZoomLevel(10.1, animated: true)
+        }
     }
 }
 
-extension MapViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 3
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-        cell.textLabel?.text = self.radiusMenuOptions[indexPath.row]
-        return cell
-    }
-}
