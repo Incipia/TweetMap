@@ -36,9 +36,9 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     var screenwidth : CGFloat!
     var screenheight : CGFloat!
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +69,33 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
+
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().translucent = true
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
+        
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().translucent = true
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default// I then set the color using:
+        
+        self.navigationController?.navigationBar.barTintColor   = UIColor.clearColor()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor() // for titles, buttons, etc.
+        let navigationTitleFont = UIFont(name: "Helvetica Neue", size: 20)!
+        
+        self.navigationController?.navigationBar.translucent = true
+
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.whiteColor() ]
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -87,7 +109,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
         
         for i in 0..<trendLabels.count  {
-            trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
+            trendLabels[i].text = "\(trends[i].name)\n\(trends[i].tweetVolume)"
         }
         
     }
@@ -101,6 +123,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         let rad: CGFloat = min(size.height, size.width)
         
         let path = UIBezierPath(roundedRect: CGRectMake(0, 0, size.width, size.height), cornerRadius: 0.0)
+        
         let circlePath = UIBezierPath(roundedRect: CGRectMake(size.width/2.55-(rad/2.0), size.height/2.3-(rad/2.0), rad/0.81, rad/0.81), cornerRadius: rad)
 
         path.appendPath(circlePath)
@@ -137,6 +160,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
 
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
         
+        mapVCTitle = items.first!
+        
         self.navigationItem.titleView = menuView
         
         
@@ -144,6 +169,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
         menuView.maskBackgroundColor = UIColor.clearColor()
         menuView.cellSeparatorColor = UIColor.whiteColor()
+        menuView.cellTextLabelFont = UIFont(name: "Helvetica Neue", size: 20)
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
@@ -174,6 +200,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
                 return
             }
             destVC.navigationItem.title = self.mapVCTitle
+            destVC.trends = trends
 
             print("mapVC:\(mapVCTitle): \n destVC:\(destVC.navigationItem.title)")
         }
