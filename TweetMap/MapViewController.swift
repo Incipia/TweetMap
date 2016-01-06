@@ -95,6 +95,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
     }
     
+    //MARK: Shade outer regions
+    
     func drawRegion() {
         
         let fillLayer = CAShapeLayer()
@@ -117,20 +119,17 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         layerView.layer.addSublayer(fillLayer)
     }
     
+    //MARK: Location Manager
     
     func getUserLocation(){
-//        print("get user location function is being called")
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations[0] as CLLocation
-        
-        print("location manager function is being called")
-        
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                                             longitude: userLocation.coordinate.longitude)
         map.setCenterCoordinate(location, animated: true)
@@ -170,6 +169,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
     }
     
+    //MARK: Prepare for Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "mapList")  {
@@ -183,6 +183,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
             print("mapVC:\(mapVCTitle): \n destVC:\(destVC.navigationItem.title)")
         }
     }
+    
+    //MARK: Table View References for Zoom Menu
     
     private func createZoomLevelTableView() -> UITableView
     {
