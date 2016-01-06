@@ -37,6 +37,18 @@ class ListTrendsViewController: UITableViewController {
 //        UINavigationBar.appearance().shadowImage = UIImage()
 //        UINavigationBar.appearance().translucent = false
 //        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default// I then set the color using:
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+//        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.blackColor()
+//        self.navigationController?.navigationItem.backBarButtonItem?.title = ""
+        
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor() // for titles, buttons, etc.
+        let navigationTitleFont = UIFont(name: "Helvetica Neue", size: 20)!
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.blackColor() ]
     }
 
     // MARK: - Table view data source
@@ -76,11 +88,12 @@ class ListTrendsViewController: UITableViewController {
     
     // MARK: - Navigation
 
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "listDetail"    {
-//            let destVC = segue.destinationViewController as! TopTweetsViewController
-//            print("\(selectedIndex), \(selectedIndex.hashValue)")
-//        }
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "listDetail"    {
+            let destVC = segue.destinationViewController as! TopTweetsViewController
+            destVC.navigationItem.title = trends[selectedIndex].name
+            print("\(trends[selectedIndex].name)")
+        }
+    }
 
 }

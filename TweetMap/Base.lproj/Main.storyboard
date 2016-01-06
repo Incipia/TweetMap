@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-dc-L82" customClass="MGLMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="-60" width="320" height="564"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsZooming" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsScrolling" value="YES"/>
@@ -149,7 +149,7 @@
                             <constraint firstItem="RIx-dc-L82" firstAttribute="centerX" secondItem="uBa-3M-aeT" secondAttribute="centerX" id="Jry-Xf-SMg"/>
                             <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="Jwc-9z-gQa"/>
                             <constraint firstAttribute="trailing" secondItem="8CK-1O-jUu" secondAttribute="trailing" id="OUM-fk-RzL"/>
-                            <constraint firstItem="RIx-dc-L82" firstAttribute="top" secondItem="uBa-3M-aeT" secondAttribute="top" id="QmA-zN-gTG"/>
+                            <constraint firstItem="RIx-dc-L82" firstAttribute="top" secondItem="uBa-3M-aeT" secondAttribute="top" constant="-60" id="QmA-zN-gTG"/>
                             <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="8CK-1O-jUu" secondAttribute="bottom" id="X3S-3E-IJ8"/>
                             <constraint firstAttribute="trailing" secondItem="RIx-dc-L82" secondAttribute="trailing" id="XqM-SP-TDl"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="centerY" secondItem="uBa-3M-aeT" secondAttribute="centerY" id="cZf-cx-rmE"/>
@@ -195,7 +195,7 @@
             </objects>
             <point key="canvasLocation" x="1371" y="130"/>
         </scene>
-        <!--Hashtags-->
+        <!--List Trends View Controller-->
         <scene sceneID="Faz-KW-aof">
             <objects>
                 <tableViewController id="QRl-Mh-ueT" customClass="ListTrendsViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -246,9 +246,10 @@
                             <outlet property="delegate" destination="QRl-Mh-ueT" id="4yT-JD-rMa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hashtags" id="5c4-s2-Zeo"/>
+                    <navigationItem key="navigationItem" id="5c4-s2-Zeo"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="navigationItem" destination="5c4-s2-Zeo" id="mxO-U1-HMF"/>
                         <segue destination="xia-Tk-bib" kind="show" identifier="listDetail" id="SI9-lF-7dp"/>
                     </connections>
                 </tableViewController>
