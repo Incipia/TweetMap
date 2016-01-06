@@ -36,10 +36,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     var screenwidth : CGFloat!
     var screenheight : CGFloat!
     
-//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-//        return .LightContent
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +71,9 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
+//        self.setNeedsStatusBarAppearanceUpdate()
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
         
         // The hamburger icon is black if this doesn't get set. The other 2 stay white regardless.
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -85,6 +84,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
             self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
                 self.loadTrends()
         })
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
     func loadTrends()   {
