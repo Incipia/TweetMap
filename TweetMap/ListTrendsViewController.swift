@@ -14,6 +14,7 @@ class ListTrendsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view loading")
         
     }
 
@@ -24,6 +25,7 @@ class ListTrendsViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        print("View will appear")
         configureTableView()
         
 //        UINavigationBar.appearance().barTintColor = UIColor.lightGrayColor()
@@ -48,62 +50,21 @@ class ListTrendsViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-//        let cell2 = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: "cell")
         
-        cell.textLabel?.font.fontWithSize(30.0)
-        cell.detailTextLabel?.font.fontWithSize(50.0)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListViewCell
 
-        cell.textLabel!.text = trends[indexPath.row].name
-        cell.detailTextLabel?.text = "\(trends[indexPath.row].tweetVolume)"
-        
-//        cell2.heightAnchor = self.tableView.heightAnchor/5
+        cell.trendTitle.text = trends[indexPath.row].name
+        cell.trendDetail.text = "\(trends[indexPath.row].tweetVolume)"
 
         return cell
     }
     
     func configureTableView() {
+        print("Table view configuring")
         tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = self.view.bounds.height/5
-//        tableView.estimatedRowHeight = 300
-        tableView.rowHeight = (self.view.bounds.height - (self.navigationController?.navigationBar.bounds.height)!)/5
+        tableView.rowHeight = (self.view.bounds.height - (self.navigationController?.navigationBar.bounds.height)!)/5.125
     }
-    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

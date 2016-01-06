@@ -204,7 +204,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="107" id="GNm-eF-Nt5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="107" id="GNm-eF-Nt5" customClass="ListViewCell" customModule="TweetMap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GNm-eF-Nt5" id="stO-cK-Nft">
@@ -212,14 +212,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbi-q3-Dya">
-                                            <rect key="frame" x="8" y="8" width="271" height="41.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <rect key="frame" x="8" y="8" width="271" height="45.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d13-7l-sv5">
-                                            <rect key="frame" x="8" y="57.5" width="271" height="41"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <rect key="frame" x="8" y="53.5" width="271" height="45"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -227,7 +227,7 @@
                                     <constraints>
                                         <constraint firstItem="d13-7l-sv5" firstAttribute="trailing" secondItem="stO-cK-Nft" secondAttribute="trailingMargin" id="D00-e5-ePc"/>
                                         <constraint firstItem="hbi-q3-Dya" firstAttribute="top" secondItem="stO-cK-Nft" secondAttribute="topMargin" id="Iap-8t-eT5"/>
-                                        <constraint firstItem="d13-7l-sv5" firstAttribute="top" secondItem="hbi-q3-Dya" secondAttribute="bottom" constant="8" id="Ywn-mm-Yow"/>
+                                        <constraint firstItem="d13-7l-sv5" firstAttribute="top" secondItem="hbi-q3-Dya" secondAttribute="bottom" id="Ywn-mm-Yow"/>
                                         <constraint firstItem="hbi-q3-Dya" firstAttribute="leading" secondItem="stO-cK-Nft" secondAttribute="leadingMargin" id="cbK-bV-xqd"/>
                                         <constraint firstItem="d13-7l-sv5" firstAttribute="leading" secondItem="stO-cK-Nft" secondAttribute="leadingMargin" id="d5f-kp-tAQ"/>
                                         <constraint firstItem="hbi-q3-Dya" firstAttribute="trailing" secondItem="stO-cK-Nft" secondAttribute="trailingMargin" id="dri-Wn-jLk"/>
@@ -236,6 +236,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="trendDetail" destination="d13-7l-sv5" id="IQd-QN-7OA"/>
+                                    <outlet property="trendTitle" destination="hbi-q3-Dya" id="uRa-bs-sgf"/>
                                     <segue destination="xia-Tk-bib" kind="show" id="GKE-CF-RU2"/>
                                 </connections>
                             </tableViewCell>

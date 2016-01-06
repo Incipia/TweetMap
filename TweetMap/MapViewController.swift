@@ -92,7 +92,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
         
         for i in 0..<trendLabels.count  {
-            trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
+            trendLabels[i].text = "\(trends[i].name)\n\(trends[i].tweetVolume)"
         }
         
     }
