@@ -7,6 +7,29 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Login-->
+        <scene sceneID="eih-ht-XFd">
+            <objects>
+                <viewController id="Jaw-Rj-0hg" customClass="LoginViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t7X-BQ-djr"/>
+                        <viewControllerLayoutGuide type="bottom" id="0sO-O2-m6b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RVM-Se-m0v">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Login" id="gwG-FW-mle"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="PvW-rc-aFA" kind="show" identifier="login" id="zHg-KL-h6v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OWj-pI-Z8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="130"/>
+        </scene>
         <!--Hashtags-->
         <scene sceneID="f0y-X8-fX6">
             <objects>
@@ -370,12 +393,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PvW-rc-aFA" kind="relationship" relationship="rootViewController" id="aFd-Kx-z6s"/>
+                        <segue destination="Jaw-Rj-0hg" kind="relationship" relationship="rootViewController" id="wOX-zX-K2N"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tv-vz-PbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283" y="130"/>
+            <point key="canvasLocation" x="339" y="130"/>
         </scene>
     </scenes>
     <color key="tintColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>
