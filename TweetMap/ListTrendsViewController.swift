@@ -11,6 +11,7 @@ import UIKit
 class ListTrendsViewController: UITableViewController {
     
     var trends = [Trend]()
+    var selectedIndex = Int()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,20 +61,26 @@ class ListTrendsViewController: UITableViewController {
     }
     
     func configureTableView() {
-        print("Table view configuring")
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.rowHeight = (self.view.bounds.height - (self.navigationController?.navigationBar.bounds.height)!)/5.125
+        tableView.rowHeight = (self.view.bounds.height/10)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath.row
+        let indexPath = tableView.indexPathForSelectedRow
+        _ = tableView.cellForRowAtIndexPath(indexPath!)
+        self.performSegueWithIdentifier("listDetail", sender: nil)
     }
 
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "listDetail"    {
+//            let destVC = segue.destinationViewController as! TopTweetsViewController
+//            print("\(selectedIndex), \(selectedIndex.hashValue)")
+//        }
+//    }
 
 }
