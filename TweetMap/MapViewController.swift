@@ -11,9 +11,7 @@ import Mapbox
 import CoreLocation
 import BTNavigationDropdownMenu
 
-
 class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var label: UILabel!
     
     @IBOutlet weak var map: MGLMapView!
     @IBOutlet weak var layerView: UIView!
@@ -35,10 +33,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     let locationManager = CLLocationManager()
     var screenwidth : CGFloat!
     var screenheight : CGFloat!
-    
-//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-//        return .LightContent
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,29 +67,12 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        UINavigationBar.appearance().translucent = true
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        UINavigationBar.appearance().translucent = true
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default// I then set the color using:
-        
-        self.navigationController?.navigationBar.barTintColor   = UIColor.clearColor()
-        
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor() // for titles, buttons, etc.
-        let navigationTitleFont = UIFont(name: "Helvetica Neue", size: 20)!
-        
-        self.navigationController?.navigationBar.translucent = true
-
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.whiteColor() ]
+        // The hamburger icon is black if this doesn't get set. The other 2 stay white regardless.
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -103,6 +80,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
             self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
                 self.loadTrends()
         })
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
     func loadTrends()   {
@@ -114,6 +95,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
     }
     
+    //MARK: Shade outer regions
+    
     func drawRegion() {
         
         let fillLayer = CAShapeLayer()
@@ -124,7 +107,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
         let path = UIBezierPath(roundedRect: CGRectMake(0, 0, size.width, size.height), cornerRadius: 0.0)
         
-        let circlePath = UIBezierPath(roundedRect: CGRectMake(size.width/2.55-(rad/2.0), size.height/2.3-(rad/2.0), rad/0.81, rad/0.81), cornerRadius: rad)
+        let circlePath = UIBezierPath(roundedRect: CGRectMake(size.width/2.55-(rad/2.0), size.height/2.5-(rad/2.0), rad/0.81, rad/0.81), cornerRadius: rad)
 
         path.appendPath(circlePath)
         path.usesEvenOddFillRule = true
@@ -136,20 +119,17 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         layerView.layer.addSublayer(fillLayer)
     }
     
+    //MARK: Location Manager
     
     func getUserLocation(){
-//        print("get user location function is being called")
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations[0] as CLLocation
-        
-        print("location manager function is being called")
-        
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                                             longitude: userLocation.coordinate.longitude)
         map.setCenterCoordinate(location, animated: true)
@@ -164,7 +144,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         
         self.navigationItem.titleView = menuView
         
-        
         menuView.backgroundColor = UIColor.clearColor()
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
         menuView.maskBackgroundColor = UIColor.clearColor()
@@ -174,8 +153,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             self.navigationItem.title = items[indexPath]
-            
-            print(self.navigationItem.title)
             
             if self.navigationItem.title != nil {
                 self.mapVCTitle = self.navigationItem.title!
@@ -192,6 +169,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
     }
     
+    //MARK: Prepare for Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "mapList")  {
@@ -205,6 +183,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
             print("mapVC:\(mapVCTitle): \n destVC:\(destVC.navigationItem.title)")
         }
     }
+    
+    //MARK: Table View References for Zoom Menu
     
     private func createZoomLevelTableView() -> UITableView
     {

@@ -23,4 +23,4 @@ class LocationTrends    {
     }
 }
 
-var detroit = LocationTrends(locationName: "Detroit", trends: [NBA, hiring, ios, elect])
+var detroit = LocationTrends(locationName: "Detroit", trends: [NBA, hiring, ios, elect, newYear])
