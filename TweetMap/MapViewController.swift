@@ -36,9 +36,9 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     var screenwidth : CGFloat!
     var screenheight : CGFloat!
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +72,11 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().translucent = true
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
     }
@@ -137,6 +142,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
 
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
         
+        mapVCTitle = items.first!
+        
         self.navigationItem.titleView = menuView
         
         
@@ -174,6 +181,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
                 return
             }
             destVC.navigationItem.title = self.mapVCTitle
+            destVC.trends = trends
 
             print("mapVC:\(mapVCTitle): \n destVC:\(destVC.navigationItem.title)")
         }

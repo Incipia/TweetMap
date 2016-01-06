@@ -9,17 +9,11 @@
 import UIKit
 
 class ListTrendsViewController: UITableViewController {
+    
+    var trends = [Trend]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         
     }
 
@@ -30,9 +24,16 @@ class ListTrendsViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        configureTableView()
         
-        UINavigationBar.appearance().tintColor = UIColor.blackColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+//        UINavigationBar.appearance().barTintColor = UIColor.lightGrayColor()
+////        UINavigationBar.appearance().tintColor = UIColor.blackColor()
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().translucent = false
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
     }
 
     // MARK: - Table view data source
@@ -42,19 +43,32 @@ class ListTrendsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return trends.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+//        let cell2 = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: "cell")
+        
+        cell.textLabel?.font.fontWithSize(30.0)
+        cell.detailTextLabel?.font.fontWithSize(50.0)
 
-        // Configure the cell...
+        cell.textLabel!.text = trends[indexPath.row].name
+        cell.detailTextLabel?.text = "\(trends[indexPath.row].tweetVolume)"
+        
+//        cell2.heightAnchor = self.tableView.heightAnchor/5
 
         return cell
     }
-    */
+    
+    func configureTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = self.view.bounds.height/5
+//        tableView.estimatedRowHeight = 300
+        tableView.rowHeight = (self.view.bounds.height - (self.navigationController?.navigationBar.bounds.height)!)/5
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

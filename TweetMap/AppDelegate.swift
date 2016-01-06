@@ -20,10 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().translucent = true
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+////        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().translucent = true
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         Fabric.with([Twitter.self, MGLAccountManager.self, Crashlytics.self])
         
