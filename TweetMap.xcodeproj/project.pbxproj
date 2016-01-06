@@ -15,6 +15,7 @@
 		234490621C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234490611C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift */; };
 		2386EEA71C3C93C8004C9F74 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386EEA61C3C93C8004C9F74 /* ListViewCell.swift */; };
 		2386EEAA1C3CA844004C9F74 /* TopTweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */; };
+		2386EEAD1C3DB813004C9F74 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */; };
 		238831F21C322EE100AB0D60 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238831F11C322EE100AB0D60 /* SlideMenuViewController.swift */; };
 		238831F41C32304300AB0D60 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238831F31C32304300AB0D60 /* DrawerViewController.swift */; };
 		23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9F4A51C2B93FD0058B0FE /* Popover.swift */; };
@@ -54,6 +55,7 @@
 		234490611C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomLevelTableViewDelegate.swift; sourceTree = "<group>"; };
 		2386EEA61C3C93C8004C9F74 /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTweetsViewController.swift; sourceTree = "<group>"; };
+		2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		238831F11C322EE100AB0D60 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		238831F31C32304300AB0D60 /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		23B9F4A51C2B93FD0058B0FE /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Popover.swift; path = ../Pods/Popover/Classes/Popover.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		23F1B8291C21F0A9003BB13A /* TweetMap */ = {
 			isa = PBXGroup;
 			children = (
+				2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */,
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
 				2344905A1C3B2F5800A10C02 /* ListTrendsViewController.swift */,
 				2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */,
@@ -394,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2386EEAD1C3DB813004C9F74 /* LoginViewController.swift in Sources */,
 				23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */,
 				238831F21C322EE100AB0D60 /* SlideMenuViewController.swift in Sources */,
 				23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */,

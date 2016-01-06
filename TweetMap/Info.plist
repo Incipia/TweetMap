@@ -35,9 +35,22 @@
 				<key>KitName</key>
 				<string>MGLAccountManager</string>
 			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>BrBFm9C47HrUwqip7EgdlSMEK</string>
+					<key>consumerSecret</key>
+					<string>vfpnbGUsriAYBvdHqYmdkk1l8oQSYf8DGtD8oiYftdAWmaydUi</string>
+				</dict>
+				<key>KitName</key>
+				<string>Twitter</string>
+			</dict>
 		</array>
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location will be shown on the map and your map usage will anonymously improve the map.</string>
@@ -59,8 +72,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
-	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>
