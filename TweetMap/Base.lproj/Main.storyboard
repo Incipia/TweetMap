@@ -30,7 +30,7 @@
             </objects>
             <point key="canvasLocation" x="966" y="130"/>
         </scene>
-        <!--Hashtags-->
+        <!--Map View Controller-->
         <scene sceneID="f0y-X8-fX6">
             <objects>
                 <viewController id="PvW-rc-aFA" customClass="MapViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jf9-zY-c2p">
-                                        <rect key="frame" x="0.0" y="127" width="320" height="250"/>
+                                        <rect key="frame" x="0.0" y="77" width="320" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1b-VG-hde">
                                                 <rect key="frame" x="100" y="20" width="120" height="60"/>
@@ -142,7 +142,7 @@
                                     <constraint firstItem="Jf9-zY-c2p" firstAttribute="centerX" secondItem="8CK-1O-jUu" secondAttribute="centerX" id="ihE-9w-jiD"/>
                                     <constraint firstAttribute="trailing" secondItem="Jf9-zY-c2p" secondAttribute="trailing" id="nvI-OJ-qJl"/>
                                     <constraint firstItem="Jf9-zY-c2p" firstAttribute="centerY" secondItem="8CK-1O-jUu" secondAttribute="centerY" id="xk2-11-PTI"/>
-                                    <constraint firstItem="Jf9-zY-c2p" firstAttribute="centerY" secondItem="8CK-1O-jUu" secondAttribute="centerY" id="zoj-Bl-LDG"/>
+                                    <constraint firstItem="Jf9-zY-c2p" firstAttribute="centerY" secondItem="8CK-1O-jUu" secondAttribute="centerY" constant="-50" id="zoj-Bl-LDG"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -192,7 +192,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Hashtags" id="SC2-zJ-kxE">
+                    <navigationItem key="navigationItem" id="SC2-zJ-kxE">
                         <barButtonItem key="rightBarButtonItem" title="List" style="plain" id="S2N-d6-Kc8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -280,7 +280,7 @@
             </objects>
             <point key="canvasLocation" x="1760" y="130"/>
         </scene>
-        <!--#NBA-->
+        <!--Top Tweets View Controller-->
         <scene sceneID="ZOR-aI-wa5">
             <objects>
                 <tableViewController id="xia-Tk-bib" customClass="TopTweetsViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +303,7 @@
                             <outlet property="delegate" destination="xia-Tk-bib" id="fWn-A0-m9q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="#NBA" id="UfT-gX-mM7"/>
+                    <navigationItem key="navigationItem" id="UfT-gX-mM7"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qy2-dg-8Hy" userLabel="First Responder" sceneMemberID="firstResponder"/>

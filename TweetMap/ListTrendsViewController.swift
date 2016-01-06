@@ -29,25 +29,10 @@ class ListTrendsViewController: UITableViewController {
         print("View will appear")
         configureTableView()
         
-//        UINavigationBar.appearance().barTintColor = UIColor.lightGrayColor()
-////        UINavigationBar.appearance().tintColor = UIColor.blackColor()
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        UINavigationBar.appearance().translucent = false
-//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
-        
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default// I then set the color using:
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-//        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.blackColor()
-//        self.navigationController?.navigationItem.backBarButtonItem?.title = ""
-        
-        
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor() // for titles, buttons, etc.
         let navigationTitleFont = UIFont(name: "Helvetica Neue", size: 20)!
-        
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont, NSForegroundColorAttributeName: UIColor.blackColor() ]
     }
 
