@@ -11,9 +11,7 @@ import Mapbox
 import CoreLocation
 import BTNavigationDropdownMenu
 
-
 class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var label: UILabel!
     
     @IBOutlet weak var map: MGLMapView!
     @IBOutlet weak var layerView: UIView!
@@ -71,9 +69,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
-//        self.setNeedsStatusBarAppearanceUpdate()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-
         
         // The hamburger icon is black if this doesn't get set. The other 2 stay white regardless.
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -148,7 +144,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         mapVCTitle = items.first!
         
         self.navigationItem.titleView = menuView
-        
         
         menuView.backgroundColor = UIColor.clearColor()
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
