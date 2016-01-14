@@ -16,7 +16,7 @@ import TwitterKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    private var _locationManager = CLLocationManager()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         Fabric.with([Twitter.self, MGLAccountManager.self, Crashlytics.self])
+        
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            _locationManager.requestWhenInUseAuthorization()
+        }
+        if CLLocationManager.locationServicesEnabled() {
+            _locationManager.startUpdatingLocation()
+        }
         
         return true
     }

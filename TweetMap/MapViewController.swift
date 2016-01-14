@@ -9,6 +9,7 @@
 import UIKit
 import Mapbox
 import CoreLocation
+import TwitterKit
 import BTNavigationDropdownMenu
 
 class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
@@ -20,13 +21,12 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     @IBOutlet weak var viewContainerForTrends: UIView!
     @IBOutlet var trendLabels: [UILabel]!
     
-    var trends = [NBA, hiring, elect, ios, newYear]
+    var trends: [Trend] = []
     var mapVCTitle = String()
     
-    // For popover menu for radiusMenuButton
     private let radiusMenuPopover = Popover(options: PopoverOption.defaultOptions, showHandler: nil, dismissHandler: nil)
-
-    private var radiusMenuOptions = ["10 km", "20 km", "50 km"]
+    private let radiusMenuOptions = ["10 km", "20 km", "50 km"]
+    
     private var zoomLevelTableViewDataSource: ZoomLevelTableViewDataSource?
     private var zoomLevelTableViewDelegate: ZoomLevelTableViewDelegate?
     
@@ -34,31 +34,41 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     var screenwidth : CGFloat!
     var screenheight : CGFloat!
     
-    override func viewDidLoad() {
+    private var _locationManager = CLLocationManager()
+    
+    private var _shouldUpdateTrends = true
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         self.addSlideMenuButtonWithColor()
         
         drawRegion()
-        
         dropdown()
         
         radiusMenuButton.layer.cornerRadius = 15
         
-        getUserLocation()
+        if let location = CLLocationManager().location
+        {
+            _shouldUpdateTrends = false
+            let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+                longitude: location.coordinate.longitude)
+            
+            _getTwitterTrendsWithCoordiate(coordinate)
+            map.setCenterCoordinate(coordinate, zoomLevel: 10.1, animated: true)
+        }
+        else // location is not ready, so rely on locationManager:didUpdateLocations:
+        {
+            _locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            _locationManager.startUpdatingLocation()
+            _locationManager.delegate = self
+        }
         
         for each in trendLabels {
             each.layer.cornerRadius = 8
             each.clipsToBounds = true
         }
-        
-        // Default coordinates for Detroit if location not established
-        let coordinates = (42.3314, -83.0458)
-        
-        // set the map's center coordinate
-        map.setCenterCoordinate(CLLocationCoordinate2D(latitude: coordinates.0,
-            longitude: coordinates.1),
-            zoomLevel: 10.1, animated: false)
         
         map.delegate = self
         map.showsUserLocation = true
@@ -78,7 +88,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     override func viewDidAppear(animated: Bool) {
         UIView.animateWithDuration(2.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations:{
             self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
-                self.loadTrends()
+                self.reloadTrends()
         })
     }
     
@@ -86,8 +96,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
-    func loadTrends()   {
-        trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+    func reloadTrends()   {
+        trends.sortInPlace({$0.0.tweetVolume < $0.1.tweetVolume})
         
         for i in 0..<trendLabels.count  {
             trendLabels[i].text = "\(trends[i].name)\n\(trends[i].tweetVolume)"
@@ -96,7 +106,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     }
     
     //MARK: Shade outer regions
-    
     func drawRegion() {
         
         let fillLayer = CAShapeLayer()
@@ -116,23 +125,42 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         fillLayer.fillRule = kCAFillRuleEvenOdd
         fillLayer.fillColor = UIColor.grayColor().CGColor
         fillLayer.opacity = 0.7
+        
         layerView.layer.addSublayer(fillLayer)
     }
-    
-    //MARK: Location Manager
-    
-    func getUserLocation(){
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        if _shouldUpdateTrends
+        {
+            _shouldUpdateTrends = false
+            let userLocation = locations[0] as CLLocation
+            let coordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
+                longitude: userLocation.coordinate.longitude)
+            
+            _getTwitterTrendsWithCoordiate(coordinate)
+            map.setCenterCoordinate(coordinate, animated: true)
+        }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations[0] as CLLocation
-        let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
-                                            longitude: userLocation.coordinate.longitude)
-        map.setCenterCoordinate(location, animated: true)
+    private func _getTwitterTrendsWithCoordiate(coordinate: CLLocationCoordinate2D)
+    {
+        TwitterNetworkManager.findTrendingWoeIDForCoordinate(coordinate) { (woeID) -> () in
+            
+            if let id = woeID
+            {
+                print("found woe id: \(id)")
+                TwitterNetworkManager.getTrendsForWoeID(id, completion: { (trends) -> Void in
+//                    for trend in trends {
+//                        print("\(trend.name)")
+//                    }
+                    self.trends = trends
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.reloadTrends()
+                    })
+                })
+            }
+        }
     }
     
     func dropdown() {
@@ -151,12 +179,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         menuView.cellTextLabelFont = UIFont(name: "Helvetica Neue", size: 20)
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
             self.navigationItem.title = items[indexPath]
             
             if self.navigationItem.title != nil {
                 self.mapVCTitle = self.navigationItem.title!
-                print(self.mapVCTitle)
             }
         }
     }
@@ -169,8 +195,7 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
     }
     
-    //MARK: Prepare for Segue
-    
+    //MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "mapList")  {
             guard let destVC = segue.destinationViewController as? ListTrendsViewController else    {
@@ -179,13 +204,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
             }
             destVC.navigationItem.title = self.mapVCTitle
             destVC.trends = trends
-
-            print("mapVC:\(mapVCTitle): \n destVC:\(destVC.navigationItem.title)")
         }
     }
     
     //MARK: Table View References for Zoom Menu
-    
     private func createZoomLevelTableView() -> UITableView
     {
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: 135))

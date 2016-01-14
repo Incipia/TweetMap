@@ -1,31 +1,46 @@
 PODS:
-  - BTNavigationDropdownMenu (0.2)
-  - Crashlytics (3.4.1):
-    - Fabric (~> 1.6.0)
-  - Fabric (1.6.1)
+  - Alamofire (3.1.4)
+  - BTNavigationDropdownMenu (0.2.1)
+  - Crashlytics (3.6.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.3)
   - Mapbox-iOS-SDK (3.0.1)
   - Popover (0.8.0)
-  - TwitterCore (1.14.6):
+  - SwiftyJSON (2.3.2)
+  - TwitterCore (1.15.1):
     - Fabric
-  - TwitterKit (1.14.6):
-    - TwitterCore (= 1.14.6)
+  - TwitterKit (1.15.1):
+    - TwitterCore (= 1.15.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.0)
   - BTNavigationDropdownMenu
   - Crashlytics
   - Fabric
   - Mapbox-iOS-SDK
   - Popover
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - TwitterCore
   - TwitterKit
 
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 929539eb6a3304eaa9153ca44041a78b85bf2ee5
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
 SPEC CHECKSUMS:
-  BTNavigationDropdownMenu: 731e0e7068eefeea4a53b0695f37454aad944255
-  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
-  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  BTNavigationDropdownMenu: 9cf4060162c96510ee27c388412e28678320cdc0
+  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
+  Fabric: cbe0ca6c9531bba17910052f6f105fcbc5fa7f67
   Mapbox-iOS-SDK: 61e79f3dd8432617bd1a66b2d7273ab5ce923ca9
   Popover: 666aeb02095fff5cbf6896548a92abc84c523b60
-  TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
-  TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  TwitterCore: 12983a7464e34afbbf18881347898a9db526ac71
+  TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
 
 COCOAPODS: 0.39.0
