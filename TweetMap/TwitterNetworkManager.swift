@@ -56,7 +56,7 @@ class TwitterNetworkManager {
     {
         let trendsShowEndpoint = "https://api.twitter.com/1.1/trends/place.json"
         let params = ["id" : id]
-        
+        print("\(id)")
         var clientError: NSError?
         let client = TWTRAPIClient(userID: nil)
         let request = client.URLRequestWithMethod("GET", URL: trendsShowEndpoint, parameters: params, error: &clientError)
@@ -69,6 +69,8 @@ class TwitterNetworkManager {
                     if let jsonData = data {
                         let json = JSON(data: jsonData)
                         if json.count > 0 {
+                            
+                            print(json[0]["locations"])
                             let trends = json[0]["trends"].array!
                             
                             var trendArray: [Trend] = []
