@@ -39,7 +39,6 @@ class ListTrendsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     // MARK: - Table view data source
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -74,7 +73,6 @@ class ListTrendsViewController: UIViewController, UITableViewDataSource, UITable
     
     
     // MARK: - Navigation
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "listDetail"    {
             let destVC = segue.destinationViewController as! TopTweetsViewController
