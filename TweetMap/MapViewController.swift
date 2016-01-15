@@ -88,7 +88,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     override func viewDidAppear(animated: Bool) {
         UIView.animateWithDuration(2.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations:{
             self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
-                self.reloadTrends()
         })
     }
     
@@ -96,14 +95,6 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
-    func reloadTrends()   {
-        trends.sortInPlace({$0.0.tweetVolume < $0.1.tweetVolume})
-        
-        for i in 0..<trendLabels.count  {
-            trendLabels[i].text = "\(trends[i].name)\n\(trends[i].tweetVolume)"
-        }
-        
-    }
     
     //MARK: Shade outer regions
     func drawRegion() {
@@ -145,15 +136,16 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
     private func _getTwitterTrendsWithCoordiate(coordinate: CLLocationCoordinate2D)
     {
+        print("get twitter trends with coordinate is being called")
         TwitterNetworkManager.findTrendingWoeIDForCoordinate(coordinate) { (woeID) -> () in
             
             if let id = woeID
             {
                 print("found woe id: \(id)")
                 TwitterNetworkManager.getTrendsForWoeID(id, completion: { (trends) -> Void in
-//                    for trend in trends {
-//                        print("\(trend.name)")
-//                    }
+                    for trend in trends {
+                        print("trend.name:::::\(trend.name)")
+                    }
                     self.trends = trends
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.reloadTrends()
@@ -163,6 +155,17 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         }
     }
     
+    func reloadTrends()   {
+        trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+        
+        for i in 0..<trendLabels.count  {
+            trendLabels[i].text = "\(trends[i].name)\n\(trends[i].tweetVolume)"
+        }
+    }
+    
+    
+    
+    //Mark: UIComponents
     func dropdown() {
         let items = ["Hashtags", "Words", "Users", "All"]
 

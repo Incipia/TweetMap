@@ -52,6 +52,9 @@ class TwitterNetworkManager {
         }
     }
     
+    
+    
+    
     static func getTrendsForWoeID(id: String, completion: ((trends: [Trend]) -> Void)?)
     {
         let trendsShowEndpoint = "https://api.twitter.com/1.1/trends/place.json"
@@ -81,6 +84,17 @@ class TwitterNetworkManager {
                                 let trend = Trend(name: trendName, tweetVolume: trendVolume)
                                 
                                 trendArray.append(trend)
+                                
+//                                trendArray.map({ trend in
+//                                    
+//                                })
+                                
+                                for each in trendArray  {
+                                    if each.name.characters.first != "#"    {
+                                        each.name = "#\(each.name)"
+                                    }
+                                }
+                                
                             }
                             completion?(trends: trendArray)
                         }

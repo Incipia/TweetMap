@@ -166,14 +166,14 @@
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
 				2386EEB11C3DCB72004C9F74 /* ListTrendsViewController.swift */,
 				2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */,
-				237487481C47686800626618 /* AlamoOperator.swift */,
-				2374874A1C4768AB00626618 /* Alamofire-SwiftyJSON.swift */,
+				2374874F1C476CD500626618 /* TwitterNetworkManager.swift */,
 				2318696E1C293A600088F76E /* SupportingFiles */,
 				2318696D1C293A4E0088F76E /* Model */,
 				2344905D1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift */,
 				234490611C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift */,
 				2386EEA61C3C93C8004C9F74 /* ListViewCell.swift */,
-				2374874F1C476CD500626618 /* TwitterNetworkManager.swift */,
+				237487481C47686800626618 /* AlamoOperator.swift */,
+				2374874A1C4768AB00626618 /* Alamofire-SwiftyJSON.swift */,
 			);
 			path = TweetMap;
 			sourceTree = "<group>";
