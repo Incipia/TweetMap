@@ -18,7 +18,7 @@ class SidePanelViewController: UIViewController {
     
     var delegate: SidePanelViewControllerDelegate?
   
-  var menuOptions: Array<AnyObject>!
+  var menuOptions = ["Settings", "Cities", "Trending Near Me", "etc.", "etc.", "etc."]
   
   struct TableView {
     struct CellIdentifiers {
@@ -49,6 +49,8 @@ extension SidePanelViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(TableView.CellIdentifiers.MenuCell, forIndexPath: indexPath) as! MenuCell
 //    cell.configureForAnimal(menuOptions[indexPath.row])
+    cell.textLabel?.text = menuOptions[indexPath.row]
+    cell.textLabel?.textColor = UIColor.whiteColor()
     return cell
   }
   

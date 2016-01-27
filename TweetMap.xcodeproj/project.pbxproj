@@ -126,12 +126,14 @@
 			children = (
 				23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */,
 				23F1B82E1C21F0A9003BB13A /* Main.storyboard */,
+				2374874F1C476CD500626618 /* TwitterNetworkManager.swift */,
+				2386A4971C5966A800467F70 /* ContainerViewController.swift */,
+				2386A4951C59668C00467F70 /* SidePanelViewController.swift */,
 				23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */,
 				23F1B8361C21F0A9003BB13A /* Info.plist */,
 				23F1B8311C21F0A9003BB13A /* Assets.xcassets */,
 				23B9F4A51C2B93FD0058B0FE /* Popover.swift */,
 				2344905F1C3B72A700A10C02 /* Utilities.swift */,
-				2386A4951C59668C00467F70 /* SidePanelViewController.swift */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -165,8 +167,6 @@
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
 				2386EEB11C3DCB72004C9F74 /* ListTrendsViewController.swift */,
 				2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */,
-				2374874F1C476CD500626618 /* TwitterNetworkManager.swift */,
-				2386A4971C5966A800467F70 /* ContainerViewController.swift */,
 				2318696E1C293A600088F76E /* SupportingFiles */,
 				2318696D1C293A4E0088F76E /* Model */,
 				2344905D1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift */,
