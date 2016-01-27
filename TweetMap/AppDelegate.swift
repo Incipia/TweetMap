@@ -25,6 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = true
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let containerViewController = ContainerViewController()
+        
+        window!.rootViewController = containerViewController
+        window!.makeKeyAndVisible()
+        
         Fabric.with([Twitter.self, MGLAccountManager.self, Crashlytics.self])
         
         if CLLocationManager.authorizationStatus() == .NotDetermined {

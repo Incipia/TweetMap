@@ -12,7 +12,14 @@ import CoreLocation
 import TwitterKit
 import BTNavigationDropdownMenu
 
-class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+@objc
+protocol CenterViewControllerDelegate {
+    optional func toggleLeftPanel()
+    optional func toggleRightPanel()
+    optional func collapseSidePanels()
+}
+
+class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var map: MGLMapView!
     @IBOutlet weak var layerView: UIView!
@@ -20,6 +27,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
     @IBOutlet weak var viewContainerForTrends: UIView!
     @IBOutlet var trendLabels: [UILabel]!
+    
+    var delegate: CenterViewControllerDelegate?
     
     var trends: [Trend] = []
     var mapVCTitle = String()
@@ -38,11 +47,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
     
     private var _shouldUpdateTrends = true
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad(){
         super.viewDidLoad()
         
-        self.addSlideMenuButtonWithColor()
+//        self.addSlideMenuButtonWithColor()
         
         drawRegion()
         dropdown()
@@ -190,6 +198,10 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         }
     }
     
+    @IBAction func menu(sender: AnyObject) {
+        delegate?.toggleLeftPanel?()
+    }
+    
 
     @IBAction func radiusMenuButtonPressed(sender: AnyObject) {
         
@@ -209,6 +221,8 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
             destVC.trends = trends
         }
     }
+    
+    
     
     //MARK: Table View References for Zoom Menu
     private func createZoomLevelTableView() -> UITableView
@@ -242,6 +256,12 @@ class MapViewController: DrawerViewController, MGLMapViewDelegate, CLLocationMan
         default:
             self.map.setZoomLevel(10.1, animated: true)
         }
+    }
+}
+
+extension MapViewController: SidePanelViewControllerDelegate {
+    func menuSelected(selected: AnyObject) {
+        delegate?.collapseSidePanels?()
     }
 }
 
