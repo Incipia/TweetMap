@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="625" y="556"/>
         </scene>
-        <!--Map View Controller-->
+        <!--MapViewController-->
         <scene sceneID="f0y-X8-fX6">
             <objects>
-                <viewController id="PvW-rc-aFA" customClass="MapViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" title="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PvW-rc-aFA" customClass="MapViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ieP-4R-l8j"/>
                         <viewControllerLayoutGuide type="bottom" id="jYD-d3-IYM"/>
@@ -190,6 +190,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="SC2-zJ-kxE">
+                        <barButtonItem key="leftBarButtonItem" image="cheeseburger" id="NBk-ZX-8sQ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="menu:" destination="PvW-rc-aFA" id="qxO-fh-PFy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="List" style="plain" id="S2N-d6-Kc8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -214,6 +220,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2Z-JW-wwp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2183" y="130"/>
+        </scene>
+        <!--SidePanelViewController-->
+        <scene sceneID="oom-Bt-bjf">
+            <objects>
+                <viewController storyboardIdentifier="SidePanelViewController" title="SidePanelViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cN5-Py-7CF" customClass="SidePanelViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YYd-8J-nU5"/>
+                        <viewControllerLayoutGuide type="bottom" id="eJQ-3J-I4y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7LG-ZU-Tjx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ATA-5j-CaN">
+                                <rect key="frame" x="0.0" y="30" width="320" height="450"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="MenuCell" editingAccessoryType="checkmark" rowHeight="68" id="rAK-7V-MO0" customClass="MenuCell" customModule="TweetMap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rAK-7V-MO0" id="Im4-dJ-bPa">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cN5-Py-7CF" id="tcU-on-Xrm"/>
+                                    <outlet property="delegate" destination="cN5-Py-7CF" id="SgS-FS-74l"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ATA-5j-CaN" firstAttribute="top" secondItem="YYd-8J-nU5" secondAttribute="bottom" constant="10" id="0Gc-KD-CZA"/>
+                            <constraint firstAttribute="trailing" secondItem="ATA-5j-CaN" secondAttribute="trailing" id="TE6-vY-UaI"/>
+                            <constraint firstItem="ATA-5j-CaN" firstAttribute="leading" secondItem="7LG-ZU-Tjx" secondAttribute="leading" id="p8x-0U-QnV"/>
+                            <constraint firstItem="eJQ-3J-I4y" firstAttribute="top" secondItem="ATA-5j-CaN" secondAttribute="bottom" id="sYF-QA-jFH"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="ATA-5j-CaN" id="GAF-ne-JHS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSW-ch-Fuj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2183" y="748"/>
         </scene>
         <!--Top Tweets View Controller-->
         <scene sceneID="ZOR-aI-wa5">
@@ -245,76 +308,6 @@
             </objects>
             <point key="canvasLocation" x="2965" y="130"/>
         </scene>
-        <!--SlideMenuViewController-->
-        <scene sceneID="D8R-YB-XZh">
-            <objects>
-                <viewController storyboardIdentifier="SlideMenuViewController" title="SlideMenuViewController" id="lfh-xH-UIp" customClass="SlideMenuViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="S2b-Mf-f3p"/>
-                        <viewControllerLayoutGuide type="bottom" id="XJB-qa-Tnp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xFK-ra-xqc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="cellMenu" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BRk-Lj-qxS">
-                                <rect key="frame" x="0.0" y="60" width="168" height="508"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="cellMenu" textLabel="W6X-2v-7pq" style="IBUITableViewCellStyleDefault" id="5SW-PC-2JF">
-                                        <rect key="frame" x="0.0" y="28" width="168" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="5SW-PC-2JF" id="3Mi-Mx-9jw">
-                                            <rect key="frame" x="0.0" y="0.0" width="168" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W6X-2v-7pq">
-                                                    <rect key="frame" x="15" y="0.0" width="138" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="lfh-xH-UIp" id="BQl-IL-haB"/>
-                                    <outlet property="delegate" destination="lfh-xH-UIp" id="B1l-gm-tVb"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emB-gD-nCL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <connections>
-                                    <action selector="onCloseMenuClick:" destination="lfh-xH-UIp" eventType="touchUpInside" id="YvD-rT-smI"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="emB-gD-nCL" firstAttribute="leading" secondItem="xFK-ra-xqc" secondAttribute="leading" id="E4E-Jj-dqU"/>
-                            <constraint firstItem="BRk-Lj-qxS" firstAttribute="top" secondItem="xFK-ra-xqc" secondAttribute="top" constant="60" id="NZ8-oR-VUM"/>
-                            <constraint firstItem="XJB-qa-Tnp" firstAttribute="top" secondItem="emB-gD-nCL" secondAttribute="bottom" id="WlU-bU-FBs"/>
-                            <constraint firstItem="XJB-qa-Tnp" firstAttribute="top" secondItem="BRk-Lj-qxS" secondAttribute="bottom" id="ZEc-Vg-peB"/>
-                            <constraint firstItem="emB-gD-nCL" firstAttribute="top" secondItem="xFK-ra-xqc" secondAttribute="top" id="idX-ng-Qw5"/>
-                            <constraint firstAttribute="trailing" secondItem="emB-gD-nCL" secondAttribute="trailing" id="jJb-PH-wXD"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="btnCloseMenuOverlay" destination="emB-gD-nCL" id="jOh-12-Bxy"/>
-                        <outlet property="tblMenuOptions" destination="BRk-Lj-qxS" id="Qj7-Lp-Osx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2gt-7a-lns" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1371" y="766"/>
-        </scene>
         <!--List Trends View Controller-->
         <scene sceneID="Xns-mL-UBX">
             <objects>
@@ -327,8 +320,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lIb-5U-VIu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="305"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lIb-5U-VIu">
+                                <rect key="frame" x="0.0" y="64" width="320" height="305"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lIb-5U-VIu" secondAttribute="height" multiplier="64:61" id="8No-kp-0rW"/>
@@ -412,7 +405,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tv-vz-PbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151" y="278"/>
+            <point key="canvasLocation" x="109" y="556"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qg2-ui-hwq">
@@ -434,5 +427,8 @@
             <point key="canvasLocation" x="1371" y="130"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cheeseburger" width="22" height="22"/>
+    </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>
 </document>
