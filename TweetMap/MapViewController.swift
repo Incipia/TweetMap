@@ -15,7 +15,6 @@ import BTNavigationDropdownMenu
 @objc
 protocol CenterViewControllerDelegate {
     optional func toggleLeftPanel()
-    optional func toggleRightPanel()
     optional func collapseSidePanels()
 }
 

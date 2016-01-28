@@ -11,7 +11,7 @@ import UIKit
 class ZoomLevelTableViewDataSource: NSObject
 {
     private let _tableView: UITableView
-    private let _testData = ["test - one", "test - two", "test - three"]
+    private let _testData = ["closest", "mid-range", "furthest"]
     
     // MARK: - Init
     init(tableView: UITableView)    {
