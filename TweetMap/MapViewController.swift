@@ -58,11 +58,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         
         if let location = CLLocationManager().location
         {
-            _shouldUpdateTrends = false
+//            _shouldUpdateTrends = false
             let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                 longitude: location.coordinate.longitude)
             
-            _getTwitterTrendsWithCoordiate(coordinate)
+//            _getTwitterTrendsWithCoordiate(coordinate)
+            _getTweetsWithCoordinate(coordinate, radius: 10)
             map.setCenterCoordinate(coordinate, zoomLevel: 10.1, animated: true)
         }
         else // location is not ready, so rely on locationManager:didUpdateLocations:
@@ -144,21 +145,59 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private func _getTwitterTrendsWithCoordiate(coordinate: CLLocationCoordinate2D)
     {
         print("get twitter trends with coordinate is being called")
-        TwitterNetworkManager.findTrendingWoeIDForCoordinate(coordinate) { (woeID) -> () in
+//        TwitterNetworkManager.findTrendingWoeIDForCoordinate(coordinate) { (woeID) -> () in
+//            
+//            if let id = woeID
+//            {
+//                print("found woe id: \(id)")
+//                TwitterNetworkManager.getTrendsForWoeID(id, completion: { (trends) -> Void in
+//                    for trend in trends {
+//                        print("trend.name:::::\(trend.name)")
+//                    }
+//                    self.trends = trends
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        self.reloadTrends()
+//                    })
+//                })
+//                
+//            }
+//        }
+        
+//        }
+    }
+    
+    private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Int)
+    {
+        TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { tweets -> () in
             
-            if let id = woeID
+            var hashtagFrequencyDictionary: [String: Int] = [:]
+            for tweetObj in tweets
             {
-                print("found woe id: \(id)")
-                TwitterNetworkManager.getTrendsForWoeID(id, completion: { (trends) -> Void in
-                    for trend in trends {
-                        print("trend.name:::::\(trend.name)")
+                print(tweetObj)
+                print("-----------------------------------------------------")
+                for hashtag in tweetObj.hashtags
+                {
+                    if let hashtagCount = hashtagFrequencyDictionary[hashtag] {
+                        hashtagFrequencyDictionary[hashtag] = hashtagCount + 1
                     }
-                    self.trends = trends
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.reloadTrends()
-                    })
-                })
+                    else {
+                        hashtagFrequencyDictionary[hashtag] = 1
+                    }
+                }
             }
+            
+            var tempTrends: [Trend] = []
+            for hashtag in hashtagFrequencyDictionary.keys
+            {
+                let name = hashtag
+                let count = hashtagFrequencyDictionary[hashtag]!
+                
+                let trend = Trend(name: name, tweetVolume: count)
+                tempTrends.append(trend)
+            }
+            
+            self.trends = tempTrends
+            self.reloadTrends()
         }
     }
     
@@ -166,7 +205,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
         
         for i in 0..<trendLabels.count  {
-            trendLabels[i].text = "\(trends[i].name)\n\(trends[i].tweetVolume)"
+            trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
         }
     }
     
