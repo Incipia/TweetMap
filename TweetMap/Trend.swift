@@ -19,6 +19,17 @@ class Trend {
     }
 }
 
+struct Tweet : CustomStringConvertible
+{
+    let text: String
+    let retweets: Int
+    let hashtags: [String]
+    
+    var description: String {
+        return "TEXT:\(text)\r RETWEETS:\(retweets)\r HASHTAGS:\(hashtags)\r"
+    }
+}
+
 var NBA = Trend(name: "#NBA", tweetVolume: 23600)
 var hiring = Trend(name: "#hiring", tweetVolume: 5800)
 var elect = Trend(name: "#elect", tweetVolume: 13200)
