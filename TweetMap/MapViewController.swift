@@ -258,18 +258,32 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private func updateZoomLevelWithIndexPath(indexPath: NSIndexPath)
     {
         var mapZoomLevel: Double
+        var radius: Int
         
         switch indexPath.row   {
         case 0:
             mapZoomLevel = 11.0
+            radius = 50
         case 1:
             mapZoomLevel = 10.0
+            radius = 20
         case 2:
             mapZoomLevel = 9.0
+            radius = 10
         default:
             mapZoomLevel = 10.0
+            radius = 20
         }
+        
+        if let location = CLLocationManager().location
+        {
+        _shouldUpdateTrends = false
+        let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude)
+        
         map.setZoomLevel(mapZoomLevel, animated: true)
+        _getTweetsWithCoordinate(coordinate, radius: radius)
+        }
     }
 }
 
