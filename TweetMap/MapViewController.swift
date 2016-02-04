@@ -30,6 +30,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     var delegate: CenterViewControllerDelegate?
     
     var trends: [Trend] = []
+    var tweets: [Tweet] = []
     var mapVCTitle = String()
     
     private let radiusMenuPopover = Popover(options: PopoverOption.defaultOptions, showHandler: nil, dismissHandler: nil)
@@ -44,6 +45,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private var _locationManager = CLLocationManager()
     
     private var _shouldUpdateTrends = true
+    
+    private var _selectedIndex = 0
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -137,13 +140,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Int)
     {
-        TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { tweets -> () in
+        TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { incomingTweets -> () in
             
             var hashtagFrequencyDictionary: [String: Int] = [:]
             var tempTrends = [Trend]()
             
-            for tweetObj in tweets
+            for tweetObj in incomingTweets
             {
+                self.tweets.append(tweetObj)
 //                print(tweetObj)
 //                print("-----------------------------------------------------")
                 for hashtag in tweetObj.hashtags
@@ -224,11 +228,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     @IBAction func trendLabelTapped(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
-            print("this label, \(sender) has been tapped")
+            guard let _selectedIndex = sender.view?.tag else    {
+                print("there was an error selecting things")
+                return
+            }
+            print("this label, \(sender.view) has been tapped")
+            self.performSegueWithIdentifier("trendToDetail", sender: nil)
         }
-        print("this label, \(sender) has been tapped")
-        self.performSegueWithIdentifier("trendToDetail", sender: nil)
-
     }
     
     //MARK: Navigation
@@ -245,7 +251,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 print("there was an error grabbing TopTweetsVC")
                 return
             }
-            
+            destVC.title = self.trends[_selectedIndex].name
+            print(self.trends[_selectedIndex].name)
+            print(destVC.title)
+            destVC.tweets = tweets
         }
     }
     

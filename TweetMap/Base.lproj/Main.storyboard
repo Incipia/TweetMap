@@ -69,7 +69,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="asY-R2-zON" appends="YES" id="EHD-S6-idT"/>
                                                 </connections>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozr-DT-19G">
+                                            <label opaque="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozr-DT-19G">
                                                 <rect key="frame" x="20" y="95" width="120" height="60"/>
                                                 <color key="backgroundColor" red="0.19819078949999988" green="0.43313116776842103" blue="0.38736122528157901" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -84,7 +84,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="1Hb-Pe-kaL" appends="YES" id="sLe-EU-cn8"/>
                                                 </connections>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82U-8W-iE5">
+                                            <label opaque="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82U-8W-iE5">
                                                 <rect key="frame" x="31" y="165" width="120" height="60"/>
                                                 <color key="backgroundColor" red="0.0307617187763157" green="0.34274773849210527" blue="0.42819695718947376" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -99,7 +99,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="qii-zA-ezn" appends="YES" id="cCa-6I-mfZ"/>
                                                 </connections>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9h-gx-Wip">
+                                            <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9h-gx-Wip">
                                                 <rect key="frame" x="180" y="95" width="120" height="60"/>
                                                 <color key="backgroundColor" red="0.079666940815789372" green="0.11335834704473684" blue="0.45014391442631591" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>
@@ -114,7 +114,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="fdy-hj-THk" appends="YES" id="zW2-G3-Pqy"/>
                                                 </connections>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ8-PV-HJN">
+                                            <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ8-PV-HJN">
                                                 <rect key="frame" x="168" y="165" width="120" height="60"/>
                                                 <color key="backgroundColor" red="0.0" green="0.30011307565789475" blue="0.77772923519736847" alpha="1" colorSpace="calibratedRGB"/>
                                                 <gestureRecognizers/>

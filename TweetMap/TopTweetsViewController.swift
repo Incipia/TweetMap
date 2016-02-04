@@ -10,7 +10,7 @@ import UIKit
 
 class TopTweetsViewController: UITableViewController {
     
-    var tweets = ["tweet 1", "tweet 2", "tweet 3", "tweet 4", "tweet 5"]
+    var tweets = [Tweet]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class TopTweetsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
 
-        cell.textLabel!.text = tweets[indexPath.row]
+        cell.textLabel!.text = tweets[indexPath.row].text
 
         return cell
     }
