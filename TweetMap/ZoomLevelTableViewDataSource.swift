@@ -36,7 +36,7 @@ extension ZoomLevelTableViewDataSource: UITableViewDataSource
     }
     
     func updateButtonTitleWithSelectedIndex(indexPath: NSIndexPath) -> String   {
-        var newTitle = _testData[indexPath.row]
+        let newTitle = _testData[indexPath.row]
         return newTitle
     }
 }

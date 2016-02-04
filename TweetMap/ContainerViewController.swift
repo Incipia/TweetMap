@@ -161,8 +161,6 @@ extension ContainerViewController: CenterViewControllerDelegate {
             toggleLeftPanel()
         case .Collapsed:
             toggleLeftPanel()
-        default:
-            break
         }
     }
     

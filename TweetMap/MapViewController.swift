@@ -140,6 +140,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { tweets -> () in
             
             var hashtagFrequencyDictionary: [String: Int] = [:]
+            var tempTrends = [Trend]()
+            
             for tweetObj in tweets
             {
                 print(tweetObj)
@@ -155,7 +157,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 }
             }
             
-            var tempTrends: [Trend] = []
+//            var tempTrends: [Trend] = []
             for hashtag in hashtagFrequencyDictionary.keys
             {
                 let name = hashtag
@@ -163,18 +165,26 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 
                 let trend = Trend(name: name, tweetVolume: count)
                 tempTrends.append(trend)
+//                var newTrend = Trend(name: tweetObj.text, tweetVolume: tweetObj.hashtags.count)
+//                print("TEXT:\(tweetObj.text)\rHASHTAGS:\(tweetObj.hashtags)RETWEETS:\(tweetObj.retweets)\r")
+//                print(tweetObj.description)
+//                tempTrends.append(newTrend)
             }
-            
+        
             self.trends = tempTrends
             self.reloadTrends()
         }
     }
     
     func reloadTrends()   {
-        if trends.count == 0 {
-            print("sorted trends was empty")
+        if trends.count < 5 {
+            print("not enough trends to display?")
         } else  {
             trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+            for each in trends  {
+                print("\(each.tweetVolume)\r")
+                print("\(each.name)\r")
+            }
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
             }
@@ -250,7 +260,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         zoomLevelTableViewDelegate?.rowSelectionHandler =  { (indexPath: NSIndexPath) -> Void in
             self.updateZoomLevelWithIndexPath(indexPath)
             self.radiusMenuPopover.dismiss()
-            var updatedButtonTitle = self.zoomLevelTableViewDataSource?.updateButtonTitleWithSelectedIndex(indexPath)
+            
+            let updatedButtonTitle = self.zoomLevelTableViewDataSource?.updateButtonTitleWithSelectedIndex(indexPath)
             self.radiusMenuButton.titleLabel!.text = updatedButtonTitle
         }
     }
@@ -275,6 +286,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             radius = 20
         }
         
+        
+        //Updating the menu makes a new call with the new search radius. UI has updated well thus far.
         if let location = CLLocationManager().location
         {
         _shouldUpdateTrends = false
@@ -285,6 +298,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         _getTweetsWithCoordinate(coordinate, radius: radius)
         }
     }
+    
+    
 }
 
 extension MapViewController: SidePanelViewControllerDelegate {
