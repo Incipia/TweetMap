@@ -130,7 +130,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             let coordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                 longitude: userLocation.coordinate.longitude)
             
-            _getTweetsWithCoordinate(coordinate, radius: 15)
+            _getTweetsWithCoordinate(coordinate, radius: 20)
             map.setCenterCoordinate(coordinate, animated: true)
         }
     }
@@ -144,8 +144,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             
             for tweetObj in tweets
             {
-                print(tweetObj)
-                print("-----------------------------------------------------")
+//                print(tweetObj)
+//                print("-----------------------------------------------------")
                 for hashtag in tweetObj.hashtags
                 {
                     if let hashtagCount = hashtagFrequencyDictionary[hashtag] {
@@ -157,7 +157,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 }
             }
             
-//            var tempTrends: [Trend] = []
             for hashtag in hashtagFrequencyDictionary.keys
             {
                 let name = hashtag
@@ -165,10 +164,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 
                 let trend = Trend(name: name, tweetVolume: count)
                 tempTrends.append(trend)
-//                var newTrend = Trend(name: tweetObj.text, tweetVolume: tweetObj.hashtags.count)
-//                print("TEXT:\(tweetObj.text)\rHASHTAGS:\(tweetObj.hashtags)RETWEETS:\(tweetObj.retweets)\r")
-//                print(tweetObj.description)
-//                tempTrends.append(newTrend)
             }
         
             self.trends = tempTrends
@@ -181,10 +176,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             print("not enough trends to display?")
         } else  {
             trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
-            for each in trends  {
-                print("\(each.tweetVolume)\r")
-                print("\(each.name)\r")
-            }
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
             }
@@ -223,11 +214,21 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     }
     
 
-    @IBAction func radiusMenuButtonPressed(sender: AnyObject) {
-        
+    @IBAction func radiusMenuButtonPressed(sender: AnyObject)   {
         let zoomLevelTableView = createZoomLevelTableView()
         setupDataSourceAndDelegateWithTableView(zoomLevelTableView)
         radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
+    }
+    
+    //MARK: Label Tapped
+    
+    @IBAction func trendLabelTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            print("this label, \(sender) has been tapped")
+        }
+        print("this label, \(sender) has been tapped")
+        self.performSegueWithIdentifier("trendToDetail", sender: nil)
+
     }
     
     //MARK: Navigation
@@ -239,6 +240,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             }
             destVC.navigationItem.title = self.mapVCTitle
             destVC.trends = trends
+        } else if (segue.identifier == "trendToDetail") {
+            guard let destVC = segue.destinationViewController as? TopTweetsViewController else {
+                print("there was an error grabbing TopTweetsVC")
+                return
+            }
+            
         }
     }
     
