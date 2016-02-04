@@ -7,14 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2318696A1C2930160088F76E /* LocationTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231869691C2930160088F76E /* LocationTrends.swift */; };
 		2318696C1C2931170088F76E /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2318696B1C2931170088F76E /* Trend.swift */; };
 		2344905E1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344905D1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift */; };
 		234490601C3B72A700A10C02 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2344905F1C3B72A700A10C02 /* Utilities.swift */; };
 		234490621C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234490611C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift */; };
-		237487491C47686800626618 /* AlamoOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237487481C47686800626618 /* AlamoOperator.swift */; };
-		2374874B1C4768AB00626618 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2374874A1C4768AB00626618 /* Alamofire-SwiftyJSON.swift */; };
-		2374874D1C4768C500626618 /* Woe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2374874C1C4768C500626618 /* Woe.swift */; };
 		237487501C476CD500626618 /* TwitterNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2374874F1C476CD500626618 /* TwitterNetworkManager.swift */; };
 		2386A4961C59668C00467F70 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386A4951C59668C00467F70 /* SidePanelViewController.swift */; };
 		2386A4981C5966A800467F70 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386A4971C5966A800467F70 /* ContainerViewController.swift */; };
@@ -51,14 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		231869691C2930160088F76E /* LocationTrends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrends.swift; sourceTree = "<group>"; };
 		2318696B1C2931170088F76E /* Trend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		2344905D1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomLevelTableViewDataSource.swift; sourceTree = "<group>"; };
 		2344905F1C3B72A700A10C02 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		234490611C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomLevelTableViewDelegate.swift; sourceTree = "<group>"; };
-		237487481C47686800626618 /* AlamoOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamoOperator.swift; sourceTree = "<group>"; };
-		2374874A1C4768AB00626618 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
-		2374874C1C4768C500626618 /* Woe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Woe.swift; sourceTree = "<group>"; };
 		2374874F1C476CD500626618 /* TwitterNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterNetworkManager.swift; sourceTree = "<group>"; };
 		2386A4951C59668C00467F70 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		2386A4971C5966A800467F70 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -114,8 +106,6 @@
 		2318696D1C293A4E0088F76E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2374874C1C4768C500626618 /* Woe.swift */,
-				231869691C2930160088F76E /* LocationTrends.swift */,
 				2318696B1C2931170088F76E /* Trend.swift */,
 			);
 			name = Model;
@@ -172,8 +162,6 @@
 				2344905D1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift */,
 				234490611C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift */,
 				2386EEA61C3C93C8004C9F74 /* ListViewCell.swift */,
-				237487481C47686800626618 /* AlamoOperator.swift */,
-				2374874A1C4768AB00626618 /* Alamofire-SwiftyJSON.swift */,
 			);
 			path = TweetMap;
 			sourceTree = "<group>";
@@ -411,20 +399,16 @@
 			files = (
 				2386EEAD1C3DB813004C9F74 /* LoginViewController.swift in Sources */,
 				2386EEB21C3DCB72004C9F74 /* ListTrendsViewController.swift in Sources */,
-				2374874B1C4768AB00626618 /* Alamofire-SwiftyJSON.swift in Sources */,
-				237487491C47686800626618 /* AlamoOperator.swift in Sources */,
 				23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */,
 				23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */,
 				234490621C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift in Sources */,
 				2386EEA71C3C93C8004C9F74 /* ListViewCell.swift in Sources */,
 				23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */,
-				2318696A1C2930160088F76E /* LocationTrends.swift in Sources */,
 				2344905E1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift in Sources */,
 				2386A4961C59668C00467F70 /* SidePanelViewController.swift in Sources */,
 				234490601C3B72A700A10C02 /* Utilities.swift in Sources */,
 				237487501C476CD500626618 /* TwitterNetworkManager.swift in Sources */,
 				2386EEAA1C3CA844004C9F74 /* TopTweetsViewController.swift in Sources */,
-				2374874D1C4768C500626618 /* Woe.swift in Sources */,
 				2386A4981C5966A800467F70 /* ContainerViewController.swift in Sources */,
 				2318696C1C2931170088F76E /* Trend.swift in Sources */,
 			);

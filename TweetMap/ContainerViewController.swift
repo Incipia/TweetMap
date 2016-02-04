@@ -155,14 +155,12 @@ extension ContainerViewController: CenterViewControllerDelegate {
         }
     }
     
-    func collapseSidePanels() {
+    func collapseSidePanel() {
         switch (currentState) {
         case .Expanded:
             toggleLeftPanel()
         case .Collapsed:
             toggleLeftPanel()
-        default:
-            break
         }
     }
     

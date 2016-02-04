@@ -15,7 +15,7 @@ import BTNavigationDropdownMenu
 @objc
 protocol CenterViewControllerDelegate {
     optional func toggleLeftPanel()
-    optional func collapseSidePanels()
+    optional func collapseSidePanel()
 }
 
 class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
@@ -33,7 +33,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     var mapVCTitle = String()
     
     private let radiusMenuPopover = Popover(options: PopoverOption.defaultOptions, showHandler: nil, dismissHandler: nil)
-    private let radiusMenuOptions = ["10 km", "20 km", "50 km"]
     
     private var zoomLevelTableViewDataSource: ZoomLevelTableViewDataSource?
     private var zoomLevelTableViewDelegate: ZoomLevelTableViewDelegate?
@@ -49,8 +48,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     override func viewDidLoad(){
         super.viewDidLoad()
         
-//        self.addSlideMenuButtonWithColor()
-        
         drawRegion()
         dropdown()
         
@@ -58,12 +55,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         
         if let location = CLLocationManager().location
         {
-//            _shouldUpdateTrends = false
+            _shouldUpdateTrends = false
             let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                 longitude: location.coordinate.longitude)
             
-//            _getTwitterTrendsWithCoordiate(coordinate)
-            _getTweetsWithCoordinate(coordinate, radius: 10)
+            _getTweetsWithCoordinate(coordinate, radius: 20)
             map.setCenterCoordinate(coordinate, zoomLevel: 10.1, animated: true)
         }
         else // location is not ready, so rely on locationManager:didUpdateLocations:
@@ -88,9 +84,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
-        // The hamburger icon is black if this doesn't get set. The other 2 stay white regardless.
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -137,33 +130,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             let coordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                 longitude: userLocation.coordinate.longitude)
             
-            _getTwitterTrendsWithCoordiate(coordinate)
+            _getTweetsWithCoordinate(coordinate, radius: 15)
             map.setCenterCoordinate(coordinate, animated: true)
         }
-    }
-    
-    private func _getTwitterTrendsWithCoordiate(coordinate: CLLocationCoordinate2D)
-    {
-        print("get twitter trends with coordinate is being called")
-//        TwitterNetworkManager.findTrendingWoeIDForCoordinate(coordinate) { (woeID) -> () in
-//            
-//            if let id = woeID
-//            {
-//                print("found woe id: \(id)")
-//                TwitterNetworkManager.getTrendsForWoeID(id, completion: { (trends) -> Void in
-//                    for trend in trends {
-//                        print("trend.name:::::\(trend.name)")
-//                    }
-//                    self.trends = trends
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.reloadTrends()
-//                    })
-//                })
-//                
-//            }
-//        }
-        
-//        }
     }
     
     private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Int)
@@ -171,6 +140,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { tweets -> () in
             
             var hashtagFrequencyDictionary: [String: Int] = [:]
+            var tempTrends = [Trend]()
+            
             for tweetObj in tweets
             {
                 print(tweetObj)
@@ -186,7 +157,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 }
             }
             
-            var tempTrends: [Trend] = []
+//            var tempTrends: [Trend] = []
             for hashtag in hashtagFrequencyDictionary.keys
             {
                 let name = hashtag
@@ -194,18 +165,29 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 
                 let trend = Trend(name: name, tweetVolume: count)
                 tempTrends.append(trend)
+//                var newTrend = Trend(name: tweetObj.text, tweetVolume: tweetObj.hashtags.count)
+//                print("TEXT:\(tweetObj.text)\rHASHTAGS:\(tweetObj.hashtags)RETWEETS:\(tweetObj.retweets)\r")
+//                print(tweetObj.description)
+//                tempTrends.append(newTrend)
             }
-            
+        
             self.trends = tempTrends
             self.reloadTrends()
         }
     }
     
     func reloadTrends()   {
-        trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
-        
-        for i in 0..<trendLabels.count  {
-            trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
+        if trends.count < 5 {
+            print("not enough trends to display?")
+        } else  {
+            trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+            for each in trends  {
+                print("\(each.tweetVolume)\r")
+                print("\(each.name)\r")
+            }
+            for i in 0..<trendLabels.count  {
+                trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
+            }
         }
     }
     
@@ -277,29 +259,52 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         
         zoomLevelTableViewDelegate?.rowSelectionHandler =  { (indexPath: NSIndexPath) -> Void in
             self.updateZoomLevelWithIndexPath(indexPath)
-            self.radiusMenuButton.titleLabel!.text = self.radiusMenuOptions[indexPath.row]
             self.radiusMenuPopover.dismiss()
+            
+            let updatedButtonTitle = self.zoomLevelTableViewDataSource?.updateButtonTitleWithSelectedIndex(indexPath)
+            self.radiusMenuButton.titleLabel!.text = updatedButtonTitle
         }
     }
     
     private func updateZoomLevelWithIndexPath(indexPath: NSIndexPath)
     {
+        var mapZoomLevel: Double
+        var radius: Int
+        
         switch indexPath.row   {
         case 0:
-            self.map.setZoomLevel(11.1, animated: true)
+            mapZoomLevel = 11.0
+            radius = 50
         case 1:
-            self.map.setZoomLevel(10.1, animated: true)
+            mapZoomLevel = 10.0
+            radius = 20
         case 2:
-            self.map.setZoomLevel(9.1, animated: true)
+            mapZoomLevel = 9.0
+            radius = 10
         default:
-            self.map.setZoomLevel(10.1, animated: true)
+            mapZoomLevel = 10.0
+            radius = 20
+        }
+        
+        
+        //Updating the menu makes a new call with the new search radius. UI has updated well thus far.
+        if let location = CLLocationManager().location
+        {
+        _shouldUpdateTrends = false
+        let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude)
+        
+        map.setZoomLevel(mapZoomLevel, animated: true)
+        _getTweetsWithCoordinate(coordinate, radius: radius)
         }
     }
+    
+    
 }
 
 extension MapViewController: SidePanelViewControllerDelegate {
     func menuSelected(selected: AnyObject) {
-        delegate?.collapseSidePanels?()
+        delegate?.collapseSidePanel?()
     }
 }
 

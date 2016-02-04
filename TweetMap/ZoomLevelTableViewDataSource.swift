@@ -11,7 +11,7 @@ import UIKit
 class ZoomLevelTableViewDataSource: NSObject
 {
     private let _tableView: UITableView
-    private let _testData = ["closest", "mid-range", "furthest"]
+    private let _testData = ["10 mi", "20 mi", "50 mi"]
     
     // MARK: - Init
     init(tableView: UITableView)    {
@@ -33,5 +33,10 @@ extension ZoomLevelTableViewDataSource: UITableViewDataSource
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
         cell.textLabel?.text = _testData[indexPath.row]
         return cell
+    }
+    
+    func updateButtonTitleWithSelectedIndex(indexPath: NSIndexPath) -> String   {
+        let newTitle = _testData[indexPath.row]
+        return newTitle
     }
 }
