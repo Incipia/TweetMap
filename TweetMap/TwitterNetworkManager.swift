@@ -36,14 +36,14 @@ class TwitterNetworkManager {
                     guard let jsonData = data else { return }
                     
                     let json = JSON(data: jsonData)
-                    let statusesJSONArray = json["statuses"].array!
+                    guard let JSONArray = json["statuses"].arrayObject else { return }
+                    guard let tweetObjects: [TWTRTweet] = TWTRTweet.tweetsWithJSONArray(JSONArray) as? [TWTRTweet] else { return }
                     
-                    var tweetObjects: [Tweet] = []
+                    guard let statusesJSONArray = json["statuses"].array else { return }
                     
+                    var tweets: [Tweet] = []
                     for status in statusesJSONArray
                     {
-                        let text = status["text"].stringValue
-                        let retweets = status["retweet_count"].intValue
                         var hashtagTextArray: [String] = []
                         
                         if let hashtags = status["entities"]["hashtags"].array {
@@ -52,13 +52,15 @@ class TwitterNetworkManager {
                                 let hashtagText = hashtag["text"].stringValue
                                 hashtagTextArray.append(hashtagText)
                             }
+                            
+                            let id = status["id"].stringValue
+                            if let tweetObject = tweetObjects.filter({$0.tweetID == id}).first {
+                                let tweet = Tweet(object: tweetObject, hashtags: hashtagTextArray)
+                                tweets.append(tweet)
+                            }
                         }
-                        
-                        let tweetObject = Tweet(text: text, retweets: retweets, hashtags: hashtagTextArray)
-                        tweetObjects.append(tweetObject)
                     }
-                    
-                    completion?(tweets: tweetObjects)
+                    completion?(tweets: tweets)
                 }
                 else {
                     print("Connection Error: \(connectionError?.description)")

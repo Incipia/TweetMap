@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Trend {
     
@@ -20,15 +21,6 @@ class Trend {
     }
 }
 
-struct Tweet : CustomStringConvertible
-{
-    let text: String
-    let retweets: Int
-    var hashtags: [String]
-    
-    var description: String {
-        return "TEXT:\(text)\r RETWEETS:\(retweets)\r HASHTAGS:\(hashtags)\r"
-    }
-}
+
 
 

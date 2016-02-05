@@ -216,12 +216,6 @@
                                 <action selector="menu:" destination="PvW-rc-aFA" id="qxO-fh-PFy"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="List" style="plain" id="S2N-d6-Kc8">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="4dP-DG-S4E" kind="show" identifier="mapList" id="sZC-C4-Tqj"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -265,7 +259,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2139" y="130"/>
+            <point key="canvasLocation" x="2151" y="130"/>
         </scene>
         <!--SidePanelViewController-->
         <scene sceneID="oom-Bt-bjf">
@@ -333,7 +327,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="107" id="8uH-cT-Qqw">
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="107" id="8uH-cT-Qqw" customClass="TopTweetsCell" customModule="TweetMap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8uH-cT-Qqw" id="xCl-Yq-46r">
@@ -352,86 +346,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qy2-dg-8Hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3012" y="130"/>
-        </scene>
-        <!--List Trends View Controller-->
-        <scene sceneID="Xns-mL-UBX">
-            <objects>
-                <viewController id="4dP-DG-S4E" customClass="ListTrendsViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TXj-uS-QhS"/>
-                        <viewControllerLayoutGuide type="bottom" id="A4o-2O-mpE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qZg-sW-trq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lIb-5U-VIu">
-                                <rect key="frame" x="0.0" y="64" width="320" height="305"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="lIb-5U-VIu" secondAttribute="height" multiplier="64:61" id="8No-kp-0rW"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="4Qz-dl-pIv" customClass="ListViewCell" customModule="TweetMap" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="67"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Qz-dl-pIv" id="Jao-Fz-0SG">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="66.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6P-Ai-0G1">
-                                                    <rect key="frame" x="10" y="0.0" width="277" height="33.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odj-KJ-FXq">
-                                                    <rect key="frame" x="10" y="33" width="277" height="33"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="odj-KJ-FXq" firstAttribute="leading" secondItem="Jao-Fz-0SG" secondAttribute="leading" constant="10" id="E9N-3d-jMO"/>
-                                                <constraint firstItem="e6P-Ai-0G1" firstAttribute="leading" secondItem="Jao-Fz-0SG" secondAttribute="leading" constant="10" id="JNM-9B-T20"/>
-                                                <constraint firstAttribute="bottom" secondItem="odj-KJ-FXq" secondAttribute="bottom" id="NoK-ND-e2e"/>
-                                                <constraint firstItem="odj-KJ-FXq" firstAttribute="top" secondItem="e6P-Ai-0G1" secondAttribute="bottom" id="PMR-Vh-KWc"/>
-                                                <constraint firstAttribute="trailing" secondItem="e6P-Ai-0G1" secondAttribute="trailing" id="Wh9-zC-Hz1"/>
-                                                <constraint firstItem="odj-KJ-FXq" firstAttribute="height" secondItem="e6P-Ai-0G1" secondAttribute="height" id="nmM-Xf-VTG"/>
-                                                <constraint firstItem="e6P-Ai-0G1" firstAttribute="top" secondItem="Jao-Fz-0SG" secondAttribute="top" id="p2g-Qe-ob0"/>
-                                                <constraint firstAttribute="trailing" secondItem="odj-KJ-FXq" secondAttribute="trailing" id="sje-9Y-YF7"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="trendDetail" destination="odj-KJ-FXq" id="dlD-ay-r0N"/>
-                                            <outlet property="trendTitle" destination="e6P-Ai-0G1" id="vDG-BF-EAO"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="4dP-DG-S4E" id="pjQ-b2-cNT"/>
-                                    <outlet property="delegate" destination="4dP-DG-S4E" id="lba-Ah-SOJ"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="lIb-5U-VIu" firstAttribute="top" secondItem="TXj-uS-QhS" secondAttribute="bottom" id="6Ec-zF-nJL"/>
-                            <constraint firstItem="lIb-5U-VIu" firstAttribute="leading" secondItem="qZg-sW-trq" secondAttribute="leading" id="MKv-3b-aHP"/>
-                            <constraint firstAttribute="trailing" secondItem="lIb-5U-VIu" secondAttribute="trailing" id="tMW-f4-ghL"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="trendsTableView" destination="lIb-5U-VIu" id="fqQ-si-UGW"/>
-                        <segue destination="xia-Tk-bib" kind="show" identifier="listDetail" id="eip-MD-BsG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jnv-On-Ed0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2576" y="-210"/>
+            <point key="canvasLocation" x="2542" y="130"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s47-rG-XGd">
@@ -476,8 +391,5 @@
     <resources>
         <image name="cheeseburger" width="22" height="22"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="7iU-L0-ajB"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>
 </document>
