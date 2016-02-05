@@ -148,8 +148,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             for tweetObj in incomingTweets
             {
                 self.tweets.append(tweetObj)
-//                print(tweetObj)
-//                print("-----------------------------------------------------")
+
+                print(tweetObj)
+                print("-----------------------------------------------------")
                 for hashtag in tweetObj.hashtags
                 {
                     if let hashtagCount = hashtagFrequencyDictionary[hashtag] {
@@ -160,7 +161,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                     }
                 }
             }
-            
+//
             for hashtag in hashtagFrequencyDictionary.keys
             {
                 let name = hashtag
@@ -169,11 +170,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 let trend = Trend(name: name, tweetVolume: count)
                 tempTrends.append(trend)
             }
-        
+            
             self.trends = tempTrends
             self.reloadTrends()
         }
     }
+    
     
     func reloadTrends()   {
         if trends.count < 5 {
@@ -228,33 +230,44 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     @IBAction func trendLabelTapped(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
-            guard let _selectedIndex = sender.view?.tag else    {
-                print("there was an error selecting things")
-                return
-            }
-            print("this label, \(sender.view) has been tapped")
+//            guard let _selectedIndex = sender else    {
+//                print("there was an error selecting things")
+//                return
+//            }
+            _selectedIndex = (sender.view?.tag)!
             self.performSegueWithIdentifier("trendToDetail", sender: nil)
         }
     }
     
     //MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "mapList")  {
-            guard let destVC = segue.destinationViewController as? ListTrendsViewController else    {
-                print("there was an error grabbing ListTrendsVC")
-                return
-            }
-            destVC.navigationItem.title = self.mapVCTitle
-            destVC.trends = trends
-        } else if (segue.identifier == "trendToDetail") {
+        if (segue.identifier == "trendToDetail") {
+            
             guard let destVC = segue.destinationViewController as? TopTweetsViewController else {
                 print("there was an error grabbing TopTweetsVC")
                 return
             }
-            destVC.title = self.trends[_selectedIndex].name
-            print(self.trends[_selectedIndex].name)
-            print(destVC.title)
-            destVC.tweets = tweets
+            
+            let selectedTrend = self.trends[_selectedIndex].name
+            print("Selected Index: \(_selectedIndex), \r Selected Trend: \(selectedTrend) \r, selectedIndex\(trends[_selectedIndex].name)\r")
+            var tweetCounter = [Tweet]()
+            
+            destVC.title = selectedTrend
+            
+            for eachTweet in self.tweets {
+                
+                if eachTweet.hashtags.contains(selectedTrend)    {
+                    
+                    print("yup, found one, \(selectedTrend)")
+                    tweetCounter.append(eachTweet)
+                    
+                } else  {
+                    print("nope")
+                }
+            }
+            
+            destVC.tweets = tweetCounter
+            
         }
     }
     
