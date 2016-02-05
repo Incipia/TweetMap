@@ -30,6 +30,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     var delegate: CenterViewControllerDelegate?
     
     var trends: [Trend] = []
+    var tweets: [Tweet] = []
     var mapVCTitle = String()
     
     private let radiusMenuPopover = Popover(options: PopoverOption.defaultOptions, showHandler: nil, dismissHandler: nil)
@@ -44,6 +45,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private var _locationManager = CLLocationManager()
     
     private var _shouldUpdateTrends = true
+    
+    private var _selectedIndex = 0
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -130,23 +133,22 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             let coordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                 longitude: userLocation.coordinate.longitude)
             
-            _getTweetsWithCoordinate(coordinate, radius: 15)
+            _getTweetsWithCoordinate(coordinate, radius: 20)
             map.setCenterCoordinate(coordinate, animated: true)
         }
     }
     
     private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Int)
     {
-        TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { tweets -> () in
+        TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { incomingTweets -> () in
             
             var hashtagFrequencyDictionary: [String: Int] = [:]
-            var tempTrends = [Trend]()
+            var tempTrends: [Trend] = []
             
-            for tweetObj in tweets
+            // for each tweet, go through all the hashtags and populate the hashtagFrequencyDictionary with correct info
+            for tweet in incomingTweets
             {
-                print(tweetObj)
-                print("-----------------------------------------------------")
-                for hashtag in tweetObj.hashtags
+                for hashtag in tweet.hashtags
                 {
                     if let hashtagCount = hashtagFrequencyDictionary[hashtag] {
                         hashtagFrequencyDictionary[hashtag] = hashtagCount + 1
@@ -157,41 +159,42 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 }
             }
             
-//            var tempTrends: [Trend] = []
+            // for each hashtag in the frequency dictionary, get the count and create a trend object
             for hashtag in hashtagFrequencyDictionary.keys
             {
                 let name = hashtag
                 let count = hashtagFrequencyDictionary[hashtag]!
                 
                 let trend = Trend(name: name, tweetVolume: count)
+                for tweet in incomingTweets {
+                    if tweet.hashtags.contains(hashtag) {
+                        trend.tweets.append(tweet)
+                    }
+                }
+                
                 tempTrends.append(trend)
-//                var newTrend = Trend(name: tweetObj.text, tweetVolume: tweetObj.hashtags.count)
-//                print("TEXT:\(tweetObj.text)\rHASHTAGS:\(tweetObj.hashtags)RETWEETS:\(tweetObj.retweets)\r")
-//                print(tweetObj.description)
-//                tempTrends.append(newTrend)
             }
-        
+            
+            self.tweets = incomingTweets
             self.trends = tempTrends
             self.reloadTrends()
         }
     }
     
+    
     func reloadTrends()   {
         if trends.count < 5 {
             print("not enough trends to display?")
         } else  {
+            
             trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
-            for each in trends  {
-                print("\(each.tweetVolume)\r")
-                print("\(each.name)\r")
-            }
+            
+            trends.removeRange(0...5)
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
             }
         }
     }
-    
-    
     
     //Mark: UIComponents
     func dropdown() {
@@ -208,14 +211,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         menuView.maskBackgroundColor = UIColor.clearColor()
         menuView.cellSeparatorColor = UIColor.whiteColor()
         menuView.cellTextLabelFont = UIFont(name: "Helvetica Neue", size: 20)
-        
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            self.navigationItem.title = items[indexPath]
-            
-            if self.navigationItem.title != nil {
-                self.mapVCTitle = self.navigationItem.title!
-            }
-        }
     }
     
     @IBAction func menu(sender: AnyObject) {
@@ -223,22 +218,33 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     }
     
 
-    @IBAction func radiusMenuButtonPressed(sender: AnyObject) {
-        
+    @IBAction func radiusMenuButtonPressed(sender: AnyObject)   {
         let zoomLevelTableView = createZoomLevelTableView()
         setupDataSourceAndDelegateWithTableView(zoomLevelTableView)
         radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
     }
     
+    //MARK: Label Tapped
+    
+    @IBAction func trendLabelTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            _selectedIndex = (sender.view?.tag)!
+            self.performSegueWithIdentifier("trendToDetail", sender: nil)
+        }
+    }
+    
     //MARK: Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "mapList")  {
-            guard let destVC = segue.destinationViewController as? ListTrendsViewController else    {
-                print("there was an error grabbing ListTrendsVC")
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if (segue.identifier == "trendToDetail") {
+            guard let destVC = segue.destinationViewController as? TopTweetsViewController else {
+                print("there was an error grabbing TopTweetsVC")
                 return
             }
-            destVC.navigationItem.title = self.mapVCTitle
-            destVC.trends = trends
+            
+            let selectedTrend = self.trends[_selectedIndex]
+            destVC.title = selectedTrend.name
+            destVC.configureWithTweets(selectedTrend.tweets)
         }
     }
     
@@ -285,7 +291,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             mapZoomLevel = 10.0
             radius = 20
         }
-        
         
         //Updating the menu makes a new call with the new search radius. UI has updated well thus far.
         if let location = CLLocationManager().location
