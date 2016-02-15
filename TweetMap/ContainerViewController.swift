@@ -70,6 +70,9 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
                 showShadowForCenterViewController(true)
             }
         case .Changed:
+         
+         guard recognizer.velocityInView(view).x > 0 else { return }
+         
             recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
             recognizer.setTranslation(CGPointZero, inView: view)
         case .Ended:
