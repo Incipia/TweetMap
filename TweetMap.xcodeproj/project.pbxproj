@@ -25,6 +25,7 @@
 		23F1B8401C21F0A9003BB13A /* TweetMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B83F1C21F0A9003BB13A /* TweetMapTests.swift */; };
 		23F1B84B1C21F0A9003BB13A /* TweetMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B84A1C21F0A9003BB13A /* TweetMapUITests.swift */; };
 		23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B8591C2200BB003BB13A /* MapViewController.swift */; };
+		23F2B29D1C718B1800FA0060 /* MaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2B29C1C718B1800FA0060 /* MaskLayer.swift */; };
 		D4AD193487FA2120CC046CD0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB3A93084C478EE412DDF7 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		23F1B84A1C21F0A9003BB13A /* TweetMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetMapUITests.swift; sourceTree = "<group>"; };
 		23F1B84C1C21F0A9003BB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23F1B8591C2200BB003BB13A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		23F2B29C1C718B1800FA0060 /* MaskLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskLayer.swift; sourceTree = "<group>"; };
 		AE4591F95156D69147DB1D5C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AEAB3A93084C478EE412DDF7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85310E5FA3177DC20FA8ACE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				23F1B8311C21F0A9003BB13A /* Assets.xcassets */,
 				23B9F4A51C2B93FD0058B0FE /* Popover.swift */,
 				2344905F1C3B72A700A10C02 /* Utilities.swift */,
+				23F2B29C1C718B1800FA0060 /* MaskLayer.swift */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				2344905E1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift in Sources */,
 				2386A4961C59668C00467F70 /* SidePanelViewController.swift in Sources */,
 				234490601C3B72A700A10C02 /* Utilities.swift in Sources */,
+				23F2B29D1C718B1800FA0060 /* MaskLayer.swift in Sources */,
 				237487501C476CD500626618 /* TwitterNetworkManager.swift in Sources */,
 				2386EEAA1C3CA844004C9F74 /* TopTweetsViewController.swift in Sources */,
 				2386A4981C5966A800467F70 /* ContainerViewController.swift in Sources */,

@@ -23,7 +23,7 @@ class TwitterNetworkManager {
         let geocodeString = "\(coordinateString),\(radiusString)"
         let query = "e OR t OR n OR o OR a OR i OR r OR s OR h OR l OR d OR c OR f OR u OR m OR y OR g OR p OR b OR v OR w OR k OR q OR j OR x OR z OR 0 OR 1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR ! OR ? OR @ OR ( OR ) OR : OR ;"
         
-        let params = ["q" : query, "geocode" : geocodeString, "count" : "50"]
+        let params = ["q" : query, "geocode" : geocodeString, "count" : "100"]
         var clientError: NSError?
         let client = TWTRAPIClient(userID: nil)
         let request = client.URLRequestWithMethod("GET", URL: searchTweetsEndpoint, parameters: params, error: &clientError)
@@ -44,7 +44,25 @@ class TwitterNetworkManager {
                     var tweets: [Tweet] = []
                     for status in statusesJSONArray
                     {
+//                        if status["favorite_count"] > 1 {
+//                            print("\(status["text"])\n\n\(status["favorite_count"])\n\n\(status["retweeted"])\n\n\n")
+//                        }
+//                        print(status["favorite_count"])
                         var hashtagTextArray: [String] = []
+                        
+                        guard let numberOfTimesFavorited = status["favorite_count"].int else  {
+                            print("couldn't grab favs")
+                            return
+                        }
+                        
+                        print("FAV:\(numberOfTimesFavorited)")
+                        
+                        guard let retweets = status["retweeted"].int else {
+                            print("couldn't grab retweets")
+                            return
+                        }
+                        
+                        print("RETWEET:\(retweets)")
                         
                         if let hashtags = status["entities"]["hashtags"].array {
                             for hashtag in hashtags
@@ -55,7 +73,7 @@ class TwitterNetworkManager {
                             
                             let id = status["id"].stringValue
                             if let tweetObject = tweetObjects.filter({$0.tweetID == id}).first {
-                                let tweet = Tweet(object: tweetObject, hashtags: hashtagTextArray)
+                                let tweet = Tweet(object: tweetObject, hashtags: hashtagTextArray, favoriteCount: numberOfTimesFavorited, retweets: retweets)
                                 tweets.append(tweet)
                             }
                         }

@@ -49,9 +49,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        
-        print(self.navigationController)
-        
+
         drawRegion()
         dropdown()
         
@@ -93,9 +91,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor.clearColor()
-        
-        //(I set menu title color via BTNav Dropdown, not standard through the navController titleTextAttributes)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
