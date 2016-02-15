@@ -93,19 +93,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor.clearColor()
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
-
-
         
-        
-        
-        //set menu title color via BTNav Dropdown, not standard through the navController
+        //(I set menu title color via BTNav Dropdown, not standard through the navController titleTextAttributes)
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(2.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseOut, animations:{
+        UIView.animateWithDuration(1.0, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations:{
             self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
         })
     }
@@ -220,13 +214,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         mapVCTitle = items.first!
         
         self.navigationItem.titleView = menuView
-        
-        menuView.backgroundColor = UIColor.clearColor()
-        
+                
+        //cell config
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
-        menuView.maskBackgroundColor = UIColor.clearColor()
         menuView.cellSeparatorColor = UIColor.whiteColor()
         menuView.cellTextLabelFont = UIFont(name: "Helvetica Neue", size: 20)
+        menuView.cellTextLabelColor = UIColor.whiteColor()
+        
     }
     
     @IBAction func menu(sender: AnyObject) {
