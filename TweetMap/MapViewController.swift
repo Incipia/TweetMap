@@ -38,7 +38,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private var zoomLevelTableViewDataSource: ZoomLevelTableViewDataSource?
     private var zoomLevelTableViewDelegate: ZoomLevelTableViewDelegate?
     
-    let locationManager = CLLocationManager()
     var screenwidth : CGFloat!
     var screenheight : CGFloat!
     
@@ -51,11 +50,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        print(self.navigationController)
+        
         drawRegion()
         dropdown()
         
         radiusMenuButton.layer.cornerRadius = 15
-        
+                        
         if let location = CLLocationManager().location
         {
             _shouldUpdateTrends = false
@@ -87,6 +88,20 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+                
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clearColor()
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
+
+
+        
+        
+        
+        //set menu title color via BTNav Dropdown, not standard through the navController
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -207,6 +222,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         self.navigationItem.titleView = menuView
         
         menuView.backgroundColor = UIColor.clearColor()
+        
         menuView.cellBackgroundColor = UIColor.darkGrayColor()
         menuView.maskBackgroundColor = UIColor.clearColor()
         menuView.cellSeparatorColor = UIColor.whiteColor()
