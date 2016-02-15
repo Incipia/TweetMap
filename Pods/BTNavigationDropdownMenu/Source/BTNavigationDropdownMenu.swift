@@ -30,14 +30,7 @@ import UIKit
 public class BTNavigationDropdownMenu: UIView {
     
     // The color of menu title. Default is darkGrayColor()
-    public var menuTitleColor: UIColor! {
-        get {
-            return self.configuration.menuTitleColor
-        }
-        set(value) {
-            self.configuration.menuTitleColor = value
-        }
-    }
+    public var menuTitleColor = UIColor.whiteColor()
     
     // The height of the cell. Default is 50
     public var cellHeight: CGFloat! {
@@ -243,7 +236,7 @@ public class BTNavigationDropdownMenu: UIView {
         
         // Init background view (under table view)
         self.backgroundView = UIView(frame: menuWrapperBounds)
-        self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
+        self.backgroundView.backgroundColor = UIColor.clearColor()
         self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
         
         let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "hideMenu");
@@ -303,7 +296,7 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     func setupDefaultConfiguration() {
-        self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor // Setter
+        self.menuTitleColor = UIColor.whiteColor()
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
         self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
@@ -328,7 +321,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.hidden = false
         
         // Change background alpha
-        self.backgroundView.alpha = 0
+        self.backgroundView.alpha = 50
         
         // Animation
         self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
@@ -427,11 +420,11 @@ class BTConfiguration {
         let arrowImagePath = imageBundle?.pathForResource("arrow_down_icon", ofType: "png")
 
         // Default values
-        self.menuTitleColor = UIColor.darkGrayColor()
+        self.menuTitleColor = UIColor.whiteColor()
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.whiteColor()
         self.cellSeparatorColor = UIColor.darkGrayColor()
-        self.cellTextLabelColor = UIColor.darkGrayColor()
+        self.cellTextLabelColor = UIColor.whiteColor()
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.cellTextLabelAlignment = NSTextAlignment.Left
         self.cellSelectionColor = UIColor.lightGrayColor()

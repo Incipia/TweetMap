@@ -36,11 +36,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jYD-d3-IYM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uBa-3M-aeT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIx-dc-L82" customClass="MGLMapView">
-                                <rect key="frame" x="0.0" y="-60" width="320" height="628"/>
+                                <rect key="frame" x="0.0" y="-60" width="320" height="564"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsZooming" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsScrolling" value="YES"/>
@@ -49,10 +49,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CK-1O-jUu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jf9-zY-c2p">
-                                        <rect key="frame" x="0.0" y="109" width="320" height="250"/>
+                                        <rect key="frame" x="0.0" y="77" width="320" height="250"/>
                                         <subviews>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1b-VG-hde">
                                                 <rect key="frame" x="100" y="20" width="120" height="60"/>
@@ -169,7 +169,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKK-Or-Djj">
-                                <rect key="frame" x="20" y="518" width="94" height="30"/>
+                                <rect key="frame" x="20" y="454" width="94" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="FJY-h0-xak"/>
@@ -316,12 +316,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSW-ch-Fuj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773" y="130"/>
+            <point key="canvasLocation" x="2151" y="748"/>
         </scene>
         <!--Top Tweets View Controller-->
         <scene sceneID="ZOR-aI-wa5">
             <objects>
-                <tableViewController id="xia-Tk-bib" customClass="TopTweetsViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="xia-Tk-bib" customClass="TopTweetsViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="28" sectionFooterHeight="28" id="qhL-6d-Tg5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,9 +374,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lkf-Cv-NYK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cjP-Tg-UPd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cjP-Tg-UPd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

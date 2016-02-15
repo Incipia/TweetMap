@@ -29,6 +29,13 @@ class TopTweetsViewController: UITableViewController, TWTRTweetViewDelegate {
     {
         super.viewDidLoad()
         _setupTableView()
+        print(self.navigationController)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.translucent = false
     }
     
     private func _setupTableView()
