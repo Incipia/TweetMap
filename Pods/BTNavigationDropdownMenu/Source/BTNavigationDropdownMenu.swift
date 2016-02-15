@@ -236,7 +236,7 @@ public class BTNavigationDropdownMenu: UIView {
         
         // Init background view (under table view)
         self.backgroundView = UIView(frame: menuWrapperBounds)
-        self.backgroundView.backgroundColor = UIColor.clearColor()
+        self.backgroundView.backgroundColor = UIColor.blackColor()
         self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
         
         let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "hideMenu");
@@ -321,7 +321,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.hidden = false
         
         // Change background alpha
-        self.backgroundView.alpha = 50
+        self.backgroundView.alpha = 0.3
         
         // Animation
         self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
