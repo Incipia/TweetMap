@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mapbox
 
 extension PopoverOption {
     static var defaultOptions: [PopoverOption]  {
@@ -40,5 +41,12 @@ extension UIImage
         UIGraphicsEndImageContext()
         
         return image
+    }
+}
+
+extension MGLMapView   {
+    
+    func setAndInferZoom(map: MGLMapView, zoom: Double, completion: (() -> ())?)   {
+        map.setZoomLevel(zoom, animated: true)
     }
 }

@@ -27,6 +27,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     @IBOutlet weak var viewContainerForTrends: UIView!
     @IBOutlet var trendLabels: [UILabel]!
     
+    @IBOutlet weak var metricOrNot: UISegmentedControl!
+    
+    
     var delegate: CenterViewControllerDelegate?
     
     var trends: [Trend] = []
@@ -61,7 +64,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                 longitude: location.coordinate.longitude)
             
-            _getTweetsWithCoordinate(coordinate, radius: 20)
+            _getTweetsWithCoordinate(coordinate, metricSystem: false, radius: 20)
             map.setCenterCoordinate(coordinate, zoomLevel: 10.1, animated: true)
         }
         else // location is not ready, so rely on locationManager:didUpdateLocations:
@@ -94,8 +97,11 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(1.0, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations:{
-            self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
+        UIView.animateWithDuration(1.0, delay: 0.5,
+            options: UIViewAnimationOptions.CurveEaseOut,
+            animations:{
+                self.viewContainerForTrends.alpha = 0.8},
+            completion: { complete in
         })
     }
     
@@ -137,14 +143,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             let coordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                 longitude: userLocation.coordinate.longitude)
             
-            _getTweetsWithCoordinate(coordinate, radius: 20)
+            _getTweetsWithCoordinate(coordinate, metricSystem: false, radius: 20)
             map.setCenterCoordinate(coordinate, animated: true)
         }
     }
     
-    private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Int)
+    private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, metricSystem: Bool, radius: Int)
     {
-        TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { incomingTweets -> () in
+        TwitterNetworkManager.getTweetsForCoordinate(coordinate, metricSystem: metricSystem, radius: radius) { incomingTweets -> () in
             
             var hashtagFrequencyDictionary: [String: Int] = [:]
             var tempTrends: [Trend] = []
@@ -297,17 +303,30 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     {
         var mapZoomLevel: Double
         var radius: Int
+        var metricSystem = false
+        
+        switch metricOrNot.selectedSegmentIndex {
+        case 0:
+            metricSystem = false
+        case 1:
+            metricSystem = true
+        default:
+            metricSystem = false
+        }
         
         switch indexPath.row   {
         case 0:
             mapZoomLevel = 11.0
-            radius = 50
+            radius = 10
+            
         case 1:
             mapZoomLevel = 10.0
             radius = 20
+            
         case 2:
             mapZoomLevel = 9.0
-            radius = 10
+            radius = 50
+            
         default:
             mapZoomLevel = 10.0
             radius = 20
@@ -321,7 +340,23 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             longitude: location.coordinate.longitude)
         
         map.setZoomLevel(mapZoomLevel, animated: true)
-        _getTweetsWithCoordinate(coordinate, radius: radius)
+            
+            
+        let metersPerPixel = map.metersPerPixelAtLatitude(coordinate.latitude)
+        let pixelsPerScreen = Double(self.view.bounds.width)
+        
+        let kilometersShownOnScreen = round((metersPerPixel * pixelsPerScreen) / 1000.0)
+        
+        print("Meters Per Pixel:\(metersPerPixel)")
+        print("Pixels Per Screen Width\(pixelsPerScreen)")
+        
+        print("Scale:\(kilometersShownOnScreen) km\n\n")
+        
+        /*
+            Really shakes down to 36 km, 18 km, and 9 km right now, though it's rushing before the zoom animation completes
+        */
+            
+        _getTweetsWithCoordinate(coordinate, metricSystem: metricSystem, radius: radius)
         }
     }
     
@@ -339,11 +374,9 @@ extension MapViewController: SidePanelViewControllerDelegate {
                 break
             case "Cities":
                 print("something worked!")
-
                 break
             case "Trending Near Me":
                 print("something worked!")
-
                 break
             default:
                 break
