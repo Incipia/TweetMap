@@ -192,8 +192,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         } else  {
             
             trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
-            
-            trends.removeRange(0...5)
+
+//            trends.removeRange(0...5)
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
             }
@@ -202,7 +202,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     //Mark: UIComponents
     func dropdown() {
-        let items = ["Hashtags", "Words", "Users", "All"]
+        let items = ["Hashtags", "Favorites", "Retweets"]
 
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
         
@@ -215,6 +215,22 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         menuView.cellSeparatorColor = UIColor.whiteColor()
         menuView.cellTextLabelFont = UIFont(name: "Helvetica Neue", size: 20)
         menuView.cellTextLabelColor = UIColor.whiteColor()
+        menuView.cellTextLabelAlignment = NSTextAlignment.Center
+        
+        //What to do with option selected by user from dropdown menu
+        menuView.didSelectItemAtIndexHandler = { indexPath in
+            switch indexPath    {
+            case 0:
+                print("picked first choice")
+            case 1:
+                print("picked second choice")
+            case 2:
+                print("picked third choice")
+            default:
+                break
+            }
+            
+        }
         
     }
     
@@ -314,6 +330,27 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
 
 extension MapViewController: SidePanelViewControllerDelegate {
     func menuSelected(selected: AnyObject) {
+        
+        if selected is String  {
+            
+            switch selected as! String {
+            case "Settings":
+                print("something worked!")
+                break
+            case "Cities":
+                print("something worked!")
+
+                break
+            case "Trending Near Me":
+                print("something worked!")
+
+                break
+            default:
+                break
+            }
+        }
+
+        
         delegate?.collapseSidePanel?()
     }
 }
