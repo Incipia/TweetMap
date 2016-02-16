@@ -41,19 +41,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private var zoomLevelTableViewDataSource: ZoomLevelTableViewDataSource?
     private var zoomLevelTableViewDelegate: ZoomLevelTableViewDelegate?
     
-    var screenwidth : CGFloat!
-    var screenheight : CGFloat!
-    
     private var _locationManager = CLLocationManager()
-    
     private var _shouldUpdateTrends = true
-    
     private var _selectedIndex = 0
     
     override func viewDidLoad(){
         super.viewDidLoad()
 
-        drawRegion()
+        drawShadedRegion()
         dropdown()
         
         radiusMenuButton.layer.cornerRadius = 15
@@ -82,7 +77,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,7 +105,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     
     //MARK: Shade outer regions
-    func drawRegion() {
+    func drawShadedRegion() {
         
         let fillLayer = CAShapeLayer()
         fillLayer.fillColor = UIColor.grayColor().CGColor
@@ -132,6 +126,28 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         fillLayer.opacity = 0.7
         
         layerView.layer.addSublayer(fillLayer)
+        drawGradienForTopAndBottom()
+    }
+    
+    func drawGradienForTopAndBottom()   {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        
+        let color1 = UIColor.grayColor().CGColor as CGColorRef
+        let color2 = UIColor.clearColor().CGColor as CGColorRef
+        let color3 = UIColor.clearColor().CGColor as CGColorRef
+        let color4 = UIColor.grayColor().CGColor as CGColorRef
+        
+        gradientLayer.colors = [color1, color2, color3, color4]
+        
+        gradientLayer.locations = [0, 0.11, 0.89, 1]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 0, y: 0.13)
+//        
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+//        gradientLayer.endPoint = CGPoint(x: 0, y: 0.87)
+        
+        self.view.layer.addSublayer(gradientLayer)
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -181,10 +197,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                         trend.tweets.append(tweet)
                     }
                 }
-                
                 tempTrends.append(trend)
             }
-            
             self.tweets = incomingTweets
             self.trends = tempTrends
             self.reloadTrends()
@@ -194,12 +208,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     func reloadTrends()   {
         if trends.count < 5 {
-            print("not enough trends to display?")
+            print("not enough trends to display")
         } else  {
-            
             trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
-
-//            trends.removeRange(0...5)
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
             }
@@ -210,10 +221,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     func dropdown() {
         let items = ["Hashtags", "Nearby"]
 
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController,
+            title: items.first!, items: items)
         
         mapVCTitle = items.first!
-        
         self.navigationItem.titleView = menuView
                 
         //cell config
@@ -329,8 +340,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         _getTweetsWithCoordinate(coordinate, metricSystem: metricSystem, radius: radius)
         }
     }
-    
-    
 }
 
 extension MapViewController: SidePanelViewControllerDelegate {
@@ -349,8 +358,6 @@ extension MapViewController: SidePanelViewControllerDelegate {
                 break
             }
         }
-
-        
         delegate?.collapseSidePanel?()
     }
 }
