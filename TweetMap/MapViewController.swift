@@ -41,20 +41,23 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private var zoomLevelTableViewDataSource: ZoomLevelTableViewDataSource?
     private var zoomLevelTableViewDelegate: ZoomLevelTableViewDelegate?
     
-    var screenwidth : CGFloat!
-    var screenheight : CGFloat!
-    
     private var _locationManager = CLLocationManager()
-    
     private var _shouldUpdateTrends = true
-    
     private var _selectedIndex = 0
     
     override func viewDidLoad(){
         super.viewDidLoad()
 
-        drawRegion()
         dropdown()
+        
+        // these sublayer lines pull from the MaskLayer class, basically where the 2 functions got moved
+        let maskLayer = MaskLayer()
+        let caLayer = maskLayer.drawShadedRegion()
+        let gradientLayer = maskLayer.drawGradienForTopAndBottom()
+        
+        layerView.layer.addSublayer(caLayer)
+        self.view.layer.insertSublayer(gradientLayer, atIndex: 1)
+        
         
         radiusMenuButton.layer.cornerRadius = 15
                         
@@ -75,15 +78,15 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         }
         
         for each in trendLabels {
-            each.layer.cornerRadius = 8
+            each.layer.cornerRadius = 5
             each.clipsToBounds = true
         }
         
         map.delegate = self
         map.showsUserLocation = true
         map.logoView.hidden = true
-
     }
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -109,30 +112,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
-    
-    //MARK: Shade outer regions
-    func drawRegion() {
-        
-        let fillLayer = CAShapeLayer()
-        fillLayer.fillColor = UIColor.grayColor().CGColor
-        
-        let size = UIScreen.mainScreen().bounds
-        let rad: CGFloat = min(size.height, size.width)
-        
-        let path = UIBezierPath(roundedRect: CGRectMake(0, 0, size.width, size.height), cornerRadius: 0.0)
-        
-        let circlePath = UIBezierPath(roundedRect: CGRectMake(size.width/2.55-(rad/2.0), size.height/2.5-(rad/2.0), rad/0.81, rad/0.81), cornerRadius: rad)
-
-        path.appendPath(circlePath)
-        path.usesEvenOddFillRule = true
-        
-        fillLayer.path = path.CGPath
-        fillLayer.fillRule = kCAFillRuleEvenOdd
-        fillLayer.fillColor = UIColor.grayColor().CGColor
-        fillLayer.opacity = 0.7
-        
-        layerView.layer.addSublayer(fillLayer)
-    }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
@@ -181,10 +160,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                         trend.tweets.append(tweet)
                     }
                 }
-                
                 tempTrends.append(trend)
             }
-            
             self.tweets = incomingTweets
             self.trends = tempTrends
             self.reloadTrends()
@@ -194,12 +171,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     func reloadTrends()   {
         if trends.count < 5 {
-            print("not enough trends to display?")
+            print("not enough trends to display")
         } else  {
-            
             trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
-
-//            trends.removeRange(0...5)
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
             }
@@ -210,10 +184,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     func dropdown() {
         let items = ["Hashtags", "Nearby"]
 
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController,
+            title: items.first!, items: items)
         
         mapVCTitle = items.first!
-        
         self.navigationItem.titleView = menuView
                 
         //cell config
@@ -329,8 +303,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         _getTweetsWithCoordinate(coordinate, metricSystem: metricSystem, radius: radius)
         }
     }
-    
-    
 }
 
 extension MapViewController: SidePanelViewControllerDelegate {
@@ -349,8 +321,6 @@ extension MapViewController: SidePanelViewControllerDelegate {
                 break
             }
         }
-
-        
         delegate?.collapseSidePanel?()
     }
 }
