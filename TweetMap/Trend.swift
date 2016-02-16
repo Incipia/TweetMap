@@ -12,8 +12,6 @@ import UIKit
 class Trend {
     
     var tweetVolume = Int()
-    var favoriteCount = Int()
-    var retweetCount = Int()
     var name = String()
     var tweets = [Tweet]()
     
@@ -21,13 +19,6 @@ class Trend {
         self.name = name
         self.tweetVolume = tweetVolume
     }
-    
-    //Sort trends in 3 ways, hashtags, favoriteCount, and retweets
-    //In all 3, sort the tweets array, but by different tweet attributes
-    //Assign sorted values to tweetVolume
-    
-    
-
 }
 
 

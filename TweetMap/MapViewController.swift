@@ -208,7 +208,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     //Mark: UIComponents
     func dropdown() {
-        let items = ["Hashtags", "Favorites", "Retweets"]
+        let items = ["Hashtags", "Nearby"]
 
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
         
@@ -230,14 +230,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
                 print("picked first choice")
             case 1:
                 print("picked second choice")
-            case 2:
-                print("picked third choice")
             default:
                 break
             }
-            
         }
-        
     }
     
     @IBAction func menu(sender: AnyObject) {
@@ -252,7 +248,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     }
     
     //MARK: Label Tapped
-    
     @IBAction func trendLabelTapped(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             _selectedIndex = (sender.view?.tag)!
@@ -274,7 +269,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             destVC.configureWithTweets(selectedTrend.tweets)
         }
     }
-    
     
     
     //MARK: Table View References for Zoom Menu
@@ -299,37 +293,29 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         }
     }
     
+
+    
     private func updateZoomLevelWithIndexPath(indexPath: NSIndexPath)
     {
         var mapZoomLevel: Double
         var radius: Int
         var metricSystem = false
         
-        switch metricOrNot.selectedSegmentIndex {
-        case 0:
-            metricSystem = false
-        case 1:
+        if metricOrNot.selectedSegmentIndex == 0 {
             metricSystem = true
-        default:
+        }   else    {
             metricSystem = false
         }
         
         switch indexPath.row   {
         case 0:
-            mapZoomLevel = 11.0
-            radius = 10
-            
+            mapZoomLevel = 11.0;    radius = 10
         case 1:
-            mapZoomLevel = 10.0
-            radius = 20
-            
+            mapZoomLevel = 10.0;    radius = 20
         case 2:
-            mapZoomLevel = 9.0
-            radius = 50
-            
+            mapZoomLevel = 9.0;     radius = 50
         default:
-            mapZoomLevel = 10.0
-            radius = 20
+            mapZoomLevel = 10.0;    radius = 20
         }
         
         //Updating the menu makes a new call with the new search radius. UI has updated well thus far.
@@ -338,23 +324,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         _shouldUpdateTrends = false
         let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
             longitude: location.coordinate.longitude)
-        
         map.setZoomLevel(mapZoomLevel, animated: true)
-            
-            
-        let metersPerPixel = map.metersPerPixelAtLatitude(coordinate.latitude)
-        let pixelsPerScreen = Double(self.view.bounds.width)
-        
-        let kilometersShownOnScreen = round((metersPerPixel * pixelsPerScreen) / 1000.0)
-        
-        print("Meters Per Pixel:\(metersPerPixel)")
-        print("Pixels Per Screen Width\(pixelsPerScreen)")
-        
-        print("Scale:\(kilometersShownOnScreen) km\n\n")
-        
-        /*
-            Really shakes down to 36 km, 18 km, and 9 km right now, though it's rushing before the zoom animation completes
-        */
             
         _getTweetsWithCoordinate(coordinate, metricSystem: metricSystem, radius: radius)
         }
@@ -369,14 +339,11 @@ extension MapViewController: SidePanelViewControllerDelegate {
         if selected is String  {
             
             switch selected as! String {
-            case "Settings":
-                print("something worked!")
+            case "Contact Us":
+                print("contact us")
                 break
-            case "Cities":
-                print("something worked!")
-                break
-            case "Trending Near Me":
-                print("something worked!")
+            case "Rate Us":
+                print("rate us")
                 break
             default:
                 break

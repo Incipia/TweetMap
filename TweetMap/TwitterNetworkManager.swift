@@ -27,8 +27,6 @@ class TwitterNetworkManager {
             system = "km"
         case false:
             system = "mi"
-        default:
-            system = "mi"
         }
         
         let radiusString = "\(radius)\(system)"
@@ -61,20 +59,6 @@ class TwitterNetworkManager {
                     {
                         var hashtagTextArray: [String] = []
                         
-                        guard let numberOfTimesFavorited = status["favorite_count"].int else  {
-                            print("couldn't grab favs")
-                            return
-                        }
-                        
-//                        print("FAV:\(numberOfTimesFavorited)")
-                        
-                        guard let retweets = status["retweeted"].int else {
-                            print("couldn't grab retweets")
-                            return
-                        }
-                        
-//                        print("RETWEET:\(retweets)")
-                        
                         if let hashtags = status["entities"]["hashtags"].array {
                             for hashtag in hashtags
                             {
@@ -84,7 +68,7 @@ class TwitterNetworkManager {
                             
                             let id = status["id"].stringValue
                             if let tweetObject = tweetObjects.filter({$0.tweetID == id}).first {
-                                let tweet = Tweet(object: tweetObject, hashtags: hashtagTextArray, favoriteCount: numberOfTimesFavorited, retweets: retweets)
+                                let tweet = Tweet(object: tweetObject, hashtags: hashtagTextArray)
                                 tweets.append(tweet)
                             }
                         }
