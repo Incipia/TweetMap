@@ -48,16 +48,16 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     override func viewDidLoad(){
         super.viewDidLoad()
 
-//        drawShadedRegion()
         dropdown()
         
+        // these sublayer lines pull from the MaskLayer class, basically where the 2 functions got moved
         let maskLayer = MaskLayer()
-        
         let caLayer = maskLayer.drawShadedRegion()
         let gradientLayer = maskLayer.drawGradienForTopAndBottom()
         
         layerView.layer.addSublayer(caLayer)
-        self.view.layer.insertSublayer(gradientLayer, atIndex: 2)
+        self.view.layer.insertSublayer(gradientLayer, atIndex: 1)
+        
         
         radiusMenuButton.layer.cornerRadius = 15
                         
@@ -87,6 +87,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         map.logoView.hidden = true
     }
     
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         viewContainerForTrends.alpha = 0
@@ -111,48 +112,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
-    
-    //MARK: Shade outer regions
-//    func drawShadedRegion() {
-//        
-//        let fillLayer = CAShapeLayer()
-//        fillLayer.fillColor = UIColor.grayColor().CGColor
-//        
-//        let size = UIScreen.mainScreen().bounds
-//        let rad: CGFloat = min(size.height, size.width)
-//        
-//        let path = UIBezierPath(roundedRect: CGRectMake(0, 0, size.width, size.height), cornerRadius: 0.0)
-//        
-//        let circlePath = UIBezierPath(roundedRect: CGRectMake(size.width/2.55-(rad/2.0), size.height/2.5-(rad/2.0), rad/0.81, rad/0.81), cornerRadius: rad)
-//        
-//        path.appendPath(circlePath)
-//        path.usesEvenOddFillRule = true
-//        
-//        fillLayer.path = path.CGPath
-//        fillLayer.fillRule = kCAFillRuleEvenOdd
-//        fillLayer.fillColor = UIColor.grayColor().CGColor
-//        fillLayer.opacity = 0.7
-//        
-//        layerView.layer.addSublayer(fillLayer)
-//        
-//        drawGradienForTopAndBottom()
-//    }
-//    
-//    func drawGradienForTopAndBottom() {
-//        
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.frame = UIScreen.mainScreen().bounds
-//        
-//        let color1 = UIColor.grayColor().CGColor as CGColorRef
-//        let color2 = UIColor.clearColor().CGColor as CGColorRef
-//        let color3 = UIColor.clearColor().CGColor as CGColorRef
-//        let color4 = UIColor.grayColor().CGColor as CGColorRef
-//        
-//        gradientLayer.colors = [color1, color2, color3, color4]
-//        gradientLayer.locations = [0, 0.10, 0.90, 1]
-//        
-//        self.view.layer.insertSublayer(gradientLayer, atIndex: 1)
-//    }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {

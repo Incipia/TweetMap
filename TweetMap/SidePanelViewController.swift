@@ -18,7 +18,7 @@ class SidePanelViewController: UIViewController {
     
     var delegate: SidePanelViewControllerDelegate?
   
-  var menuOptions = ["Settings", "Cities", "Trending Near Me"]
+  var menuOptions = ["Contact Us", "Rate Us"]
   
   struct TableView {
     struct CellIdentifiers {

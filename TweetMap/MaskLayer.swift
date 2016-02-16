@@ -15,7 +15,6 @@ class MaskLayer {
     func drawShadedRegion() -> CAShapeLayer {
         
         let fillLayer = CAShapeLayer()
-        fillLayer.fillColor = UIColor.grayColor().CGColor
         
         let size = UIScreen.mainScreen().bounds
         let rad: CGFloat = min(size.height, size.width)
@@ -29,8 +28,8 @@ class MaskLayer {
         
         fillLayer.path = path.CGPath
         fillLayer.fillRule = kCAFillRuleEvenOdd
-        fillLayer.fillColor = UIColor.grayColor().CGColor
-        fillLayer.opacity = 0.7
+        fillLayer.fillColor = UIColor.blackColor().CGColor
+        fillLayer.opacity = 0.15
         
         return fillLayer
     }
@@ -39,13 +38,12 @@ class MaskLayer {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = UIScreen.mainScreen().bounds
         
-        let color1 = UIColor.grayColor().CGColor as CGColorRef
-        let color2 = UIColor.clearColor().CGColor as CGColorRef
-        let color3 = UIColor.clearColor().CGColor as CGColorRef
-        let color4 = UIColor.grayColor().CGColor as CGColorRef
+        let shadedColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor as CGColorRef
         
-        gradientLayer.colors = [color1, color2, color3, color4]
-        gradientLayer.locations = [0, 0.11, 0.89, 1]
+        let clearColor = UIColor.clearColor().CGColor as CGColorRef
+        
+        gradientLayer.colors = [shadedColor, clearColor, clearColor, clearColor, clearColor, shadedColor]
+        gradientLayer.locations = [0.0, 0.10, 0.3, 0.75, 0.85, 1]
         
         return gradientLayer
     }
