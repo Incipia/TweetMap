@@ -47,8 +47,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     override func viewDidLoad(){
         super.viewDidLoad()
-
-        dropdown()
+        
+        let dropdownMenu = Dropdown(navController: self.navigationController, navItem: self.navigationItem)
+        dropdownMenu.create()
         
         // these sublayer lines pull from the MaskLayer class, basically where the 2 functions got moved
         let maskLayer = MaskLayer()
@@ -97,6 +98,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor.clearColor()
+        
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -112,7 +115,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.Default
     }
     
-
+    
+    //MARK: LOCATION MANAGER
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         if _shouldUpdateTrends
@@ -127,6 +131,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         }
     }
     
+    //MARK: NETWORK CALL
     private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, metricSystem: Bool, radius: Int)
     {
         TwitterNetworkManager.getTweetsForCoordinate(coordinate, metricSystem: metricSystem, radius: radius) { incomingTweets -> () in
@@ -181,35 +186,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     }
     
     //Mark: UIComponents
-    func dropdown() {
-        let items = ["Hashtags", "Nearby"]
-
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController,
-            title: items.first!, items: items)
-        
-        mapVCTitle = items.first!
-        self.navigationItem.titleView = menuView
-                
-        //cell config
-        menuView.cellBackgroundColor = UIColor.darkGrayColor()
-        menuView.cellSeparatorColor = UIColor.whiteColor()
-        menuView.cellTextLabelFont = UIFont(name: "Helvetica Neue", size: 20)
-        menuView.cellTextLabelColor = UIColor.whiteColor()
-        menuView.cellTextLabelAlignment = NSTextAlignment.Center
-        
-        //What to do with option selected by user from dropdown menu
-        menuView.didSelectItemAtIndexHandler = { indexPath in
-            switch indexPath    {
-            case 0:
-                print("picked first choice")
-            case 1:
-                print("picked second choice")
-            default:
-                break
-            }
-        }
-    }
-    
     @IBAction func menu(sender: AnyObject) {
         delegate?.toggleLeftPanel?()
     }
@@ -221,7 +197,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
     }
     
-    //MARK: Label Tapped
     @IBAction func trendLabelTapped(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             _selectedIndex = (sender.view?.tag)!

@@ -17,6 +17,7 @@
 		2386EEAA1C3CA844004C9F74 /* TopTweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */; };
 		2386EEAD1C3DB813004C9F74 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */; };
 		238E48E11C646DE00036FE7E /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E48E01C646DE00036FE7E /* Tweet.swift */; };
+		23AB321D1C73D11B00F698BE /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AB321C1C73D11B00F698BE /* Dropdown.swift */; };
 		23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9F4A51C2B93FD0058B0FE /* Popover.swift */; };
 		23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */; };
 		23F1B8301C21F0A9003BB13A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B82E1C21F0A9003BB13A /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTweetsViewController.swift; sourceTree = "<group>"; };
 		2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		238E48E01C646DE00036FE7E /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		23AB321C1C73D11B00F698BE /* Dropdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
 		23B9F4A51C2B93FD0058B0FE /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Popover.swift; path = ../Pods/Popover/Classes/Popover.swift; sourceTree = "<group>"; };
 		23F1B8271C21F0A9003BB13A /* TweetMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				23B9F4A51C2B93FD0058B0FE /* Popover.swift */,
 				2344905F1C3B72A700A10C02 /* Utilities.swift */,
 				23F2B29C1C718B1800FA0060 /* MaskLayer.swift */,
+				23AB321C1C73D11B00F698BE /* Dropdown.swift */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				237487501C476CD500626618 /* TwitterNetworkManager.swift in Sources */,
 				2386EEAA1C3CA844004C9F74 /* TopTweetsViewController.swift in Sources */,
 				2386A4981C5966A800467F70 /* ContainerViewController.swift in Sources */,
+				23AB321D1C73D11B00F698BE /* Dropdown.swift in Sources */,
 				2318696C1C2931170088F76E /* Trend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
