@@ -27,6 +27,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     @IBOutlet weak var viewContainerForTrends: UIView!
     @IBOutlet var trendLabels: [UILabel]!
     
+    @IBOutlet weak var metricOrNot: UISegmentedControl!
+    
+    
     var delegate: CenterViewControllerDelegate?
     
     var trends: [Trend] = []
@@ -49,9 +52,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        
-        print(self.navigationController)
-        
+
         drawRegion()
         dropdown()
         
@@ -63,7 +64,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                 longitude: location.coordinate.longitude)
             
-            _getTweetsWithCoordinate(coordinate, radius: 20)
+            _getTweetsWithCoordinate(coordinate, metricSystem: false, radius: 20)
             map.setCenterCoordinate(coordinate, zoomLevel: 10.1, animated: true)
         }
         else // location is not ready, so rely on locationManager:didUpdateLocations:
@@ -93,14 +94,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.view.backgroundColor = UIColor.clearColor()
-        
-        //(I set menu title color via BTNav Dropdown, not standard through the navController titleTextAttributes)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(1.0, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations:{
-            self.viewContainerForTrends.alpha = 0.8}, completion: { complete in
+        UIView.animateWithDuration(1.0, delay: 0.5,
+            options: UIViewAnimationOptions.CurveEaseOut,
+            animations:{
+                self.viewContainerForTrends.alpha = 0.8},
+            completion: { complete in
         })
     }
     
@@ -142,14 +143,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             let coordinate = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude,
                 longitude: userLocation.coordinate.longitude)
             
-            _getTweetsWithCoordinate(coordinate, radius: 20)
+            _getTweetsWithCoordinate(coordinate, metricSystem: false, radius: 20)
             map.setCenterCoordinate(coordinate, animated: true)
         }
     }
     
-    private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Int)
+    private func _getTweetsWithCoordinate(coordinate: CLLocationCoordinate2D, metricSystem: Bool, radius: Int)
     {
-        TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { incomingTweets -> () in
+        TwitterNetworkManager.getTweetsForCoordinate(coordinate, metricSystem: metricSystem, radius: radius) { incomingTweets -> () in
             
             var hashtagFrequencyDictionary: [String: Int] = [:]
             var tempTrends: [Trend] = []
@@ -197,8 +198,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         } else  {
             
             trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
-            
-            trends.removeRange(0...5)
+
+//            trends.removeRange(0...5)
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
             }
@@ -207,7 +208,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     
     //Mark: UIComponents
     func dropdown() {
-        let items = ["Hashtags", "Words", "Users", "All"]
+        let items = ["Hashtags", "Nearby"]
 
         let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
         
@@ -220,7 +221,19 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         menuView.cellSeparatorColor = UIColor.whiteColor()
         menuView.cellTextLabelFont = UIFont(name: "Helvetica Neue", size: 20)
         menuView.cellTextLabelColor = UIColor.whiteColor()
+        menuView.cellTextLabelAlignment = NSTextAlignment.Center
         
+        //What to do with option selected by user from dropdown menu
+        menuView.didSelectItemAtIndexHandler = { indexPath in
+            switch indexPath    {
+            case 0:
+                print("picked first choice")
+            case 1:
+                print("picked second choice")
+            default:
+                break
+            }
+        }
     }
     
     @IBAction func menu(sender: AnyObject) {
@@ -235,7 +248,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     }
     
     //MARK: Label Tapped
-    
     @IBAction func trendLabelTapped(sender: UITapGestureRecognizer) {
         if sender.state == .Ended {
             _selectedIndex = (sender.view?.tag)!
@@ -257,7 +269,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
             destVC.configureWithTweets(selectedTrend.tweets)
         }
     }
-    
     
     
     //MARK: Table View References for Zoom Menu
@@ -282,24 +293,29 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         }
     }
     
+
+    
     private func updateZoomLevelWithIndexPath(indexPath: NSIndexPath)
     {
         var mapZoomLevel: Double
         var radius: Int
+        var metricSystem = false
+        
+        if metricOrNot.selectedSegmentIndex == 0 {
+            metricSystem = true
+        }   else    {
+            metricSystem = false
+        }
         
         switch indexPath.row   {
         case 0:
-            mapZoomLevel = 11.0
-            radius = 50
+            mapZoomLevel = 11.0;    radius = 10
         case 1:
-            mapZoomLevel = 10.0
-            radius = 20
+            mapZoomLevel = 10.0;    radius = 20
         case 2:
-            mapZoomLevel = 9.0
-            radius = 10
+            mapZoomLevel = 9.0;     radius = 50
         default:
-            mapZoomLevel = 10.0
-            radius = 20
+            mapZoomLevel = 10.0;    radius = 20
         }
         
         //Updating the menu makes a new call with the new search radius. UI has updated well thus far.
@@ -308,9 +324,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         _shouldUpdateTrends = false
         let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
             longitude: location.coordinate.longitude)
-        
         map.setZoomLevel(mapZoomLevel, animated: true)
-        _getTweetsWithCoordinate(coordinate, radius: radius)
+            
+        _getTweetsWithCoordinate(coordinate, metricSystem: metricSystem, radius: radius)
         }
     }
     
@@ -319,6 +335,22 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
 
 extension MapViewController: SidePanelViewControllerDelegate {
     func menuSelected(selected: AnyObject) {
+        
+        if selected is String  {
+            
+            switch selected as! String {
+            case "Contact Us":
+                print("contact us")
+                break
+            case "Rate Us":
+                print("rate us")
+                break
+            default:
+                break
+            }
+        }
+
+        
         delegate?.collapseSidePanel?()
     }
 }

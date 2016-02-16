@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lkf-Cv-NYK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lkf-Cv-NYK">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -182,9 +182,19 @@
                                     <action selector="radiusMenuButtonPressed:" destination="PvW-rc-aFA" eventType="touchUpInside" id="C7m-L7-7DX"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zK9-YU-pja">
+                                <rect key="frame" x="233" y="456" width="67" height="29"/>
+                                <segments>
+                                    <segment title="mi"/>
+                                    <segment title="km"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="tintColor" red="1" green="0.36109683390000002" blue="0.35541735200000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zK9-YU-pja" secondAttribute="trailing" constant="20" id="3TL-iX-mz9"/>
+                            <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="zK9-YU-pja" secondAttribute="bottom" constant="20" id="FqQ-f3-itC"/>
                             <constraint firstItem="8CK-1O-jUu" firstAttribute="top" secondItem="uBa-3M-aeT" secondAttribute="top" id="Jms-aM-qj5"/>
                             <constraint firstItem="RIx-dc-L82" firstAttribute="centerX" secondItem="uBa-3M-aeT" secondAttribute="centerX" id="Jry-Xf-SMg"/>
                             <constraint firstItem="jYD-d3-IYM" firstAttribute="top" secondItem="fKK-Or-Djj" secondAttribute="bottom" constant="20" id="Jwc-9z-gQa"/>
@@ -222,6 +232,7 @@
                     <connections>
                         <outlet property="layerView" destination="8CK-1O-jUu" id="s8C-XC-6SA"/>
                         <outlet property="map" destination="RIx-dc-L82" id="yKQ-YB-93x"/>
+                        <outlet property="metricOrNot" destination="zK9-YU-pja" id="wZD-01-KyM"/>
                         <outlet property="radiusMenuButton" destination="fKK-Or-Djj" id="PbW-tK-pV9"/>
                         <outlet property="viewContainerForTrends" destination="Jf9-zY-c2p" id="8ih-sK-Upk"/>
                         <outletCollection property="trendLabels" destination="D1b-VG-hde" collectionClass="NSMutableArray" id="fci-l4-DAT"/>
@@ -287,7 +298,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rAK-7V-MO0" id="Im4-dJ-bPa">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -331,7 +342,7 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8uH-cT-Qqw" id="xCl-Yq-46r">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="106.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

@@ -45,13 +45,6 @@ class ContainerViewController: UIViewController {
     let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
     centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
   }
-    
-    override func viewWillAppear(animated: Bool) {
-        
-//        let navBarColor = NavBarColor()
-//        navBarColor.setNavBarColorToClear()
-        print("\nCENTER NAVIGATION CONTROLLER\(centerNavigationController)\n")
-    }
   
 }
 
