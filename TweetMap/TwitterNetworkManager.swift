@@ -14,7 +14,7 @@ import SwiftyJSON
 
 class TwitterNetworkManager {
     
-    static func getTweetsForCoordinate(coordinate: CLLocationCoordinate2D, metricSystem: Bool, radius: Int, completion: ((tweets: [Tweet]) -> ())?)
+    static func getTweetsForCoordinate(coordinate: CLLocationCoordinate2D, metricSystem: Bool, radius: Int, completion: ((tweets: [Tweet]) -> ([Tweet]))?)
     {
         let searchTweetsEndpoint = "https://api.twitter.com/1.1/search/tweets.json"
         

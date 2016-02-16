@@ -15,9 +15,9 @@
 		2386A4961C59668C00467F70 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386A4951C59668C00467F70 /* SidePanelViewController.swift */; };
 		2386A4981C5966A800467F70 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386A4971C5966A800467F70 /* ContainerViewController.swift */; };
 		2386EEAA1C3CA844004C9F74 /* TopTweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */; };
-		2386EEAD1C3DB813004C9F74 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */; };
 		238E48E11C646DE00036FE7E /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E48E01C646DE00036FE7E /* Tweet.swift */; };
 		23AB321D1C73D11B00F698BE /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AB321C1C73D11B00F698BE /* Dropdown.swift */; };
+		23AB321F1C73DAFD00F698BE /* TwitterTrendMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AB321E1C73DAFD00F698BE /* TwitterTrendMaker.swift */; };
 		23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9F4A51C2B93FD0058B0FE /* Popover.swift */; };
 		23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */; };
 		23F1B8301C21F0A9003BB13A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B82E1C21F0A9003BB13A /* Main.storyboard */; };
@@ -56,9 +56,9 @@
 		2386A4951C59668C00467F70 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		2386A4971C5966A800467F70 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTweetsViewController.swift; sourceTree = "<group>"; };
-		2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		238E48E01C646DE00036FE7E /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		23AB321C1C73D11B00F698BE /* Dropdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
+		23AB321E1C73DAFD00F698BE /* TwitterTrendMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterTrendMaker.swift; sourceTree = "<group>"; };
 		23B9F4A51C2B93FD0058B0FE /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Popover.swift; path = ../Pods/Popover/Classes/Popover.swift; sourceTree = "<group>"; };
 		23F1B8271C21F0A9003BB13A /* TweetMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +120,7 @@
 				23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */,
 				23F1B82E1C21F0A9003BB13A /* Main.storyboard */,
 				2374874F1C476CD500626618 /* TwitterNetworkManager.swift */,
+				23AB321E1C73DAFD00F698BE /* TwitterTrendMaker.swift */,
 				2386A4971C5966A800467F70 /* ContainerViewController.swift */,
 				2386A4951C59668C00467F70 /* SidePanelViewController.swift */,
 				23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */,
@@ -158,7 +159,6 @@
 		23F1B8291C21F0A9003BB13A /* TweetMap */ = {
 			isa = PBXGroup;
 			children = (
-				2386EEAC1C3DB813004C9F74 /* LoginViewController.swift */,
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
 				2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */,
 				2318696E1C293A600088F76E /* SupportingFiles */,
@@ -400,8 +400,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2386EEAD1C3DB813004C9F74 /* LoginViewController.swift in Sources */,
 				23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */,
+				23AB321F1C73DAFD00F698BE /* TwitterTrendMaker.swift in Sources */,
 				23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */,
 				234490621C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift in Sources */,
 				23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */,
