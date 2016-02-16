@@ -46,8 +46,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
     private var _selectedIndex = 0
     
     private let _trendGetter = TwitterTrendMaker()
-
-    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -189,6 +187,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
 //            print("not enough trends to display")
 //        } else  {
 //            trends.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+            self.trends = _trendGetter.trends!
             for i in 0..<trendLabels.count  {
                 trendLabels[i].text = "#\(trends[i].name)\n\(trends[i].tweetVolume)"
 //            }

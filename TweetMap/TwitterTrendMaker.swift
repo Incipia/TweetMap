@@ -58,15 +58,21 @@ class TwitterTrendMaker    {
             self.tweets = incomingTweets
             self.trends = tempTrends
             self.tallyTrends()
+//            for each in self.tweets!  {
+//                print(each.hashtags)
+//            }
+//            for each in self.trends! {
+//                print(each.name, each.tweetVolume)
+//            }
         }
     }
     
     
     func tallyTrends()  {
-        if trends!.count < 5 {
+        if self.trends!.count < 5 {
             print("not enough trends to display")
         } else  {
-            trends!.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
+            self.trends!.sortInPlace({$0.0.tweetVolume > $0.1.tweetVolume})
         }
         
     }
