@@ -139,15 +139,8 @@ class MapViewController: UIViewController, MGLMapViewDelegate, CLLocationManager
         let color4 = UIColor.grayColor().CGColor as CGColorRef
         
         gradientLayer.colors = [color1, color2, color3, color4]
-        
-        gradientLayer.locations = [0, 0.11, 0.89, 1]
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 0, y: 0.13)
-//        
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
-//        gradientLayer.endPoint = CGPoint(x: 0, y: 0.87)
-        
-        self.view.layer.addSublayer(gradientLayer)
+        gradientLayer.locations = [0, 0.11, 0.89, 1]        
+        view.layer.insertSublayer(gradientLayer, atIndex:1)
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
