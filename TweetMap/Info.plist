@@ -53,7 +53,7 @@
 	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your location will be shown on the map and your map usage will anonymously improve the map.</string>
+	<string>We&apos;re about to ask you for your location</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
