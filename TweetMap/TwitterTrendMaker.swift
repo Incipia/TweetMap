@@ -20,9 +20,9 @@ class TwitterTrendMaker
    //    var radius:
    
    //MARK: NETWORK CALL
-   func makeTrendFromTwitterCall(coordinate: CLLocationCoordinate2D, metricSystem: Bool, radius: Int, completion: ((tweets: [Tweet], trends: [Trend]) -> Void)?)
+   func makeTrendFromTwitterCall(coordinate: CLLocationCoordinate2D, radius: Int, completion: ((tweets: [Tweet], trends: [Trend]) -> Void)?)
    {
-      TwitterNetworkManager.getTweetsForCoordinate(coordinate, metricSystem: metricSystem, radius: radius) { incomingTweets -> () in
+      TwitterNetworkManager.getTweetsForCoordinate(coordinate, radius: radius) { incomingTweets -> () in
          
          var hashtagFrequencyDictionary: [String: Int] = [:]
          var tempTrends: [Trend] = []

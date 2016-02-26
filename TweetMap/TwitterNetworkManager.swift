@@ -14,22 +14,13 @@ import SwiftyJSON
 
 class TwitterNetworkManager {
     
-    static func getTweetsForCoordinate(coordinate: CLLocationCoordinate2D, metricSystem: Bool, radius: Int, completion: ((tweets: [Tweet]) -> ())?)
+    static func getTweetsForCoordinate(coordinate: CLLocationCoordinate2D, radius: Int, completion: ((tweets: [Tweet]) -> ())?)
     {
         let searchTweetsEndpoint = "https://api.twitter.com/1.1/search/tweets.json"
         
         let coordinateString = "\(coordinate.latitude),\(coordinate.longitude)"
         
-        var system = String()
-        
-        switch metricSystem {
-        case true:
-            system = "km"
-        case false:
-            system = "mi"
-        }
-        
-        let radiusString = "\(radius)\(system)"
+        let radiusString = "\(radius)mi"
         
         let geocodeString = "\(coordinateString),\(radiusString)"
         print(geocodeString)
