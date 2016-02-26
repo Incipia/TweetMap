@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lkf-Cv-NYK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lkf-Cv-NYK">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MapViewController-->
@@ -340,6 +341,98 @@
             </objects>
             <point key="canvasLocation" x="2542" y="130"/>
         </scene>
+        <!--Location Alert View Controller-->
+        <scene sceneID="CCS-Hh-Tud">
+            <objects>
+                <viewController storyboardIdentifier="LocationAlertViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DPg-3L-eqz" customClass="LocationAlertViewController" customModule="TweetMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a1r-zj-aEa"/>
+                        <viewControllerLayoutGuide type="bottom" id="z7n-LU-W7H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rLx-75-FBX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" translatesAutoresizingMaskIntoConstraints="NO" id="jpk-33-qjH">
+                                <rect key="frame" x="114" y="133" width="92" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="ATz-ny-XrC"/>
+                                    <constraint firstAttribute="width" constant="92" id="ipc-qU-SNb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDi-ZJ-Nwg">
+                                <rect key="frame" x="61" y="263" width="197.5" height="40.5"/>
+                                <string key="text">We're about to ask you for
+access to your location.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVg-Yh-2xV">
+                                <rect key="frame" x="40" y="429" width="240" height="40"/>
+                                <color key="backgroundColor" red="0.31418686038349325" green="0.0" blue="0.96238956151832467" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Allow">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <state key="highlighted">
+                                    <attributedString key="attributedTitle"/>
+                                </state>
+                                <connections>
+                                    <action selector="_allowButtonPressed" destination="DPg-3L-eqz" eventType="touchUpInside" id="T56-OT-4Pe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3DD-Ln-ryp">
+                                <rect key="frame" x="40" y="488" width="240" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3za-dD-Esp"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="No Thanks">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="_noThanksButtonPressed" destination="DPg-3L-eqz" eventType="touchUpInside" id="BVt-65-aUt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CDi-ZJ-Nwg" firstAttribute="centerY" secondItem="rLx-75-FBX" secondAttribute="centerY" id="0Wc-ya-rjl"/>
+                            <constraint firstItem="NVg-Yh-2xV" firstAttribute="centerX" secondItem="3DD-Ln-ryp" secondAttribute="centerX" id="GVA-30-IPc"/>
+                            <constraint firstItem="CDi-ZJ-Nwg" firstAttribute="centerX" secondItem="rLx-75-FBX" secondAttribute="centerX" id="Lfo-BF-jxg"/>
+                            <constraint firstItem="CDi-ZJ-Nwg" firstAttribute="top" secondItem="jpk-33-qjH" secondAttribute="bottom" constant="38" id="RRT-SX-a9g"/>
+                            <constraint firstItem="z7n-LU-W7H" firstAttribute="top" secondItem="3DD-Ln-ryp" secondAttribute="bottom" constant="40" id="VeM-nt-HbT"/>
+                            <constraint firstItem="3DD-Ln-ryp" firstAttribute="top" secondItem="NVg-Yh-2xV" secondAttribute="bottom" constant="19" id="Xml-TU-m2G"/>
+                            <constraint firstItem="NVg-Yh-2xV" firstAttribute="width" secondItem="3DD-Ln-ryp" secondAttribute="width" id="Z5m-jR-U91"/>
+                            <constraint firstItem="jpk-33-qjH" firstAttribute="centerX" secondItem="CDi-ZJ-Nwg" secondAttribute="centerX" id="eoM-JH-xMK"/>
+                            <constraint firstItem="3DD-Ln-ryp" firstAttribute="centerX" secondItem="rLx-75-FBX" secondAttribute="centerX" id="mc6-NE-1iO"/>
+                            <constraint firstItem="3DD-Ln-ryp" firstAttribute="width" secondItem="rLx-75-FBX" secondAttribute="width" multiplier="0.75" id="off-6e-LML"/>
+                            <constraint firstItem="NVg-Yh-2xV" firstAttribute="height" secondItem="3DD-Ln-ryp" secondAttribute="height" id="wNZ-Nz-pk5"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="_allowButton" destination="NVg-Yh-2xV" id="LHa-cO-J60"/>
+                        <outlet property="_noThanksButton" destination="3DD-Ln-ryp" id="ZFV-jT-Dei"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rv7-6O-4rE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2995" y="130"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="qg2-ui-hwq">
             <objects>
@@ -362,6 +455,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="globe" width="84" height="92"/>
         <image name="new-hamburger-icon" width="16" height="10"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>

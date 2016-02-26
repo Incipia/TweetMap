@@ -12,55 +12,85 @@ import Mapbox
 import Crashlytics
 import TwitterKit
 
+private extension UIStoryboard
+{
+   class func locationAlertViewController() -> LocationAlertViewController
+   {
+      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let controller = mainStoryboard.instantiateViewControllerWithIdentifier("LocationAlertViewControllerID") as! LocationAlertViewController
+      controller.modalPresentationStyle = .OverCurrentContext
+      return controller
+   }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+   
+   var window: UIWindow?
+   private var _locationManager = CLLocationManager()
+   private let _locationAlertViewController = UIStoryboard.locationAlertViewController()
+   private let _containerViewController = ContainerViewController()
+   private var _currentLocation: CLLocation?
+   private var _mapViewIsLoaded = false
+   
+   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+   {
+      Fabric.with([Twitter.self, MGLAccountManager.self, Crashlytics.self])
+      
+      window = UIWindow(frame: UIScreen.mainScreen().bounds)
+      
+      var controller: UIViewController = _containerViewController
+      if CLLocationManager.authorizationStatus() == .NotDetermined {
+         controller = _locationAlertViewController
+      }
+      else if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+         _locationManager.startUpdatingLocation()
+         _locationManager.delegate = self
+         _mapViewIsLoaded = true
+      }
+      
+      _locationAlertViewController.delegate = self
+      window!.rootViewController = controller
+      window!.makeKeyAndVisible()
+      
+      return true
+   }
+}
 
-    var window: UIWindow?
-    private var _locationManager = CLLocationManager()
+extension AppDelegate: LocationAlertViewControllerDelegate
+{
+   func locationAlertViewControllerAllowButtonPressed(controller: LocationAlertViewController)
+   {
+      if CLLocationManager.authorizationStatus() == .NotDetermined {
+         _locationManager.requestWhenInUseAuthorization()
+      }
+      _locationManager.delegate = self
+   }
+   
+   func locationAlertViewControllerNoThanksButtonPressed(controller: LocationAlertViewController)
+   {
+   }
+}
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-                
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        let containerViewController = ContainerViewController()
-        
-        window!.rootViewController = containerViewController
-        window!.makeKeyAndVisible()
-        
-        Fabric.with([Twitter.self, MGLAccountManager.self, Crashlytics.self])
-        
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
-            _locationManager.requestWhenInUseAuthorization()
-        }
-        if CLLocationManager.locationServicesEnabled() {
-            _locationManager.startUpdatingLocation()
-        }
-        
-        return true
-    }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
+extension AppDelegate: CLLocationManagerDelegate
+{
+   func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+   {
+      if _currentLocation == nil && _mapViewIsLoaded
+      {
+         _currentLocation = locations[0]
+         _containerViewController.mapViewController.updateTrendsWithLocation(_currentLocation!)
+      }
+   }
+   
+   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
+   {
+      if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+         manager.startUpdatingLocation()
+         _locationAlertViewController.presentViewController(_containerViewController, animated: true, completion: { () -> Void in
+            self._mapViewIsLoaded = true
+         })
+      }
+   }
 }
 

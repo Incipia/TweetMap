@@ -17,8 +17,8 @@ enum SlideOutState {
 class ContainerViewController: UIViewController {
     
     var centerNavigationController: UINavigationController!
-    var centerViewController: MapViewController!
-    var leftViewController: SidePanelViewController?
+    var mapViewController: MapViewController!
+    var sidePanelViewController: SidePanelViewController?
     
     var currentState: SlideOutState = .Collapsed {
         didSet {
@@ -31,12 +31,12 @@ class ContainerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    centerViewController = UIStoryboard.centerViewController()
-    centerViewController.delegate = self
+    mapViewController = UIStoryboard.centerViewController()
+    mapViewController.delegate = self
     
     // wrap the centerViewController in a navigation controller, so we can push views to it
     // and display bar button items in the navigation bar
-    centerNavigationController = UINavigationController(rootViewController: centerViewController)
+    centerNavigationController = UINavigationController(rootViewController: mapViewController)
     view.addSubview(centerNavigationController.view)
     addChildViewController(centerNavigationController)
     
@@ -69,7 +69,7 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
             recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
             recognizer.setTranslation(CGPointZero, inView: view)
         case .Ended:
-            if (leftViewController != nil) {
+            if (sidePanelViewController != nil) {
                 // animate the side panel open or closed based on whether the view has moved more or less than halfway
                 let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
                 animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
@@ -109,11 +109,11 @@ extension ContainerViewController: CenterViewControllerDelegate {
     }
     
     func addLeftPanelViewController() {
-        if (leftViewController == nil) {
-            leftViewController = UIStoryboard.leftViewController()
-            print(leftViewController)
+        if (sidePanelViewController == nil) {
+            sidePanelViewController = UIStoryboard.leftViewController()
+            print(sidePanelViewController)
             
-            addChildSidePanelController(leftViewController!)
+            addChildSidePanelController(sidePanelViewController!)
         }
     }
     
@@ -125,8 +125,8 @@ extension ContainerViewController: CenterViewControllerDelegate {
         } else {
             animateCenterPanelXPosition(targetPosition: 0) { finished in
                 self.currentState = .Collapsed
-                self.leftViewController!.view.removeFromSuperview()
-                self.leftViewController = nil;
+                self.sidePanelViewController!.view.removeFromSuperview()
+                self.sidePanelViewController = nil;
             }
         }
     }
@@ -134,7 +134,7 @@ extension ContainerViewController: CenterViewControllerDelegate {
     
     //MARK: Misc / CENTER PANEL
     func addChildSidePanelController(sidePanelController: SidePanelViewController) {
-        sidePanelController.delegate = centerViewController
+        sidePanelController.delegate = mapViewController
         
         view.insertSubview(sidePanelController.view, atIndex: 0)
         

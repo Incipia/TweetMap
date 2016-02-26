@@ -27,6 +27,7 @@
 		23F1B84B1C21F0A9003BB13A /* TweetMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B84A1C21F0A9003BB13A /* TweetMapUITests.swift */; };
 		23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B8591C2200BB003BB13A /* MapViewController.swift */; };
 		23F2B29D1C718B1800FA0060 /* MaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2B29C1C718B1800FA0060 /* MaskLayer.swift */; };
+		CE80AE1B1C7FEF8D00403CE0 /* LocationAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE1A1C7FEF8D00403CE0 /* LocationAlertViewController.swift */; };
 		D4AD193487FA2120CC046CD0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB3A93084C478EE412DDF7 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		AE4591F95156D69147DB1D5C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AEAB3A93084C478EE412DDF7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85310E5FA3177DC20FA8ACE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CE80AE1A1C7FEF8D00403CE0 /* LocationAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				2318696D1C293A4E0088F76E /* Model */,
 				2344905D1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift */,
 				234490611C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift */,
+				CE80AE1A1C7FEF8D00403CE0 /* LocationAlertViewController.swift */,
 			);
 			path = TweetMap;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				23AB321F1C73DAFD00F698BE /* TwitterTrendMaker.swift in Sources */,
 				23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */,
 				234490621C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift in Sources */,
+				CE80AE1B1C7FEF8D00403CE0 /* LocationAlertViewController.swift in Sources */,
 				23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */,
 				238E48E11C646DE00036FE7E /* Tweet.swift in Sources */,
 				2344905E1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift in Sources */,
