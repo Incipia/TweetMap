@@ -16,6 +16,7 @@ protocol CenterViewControllerDelegate
 {
    func updateTitleColor(color: UIColor)
    func updateStatusBarStyle(style: UIStatusBarStyle)
+   
    optional func toggleLeftPanel()
    optional func collapseSidePanel()
 }
@@ -27,6 +28,13 @@ private extension UIStoryboard
       let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
       let controller = mainStoryboard.instantiateViewControllerWithIdentifier("LocationAlertViewControllerID") as! LocationAlertViewController
       controller.modalPresentationStyle = .OverCurrentContext
+      return controller
+   }
+   
+   class func topTweetsViewController() -> TopTweetsViewController
+   {
+      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let controller = mainStoryboard.instantiateViewControllerWithIdentifier("TopTweetsViewControllerID") as! TopTweetsViewController
       return controller
    }
 }
@@ -43,6 +51,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
    
    @IBOutlet weak var layerView: UIView!
    @IBOutlet weak var radiusMenuButton: UIButton!
+   @IBOutlet private weak var _updateTrendsButton: UIButton!
    
    @IBOutlet weak var viewContainerForTrends: UIView!
    
@@ -53,12 +62,14 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
    var trends: [Trend] = []
    var tweets: [Tweet] = []
    
+   private let _topTweetsViewController = UIStoryboard.topTweetsViewController()
    private let radiusMenuPopover = Popover(options: PopoverOption.defaultOptions, showHandler: nil, dismissHandler: nil)
    
    private var zoomLevelTableViewDataSource: ZoomLevelTableViewDataSource?
    private var zoomLevelTableViewDelegate: ZoomLevelTableViewDelegate?
    
    private var _selectedIndex = 0
+   private var _currentZoomLevel = 10.0
    
    private let _trendProvider = TwitterTrendMaker()
    
@@ -85,10 +96,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       layerView.layer.addSublayer(caLayer)
       view.layer.insertSublayer(gradientLayer, atIndex: 1)
       
-      radiusMenuButton.layer.cornerRadius = 15
+      radiusMenuButton.layer.cornerRadius = radiusMenuButton.frame.height * 0.5
+      _updateTrendsButton.layer.cornerRadius = _updateTrendsButton.frame.height * 0.5
       
       for view in trendLabelViews {
          view.hidden = true
+         view.delegate = self
       }
       
       _locationManager.delegate = self
@@ -181,7 +194,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       _trendProvider.makeTrendFromTwitterCall(coordinate, radius: 20) { (tweets, trends) -> Void in
          self.reloadTrends()
       }
-      map.setCenterCoordinate(coordinate, zoomLevel: 10.0, animated: true)
+      map.setCenterCoordinate(coordinate, zoomLevel: _currentZoomLevel, animated: false)
    }
    
    func reloadTrends()
@@ -210,14 +223,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
    }
    
-   @IBAction func trendLabelTapped(sender: UITapGestureRecognizer)
-   {
-      if sender.state == .Ended {
-         _selectedIndex = (sender.view?.tag)!
-         self.performSegueWithIdentifier("trendToDetail", sender: nil)
-      }
-   }
-   
    //MARK: - Prepare for Segue
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
    {
@@ -237,6 +242,23 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
    }
 }
 
+extension MapViewController: TrendingLabelViewDelegate
+{
+   func trendingLabelViewTrendTapped(trend: Trend)
+   {
+      _selectedIndex = 0
+      
+      for index in 0..<trends.count {
+         if trends[index] == trend {
+            _selectedIndex = index
+            break
+         }
+      }
+      
+      performSegueWithIdentifier("trendToDetail", sender: nil)
+   }
+}
+
 extension MapViewController: LocationAlertViewControllerDelegate
 {
    func locationAlertViewControllerAllowButtonPressed(controller: LocationAlertViewController)
@@ -253,9 +275,6 @@ extension MapViewController: LocationAlertViewControllerDelegate
       _fadeTransitionManager.presenting = false
       _locationAlertViewController.dismissViewControllerAnimated(true) {
 
-         for view in self.trendLabelViews {
-            view.hidden = false
-         }
          self.updateTrendsWithLocation(CLLocation.detroit)
       }
    }
@@ -292,15 +311,9 @@ extension MapViewController: CLLocationManagerDelegate
    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
    {
       if status == .AuthorizedWhenInUse {
-         for view in trendLabelViews {
-            view.hidden = false
-         }
          manager.startUpdatingLocation()
       }
       if status == .Denied || status == .Restricted {
-         for view in trendLabelViews {
-            view.hidden = false
-         }
          updateTrendsWithLocation(CLLocation.detroit)
       }
    }
@@ -333,7 +346,10 @@ extension MapViewController
          self.radiusMenuPopover.dismiss()
          
          let updatedButtonTitle = self.zoomLevelTableViewDataSource?.updateButtonTitleWithSelectedIndex(indexPath)
-         self.radiusMenuButton.titleLabel!.text = updatedButtonTitle
+         
+         dispatch_async(dispatch_get_main_queue()) {
+            self.radiusMenuButton.setTitle(updatedButtonTitle, forState: .Normal)
+         }
       }
    }
    
@@ -357,6 +373,7 @@ extension MapViewController
          radius = 20
       }
       
+      _currentZoomLevel = mapZoomLevel
       //Updating the menu makes a new call with the new search radius. UI has updated well thus far.
       if let location = CLLocationManager().location
       {  

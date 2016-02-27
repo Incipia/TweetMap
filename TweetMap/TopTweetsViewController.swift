@@ -37,8 +37,6 @@ class TopTweetsViewController: UITableViewController, TWTRTweetViewDelegate {
       super.viewWillAppear(animated)
       self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
       self.navigationController?.navigationBar.translucent = false
-      
-      setNeedsStatusBarAppearanceUpdate()
    }
    
    override func preferredStatusBarStyle() -> UIStatusBarStyle

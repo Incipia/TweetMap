@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Trend {
+public class Trend {
     
     var tweetVolume = Int()
     var name = String()
@@ -21,6 +21,11 @@ class Trend {
     }
 }
 
+func ==(lhs: Trend, rhs: Trend) -> Bool
+{
+   // HACK FOR NOW! :D
+   return lhs.tweetVolume == rhs.tweetVolume && lhs.name == rhs.name
+}
 
 
 

@@ -102,6 +102,11 @@ private extension UIStoryboard {
 
 extension ContainerViewController: CenterViewControllerDelegate
 {
+   func navController() -> UINavigationController
+   {
+      return centerNavigationController
+   }
+   
    func updateTitleColor(color: UIColor)
    {
       centerNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : color]

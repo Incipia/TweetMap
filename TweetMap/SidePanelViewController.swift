@@ -31,6 +31,11 @@ class SidePanelViewController: UIViewController {
       
       tableView.reloadData()
       tableView.tableFooterView = UIView()
+      tableView.separatorColor = UIColor.clearColor()
+      
+      let selectionView = UIView()
+      selectionView.backgroundColor = UIColor(colorLiteralRed: 0, green: 84.0/255, blue: 139.0/255, alpha: 1)
+      MenuCell.appearance().selectedBackgroundView = selectionView
    }
    
 }
@@ -51,6 +56,8 @@ extension SidePanelViewController: UITableViewDataSource {
       let cell = tableView.dequeueReusableCellWithIdentifier(TableView.CellIdentifiers.MenuCell, forIndexPath: indexPath) as! MenuCell
       cell.textLabel?.text = menuOptions[indexPath.row]
       cell.textLabel?.textColor = UIColor.whiteColor()
+      cell.textLabel?.font = UIFont.systemFontOfSize(15, weight: 3)
+      cell.backgroundColor = UIColor.clearColor()
       return cell
    }
    
@@ -66,6 +73,20 @@ extension SidePanelViewController: UITableViewDelegate {
       delegate?.menuSelected(selectedOption)
    }
    
+//   func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//      return true
+//   }
+//   
+//   func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+//      let cell = tableView.cellForRowAtIndexPath(indexPath)
+//      cell?.contentView.backgroundColor = UIColor.orangeColor()
+//   }
+//   
+//   func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
+//      let cell = tableView.cellForRowAtIndexPath(indexPath)
+//      cell?.contentView.backgroundColor = UIColor.clearColor()
+//      cell?.backgroundColor = UIColor.clearColor()
+//   }
 }
 
 class MenuCell: UITableViewCell {

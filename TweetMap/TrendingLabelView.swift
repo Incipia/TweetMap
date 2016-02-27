@@ -11,71 +11,64 @@ import UIKit
 private let TrendingTextFont = UIFont.systemFontOfSize(15)
 private let TrendingCountFont = UIFont.systemFontOfSize(12)
 
+protocol TrendingLabelViewDelegate: class
+{
+   func trendingLabelViewTrendTapped(trend: Trend)
+}
+
 class TrendingLabelView: UIView
 {
    @IBOutlet private weak var _heightConstraint: NSLayoutConstraint!
    @IBOutlet private weak var _widthConstraint: NSLayoutConstraint!
    
-   private let _trendingTextLabel: UILabel = UILabel()
-   private let _trendingCountLabel: UILabel = UILabel()
+   @IBOutlet private weak var _nameLabel: UILabel!
+   @IBOutlet private weak var _countLabel: UILabel!
+   
+   private let _tapRecognizer = UITapGestureRecognizer()
+   private weak var _trend: Trend?
+   weak var delegate: TrendingLabelViewDelegate?
    
    override func awakeFromNib()
    {
       super.awakeFromNib()
       
-      layer.cornerRadius = 2.0
+      backgroundColor = backgroundColor?.colorWithAlphaComponent(0.95)
+      layer.cornerRadius = 4.0
       
-      _trendingTextLabel.font = TrendingTextFont
-      _trendingTextLabel.textColor = UIColor.whiteColor()
+      _nameLabel.text = "#HASHTAG"
+      _countLabel.text = "#HASHTAG"
       
-      _trendingCountLabel.font = TrendingCountFont
-      _trendingCountLabel.textColor = UIColor.whiteColor().colorWithAlphaComponent(0.7)
-      
-      _trendingTextLabel.center = CGPoint(x: bounds.midX, y: bounds.midY)
-      _trendingCountLabel.center = CGPoint(x: bounds.midX, y: bounds.midY)
-      
-      addSubview(_trendingTextLabel)
-      addSubview(_trendingCountLabel)
+      _tapRecognizer.addTarget(self, action: "viewTapped:")
+      addGestureRecognizer(_tapRecognizer)
+   }
+   
+   internal func viewTapped(recognizer: UIGestureRecognizer)
+   {
+      guard let trend = _trend else { return }
+      delegate?.trendingLabelViewTrendTapped(trend)
    }
    
    func updateWithTrend(trend: Trend)
    {
-      _trendingTextLabel.text = "#\(trend.name)"
-      _trendingCountLabel.text = "\(trend.tweetVolume)"
+      _trend = trend
       
-      _trendingTextLabel.sizeToFit()
-      _trendingCountLabel.sizeToFit()
+      _nameLabel.text = "#\(trend.name)"
+      _countLabel.text = "\(trend.tweetVolume)"
       
-      let textLabelWidth = _trendingTextLabel.frame.width
-      let textLabelHeight = _trendingTextLabel.frame.height
+      _nameLabel.sizeToFit()
+      _countLabel.sizeToFit()
       
-      let countLabelWidth = _trendingCountLabel.frame.width
-      let countLabelHeight = _trendingCountLabel.frame.height
-      
-      let totalLabelHeight = textLabelHeight + countLabelHeight
-      let topPadding: CGFloat = 10
-      let middlePadding: CGFloat = 5
-      let bottomPadding: CGFloat = 10
+      let textLabelWidth = _nameLabel.frame.width
+      let countLabelWidth = _countLabel.frame.width
       let sidePadding: CGFloat = 10
       
-      _heightConstraint.constant = totalLabelHeight + topPadding + middlePadding + bottomPadding
       let newWidth = max(textLabelWidth, countLabelWidth) + sidePadding * 2
-      _widthConstraint.constant = max(newWidth, 100)
+      _widthConstraint.constant = max(newWidth, 80)
       
-      UIView.animateWithDuration(0.15) { () -> Void in
+      UIView.animateWithDuration(0.15, animations: { () -> Void in
          self.layoutIfNeeded()
+         }) { (finished) -> Void in
+            self.hidden = false
       }
-   }
-   
-   override func layoutSubviews() {
-      super.layoutSubviews()
-      
-      let textLabelHeight = _trendingTextLabel.frame.height
-      let countLabelHeight = _trendingCountLabel.frame.height
-      let middlePadding: CGFloat = 5
-      
-      _trendingTextLabel.center = CGPoint(x: bounds.midX, y: bounds.midY - textLabelHeight * 0.5 - middlePadding * 0.5)
-      
-      _trendingCountLabel.center = CGPoint(x: bounds.midX, y: bounds.midY + countLabelHeight * 0.5 + middlePadding * 0.5)
    }
 }

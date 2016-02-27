@@ -10,8 +10,8 @@ import Foundation
 import QuartzCore
 import UIKit
 
-class MaskLayer {
-    
+class MaskLayer
+{    
     func drawShadedRegion() -> CAShapeLayer {
         
         let fillLayer = CAShapeLayer()
@@ -28,8 +28,8 @@ class MaskLayer {
         
         fillLayer.path = path.CGPath
         fillLayer.fillRule = kCAFillRuleEvenOdd
-        fillLayer.fillColor = UIColor.blackColor().CGColor
-        fillLayer.opacity = 0.15
+        fillLayer.fillColor = UIColor(colorLiteralRed: 43.0/255, green: 30.0/255, blue: 52.0/255, alpha: 1).CGColor
+        fillLayer.opacity = 0.17
         
         return fillLayer
     }
@@ -38,9 +38,9 @@ class MaskLayer {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = UIScreen.mainScreen().bounds
         
-        let shadedColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).CGColor as CGColorRef
+        let shadedColor = UIColor(colorLiteralRed: 43.0/255, green: 30.0/255, blue: 52.0/255, alpha: 0.55).CGColor
         
-        let clearColor = UIColor.clearColor().CGColor as CGColorRef
+        let clearColor = UIColor.clearColor().CGColor
         
         gradientLayer.colors = [shadedColor, clearColor, clearColor, clearColor, clearColor, shadedColor]
         gradientLayer.locations = [0.0, 0.10, 0.3, 0.75, 0.85, 1]

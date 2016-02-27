@@ -13,7 +13,8 @@ class ZoomLevelTableViewDelegate: NSObject {
     private let _tableView: UITableView
     var rowSelectionHandler: ((indexPath: NSIndexPath) -> Void)?
     
-    init(tableView: UITableView) {
+    init(tableView: UITableView)
+    {
         _tableView = tableView
         super.init()
         _tableView.delegate = self
@@ -25,6 +26,5 @@ extension ZoomLevelTableViewDelegate: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         rowSelectionHandler?(indexPath: indexPath)
-        
     }
 }
