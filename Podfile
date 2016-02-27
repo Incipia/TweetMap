@@ -11,7 +11,7 @@ pod 'TwitterKit'
 
 pod 'TwitterCore'
 
-pod 'Mapbox-iOS-SDK'
+pod 'Mapbox-iOS-SDK', '~> 3.0.1'
 
 pod 'BTNavigationDropdownMenu'
 
