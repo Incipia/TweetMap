@@ -7,22 +7,36 @@
 //
 
 import Foundation
+import TwitterKit
 import UIKit
 
 private let kTweetVolumeKey = "TrendTweetVolumeKey"
 private let kNameKey = "TrendNameKey"
 private let kTweetsKey = "TrendTweetsKey"
 
+class PhraseTrend
+{
+   let phrase: String
+   let tweets: [TWTRTweet]
+   
+   init(phrase: String, tweets: [TWTRTweet])
+   {
+      self.phrase = phrase
+      self.tweets = tweets
+   }
+}
+
 class Trend: NSObject, NSCoding
 {
-   var tweetVolume = Int()
    var name = String()
    var tweets = [Tweet]()
+   var tweetVolume: Int {
+      return tweets.count
+   }
    
    init(name: String, tweetVolume: Int)
    {
       self.name = name
-      self.tweetVolume = tweetVolume
       
       super.init()
    }
@@ -39,7 +53,6 @@ class Trend: NSObject, NSCoding
    
    func encodeWithCoder(aCoder: NSCoder)
    {
-      aCoder.encodeInteger(tweetVolume, forKey: kTweetVolumeKey)
       aCoder.encodeObject(name, forKey: kNameKey)
       aCoder.encodeObject(tweets, forKey: kTweetsKey)
    }
@@ -48,5 +61,5 @@ class Trend: NSObject, NSCoding
 func ==(lhs: Trend, rhs: Trend) -> Bool
 {
    // HACK FOR NOW! :D
-   return lhs.tweetVolume == rhs.tweetVolume && lhs.name == rhs.name
+   return lhs.name == rhs.name
 }

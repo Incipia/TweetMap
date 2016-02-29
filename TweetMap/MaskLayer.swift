@@ -43,7 +43,7 @@ class MaskLayer
         let clearColor = UIColor.clearColor().CGColor
         
         gradientLayer.colors = [shadedColor, clearColor, clearColor, clearColor, clearColor, shadedColor]
-        gradientLayer.locations = [0.0, 0.10, 0.3, 0.75, 0.85, 1]
+        gradientLayer.locations = [0.0, 0.12, 0.3, 0.75, 0.85, 1]
         
         return gradientLayer
     }

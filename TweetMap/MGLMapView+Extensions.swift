@@ -26,6 +26,10 @@ extension CLLocation
       let detroitCenter = CLLocationCoordinate2D.detroitCenter
       return CLLocation(latitude: detroitCenter.latitude, longitude: detroitCenter.longitude)
    }
+   
+   static var newYorkCity: CLLocation {
+      return CLLocation(latitude: 40.7127, longitude: -74.0059)
+   }
 }
 
 extension MGLMapView

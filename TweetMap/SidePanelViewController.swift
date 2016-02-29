@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SidePanelViewControllerDelegate {
-   func menuSelected(selected: AnyObject)
+   func locationSelected(location: TweetMapLocation)
 }
 
 class SidePanelViewController: UIViewController {
@@ -18,7 +18,8 @@ class SidePanelViewController: UIViewController {
    
    var delegate: SidePanelViewControllerDelegate?
    
-   var menuOptions = ["Contact Us", "Rate Us"]
+   var selectedLocation: TweetMapLocation?
+   var menuOptions: [TweetMapLocation] = [.Austin, .NewYorkCity, .LosAngeles, .Chicago, .Washington, .Detroit, .Atlanta, .Seattle, .Miami, .LasVegas, .Honolulu, .Anchorage]
    
    struct TableView {
       struct CellIdentifiers {
@@ -54,10 +55,14 @@ extension SidePanelViewController: UITableViewDataSource {
    
    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCellWithIdentifier(TableView.CellIdentifiers.MenuCell, forIndexPath: indexPath) as! MenuCell
-      cell.textLabel?.text = menuOptions[indexPath.row]
+      
+      let location = menuOptions[indexPath.row]
+      cell.textLabel?.text = location.fullName
       cell.textLabel?.textColor = UIColor.whiteColor()
-      cell.textLabel?.font = UIFont.systemFontOfSize(15, weight: 3)
-      cell.backgroundColor = UIColor.clearColor()
+      cell.textLabel?.font = UIFont.systemFontOfSize(14, weight: 2)
+      
+      let color = location == selectedLocation ? UIColor(colorLiteralRed: 0, green: 84.0/255, blue: 139.0/255, alpha: 1) : UIColor.clearColor()
+      cell.backgroundColor = color
       return cell
    }
    
@@ -65,28 +70,13 @@ extension SidePanelViewController: UITableViewDataSource {
 
 // Mark: Table View Delegate
 
-extension SidePanelViewController: UITableViewDelegate {
-   
-   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      let selectedOption = menuOptions[indexPath.row]
-      print(selectedOption)
-      delegate?.menuSelected(selectedOption)
+extension SidePanelViewController: UITableViewDelegate
+{   
+   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+   {
+      let location = menuOptions[indexPath.row]
+      delegate?.locationSelected(location)
    }
-   
-//   func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//      return true
-//   }
-//   
-//   func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
-//      let cell = tableView.cellForRowAtIndexPath(indexPath)
-//      cell?.contentView.backgroundColor = UIColor.orangeColor()
-//   }
-//   
-//   func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
-//      let cell = tableView.cellForRowAtIndexPath(indexPath)
-//      cell?.contentView.backgroundColor = UIColor.clearColor()
-//      cell?.backgroundColor = UIColor.clearColor()
-//   }
 }
 
 class MenuCell: UITableViewCell {

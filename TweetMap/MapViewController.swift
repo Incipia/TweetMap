@@ -11,14 +11,14 @@ import Mapbox
 import CoreLocation
 import TwitterKit
 
-@objc
 protocol CenterViewControllerDelegate
 {
+   func updateCurrentLocation(location: TweetMapLocation?)
    func updateTitleColor(color: UIColor)
    func updateStatusBarStyle(style: UIStatusBarStyle)
    
-   optional func toggleLeftPanel()
-   optional func collapseSidePanel()
+   func toggleLeftPanel()
+   func collapseSidePanel()
 }
 
 private extension UIStoryboard
@@ -47,15 +47,20 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       }
    }
    
-   @IBOutlet private weak var _metricOrNotSetmentedControl: UISegmentedControl!
-   
    @IBOutlet weak var layerView: UIView!
    @IBOutlet weak var radiusMenuButton: UIButton!
    @IBOutlet private weak var _updateTrendsButton: UIButton!
    
    @IBOutlet weak var viewContainerForTrends: UIView!
    
-   @IBOutlet var trendLabelViews: [TrendingLabelView]!
+   @IBOutlet var trendLabelViews: [TrendingLabelView]! {
+      didSet {
+         for view in trendLabelViews {
+            view.hidden = true
+            view.delegate = self
+         }
+      }
+   }
    
    var delegate: CenterViewControllerDelegate?
    
@@ -79,6 +84,13 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
    
    private var _alreadyShowedUserLocationAlert = false
    private var _alreadyShowedUserAppSettingsAlert = false
+   private var _shouldUpdateTrendsWithNextReceivedLocation = false
+   
+   private(set) var currentBigCityLocation: TweetMapLocation? {
+      didSet {
+         self.delegate?.updateCurrentLocation(currentBigCityLocation)
+      }
+   }
    
    // MARK: - Lifecycle
    override func viewDidLoad()
@@ -88,26 +100,19 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
       navigationItem.title = "Trends"
       
-      // these sublayer lines pull from the MaskLayer class, basically where the 2 functions got moved
-      let maskLayer = MaskLayer()
-      let caLayer = maskLayer.drawShadedRegion()
-      let gradientLayer = maskLayer.drawGradienForTopAndBottom()
-      
-      layerView.layer.addSublayer(caLayer)
-      view.layer.insertSublayer(gradientLayer, atIndex: 1)
-      
-      radiusMenuButton.layer.cornerRadius = radiusMenuButton.frame.height * 0.5
-      _updateTrendsButton.layer.cornerRadius = _updateTrendsButton.frame.height * 0.5
-      
-      for view in trendLabelViews {
-         view.hidden = true
-         view.delegate = self
-      }
+      _setupUI()
       
       _locationManager.delegate = self
-      switch CLLocationManager.authorizationStatus() {
-      case .NotDetermined, .Denied, .Restricted: map.centerOnDetroit()
-      default: break
+      switch CLLocationManager.authorizationStatus()
+      {
+      case .NotDetermined, .Denied, .Restricted:
+         currentBigCityLocation = TweetMapLocation.NewYorkCity
+         updateTrendsWithLocation(currentBigCityLocation!.location)
+      case .AuthorizedWhenInUse:
+         _locationManager.startUpdatingLocation()
+         _shouldUpdateTrendsWithNextReceivedLocation = true
+      default:
+         break
       }
    }
    
@@ -128,12 +133,10 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       super.viewDidAppear(animated)
       
       switch CLLocationManager.authorizationStatus() {
-      case .AuthorizedWhenInUse:
-         _locationManager.startUpdatingLocation()
       case .NotDetermined:
          if !_alreadyShowedUserLocationAlert {
             _alreadyShowedUserLocationAlert = true
-            _showLocationAlertViewController()
+            _showLocationAlertViewControllerWithDelay(1.5)
          }
          break
       case .Restricted, .Denied:
@@ -146,32 +149,50 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       }
    }
    
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+   {
+      if (segue.identifier == "trendToDetail") {
+         guard let destVC = segue.destinationViewController as? TopTweetsViewController else {
+            print("there was an error grabbing TopTweetsVC")
+            return
+         }
+         
+         let selectedTrend = self.trends[_selectedIndex]
+         destVC.title = selectedTrend.name
+         destVC.configureWithTweets(selectedTrend.tweets)
+         
+         delegate?.updateStatusBarStyle(.Default)
+         delegate?.updateTitleColor(UIColor.blackColor())
+      }
+   }
+   
    // MARK: - Private
+   private func _setupUI()
+   {
+      // these sublayer lines pull from the MaskLayer class, basically where the 2 functions got moved
+      let maskLayer = MaskLayer()
+      let caLayer = maskLayer.drawShadedRegion()
+      let gradientLayer = maskLayer.drawGradienForTopAndBottom()
+      
+      layerView.layer.addSublayer(caLayer)
+      view.layer.insertSublayer(gradientLayer, atIndex: 1)
+      
+      radiusMenuButton.layer.cornerRadius = radiusMenuButton.frame.height * 0.5
+      _updateTrendsButton.layer.cornerRadius = _updateTrendsButton.frame.height * 0.5
+   }
+   
    private func _showAlertForOpeningAppSettings()
    {
-      let alertController = UIAlertController(
-         title: "Location Access Disabled",
-         message: "In order to see the hottest new trends around you, please open this app's settings and set location access to 'While Using the App'.",
-         preferredStyle: .Alert)
-      
-      let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-      alertController.addAction(cancelAction)
-      
-      let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-         if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-            UIApplication.sharedApplication().openURL(url)
-         }
-      }
-      alertController.addAction(openAction)
+      let alertController = UIAlertController.locationAlert()
       presentViewController(alertController, animated: true, completion: nil)
    }
    
-   private func _showLocationAlertViewController()
+   private func _showLocationAlertViewControllerWithDelay(delay: NSTimeInterval)
    {
       _locationAlertViewController.delegate = self
       _locationAlertViewController.transitioningDelegate = _fadeTransitionManager
       _fadeTransitionManager.presenting = true
-      _delay(1.5) { () -> () in
+      _delay(delay) { () -> () in
          self.presentViewController(self._locationAlertViewController, animated: true, completion: nil)
       }
    }
@@ -191,10 +212,12 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
          longitude: location.coordinate.longitude)
       
-      _trendProvider.makeTrendFromTwitterCall(coordinate, radius: 20) { (tweets, trends) -> Void in
+      let radius = _radiusForZoomLevel(Int(_currentZoomLevel))
+      _trendProvider.makeTrendFromTwitterCall(coordinate, radius: radius) { (tweets, trends) -> Void in
          self.reloadTrends()
       }
-      map.setCenterCoordinate(coordinate, zoomLevel: _currentZoomLevel, animated: false)
+      
+      map.setCenterCoordinate(coordinate, zoomLevel: _currentZoomLevel, animated: true)
    }
    
    func reloadTrends()
@@ -203,8 +226,16 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
          self.trends = _trendProvider.trends!
          dispatch_async(dispatch_get_main_queue()) {
             
-            for i in 0..<self.trendLabelViews.count  {
-               self.trendLabelViews[i].updateWithTrend(self.trends[i])
+            for index in 0..<self.trends.count {
+               guard index < self.trendLabelViews.count else { break }
+               self.trendLabelViews[index].updateWithTrend(self.trends[index])
+               self.trendLabelViews[index].hidden = false
+            }
+            
+            if self.trends.count < self.trendLabelViews.count {
+               for labelIndex in self.trends.count..<self.trendLabelViews.count {
+                  self.trendLabelViews[labelIndex].hidden = true
+               }
             }
          }
       }
@@ -213,7 +244,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
    //MARK: - IBActions
    @IBAction func menu(sender: AnyObject)
    {
-      delegate?.toggleLeftPanel?()
+      delegate?.toggleLeftPanel()
    }
    
    @IBAction func radiusMenuButtonPressed(sender: AnyObject)
@@ -222,24 +253,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
       setupDataSourceAndDelegateWithTableView(zoomLevelTableView)
       radiusMenuPopover.show(zoomLevelTableView, fromView: radiusMenuButton)
    }
-   
-   //MARK: - Prepare for Segue
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-   {
-      if (segue.identifier == "trendToDetail") {
-         guard let destVC = segue.destinationViewController as? TopTweetsViewController else {
-            print("there was an error grabbing TopTweetsVC")
-            return
-         }
-         
-         let selectedTrend = self.trends[_selectedIndex]
-         destVC.title = selectedTrend.name
-         destVC.configureWithTweets(selectedTrend.tweets)
-         
-         delegate?.updateStatusBarStyle(.Default)
-         delegate?.updateTitleColor(UIColor.blackColor())
-      }
-   }
 }
 
 extension MapViewController: TrendingLabelViewDelegate
@@ -247,7 +260,6 @@ extension MapViewController: TrendingLabelViewDelegate
    func trendingLabelViewTrendTapped(trend: Trend)
    {
       _selectedIndex = 0
-      
       for index in 0..<trends.count {
          if trends[index] == trend {
             _selectedIndex = index
@@ -259,13 +271,13 @@ extension MapViewController: TrendingLabelViewDelegate
    }
 }
 
+// MARK: - Location Alert View Controller
 extension MapViewController: LocationAlertViewControllerDelegate
 {
    func locationAlertViewControllerAllowButtonPressed(controller: LocationAlertViewController)
    {
       _fadeTransitionManager.presenting = false
       _locationAlertViewController.dismissViewControllerAnimated(true) {
-         
          self._locationManager.requestWhenInUseAuthorization()
       }
    }
@@ -273,56 +285,50 @@ extension MapViewController: LocationAlertViewControllerDelegate
    func locationAlertViewControllerNoThanksButtonPressed(controller: LocationAlertViewController)
    {
       _fadeTransitionManager.presenting = false
-      _locationAlertViewController.dismissViewControllerAnimated(true) {
-
-         self.updateTrendsWithLocation(CLLocation.detroit)
-      }
+      _locationAlertViewController.dismissViewControllerAnimated(true, completion: nil)
    }
 }
 
+// MARK: - Side Panel View Controller
 extension MapViewController: SidePanelViewControllerDelegate
 {
-   func menuSelected(selected: AnyObject) {
-      
-      if selected is String  {
-         
-         switch selected as! String {
-         case "Contact Us":
-            //MARK: Bug, creates visual glitch when opening Safari.
-            UIApplication.sharedApplication().openURL(NSURL(string:"http://incipia.co/contact/")!)
-            print("contact us")
-            break
-         case "Rate Us":
-            
-            //some url, we don't have one yet since it's not submitted
-            //                UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/idYOUR_APP_ID")!);
-            print("rate us. Here's where we take users to the app store to rate the app")
-            break
-         default:
-            break
-         }
-      }
-      delegate?.collapseSidePanel?()
+   func locationSelected(location: TweetMapLocation)
+   {
+      currentBigCityLocation = location
+      updateTrendsWithLocation(location.location)
+      delegate?.collapseSidePanel()
    }
 }
 
+// MARK: - CLLocationManager
 extension MapViewController: CLLocationManagerDelegate
 {
    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus)
    {
       if status == .AuthorizedWhenInUse {
          manager.startUpdatingLocation()
-      }
-      if status == .Denied || status == .Restricted {
-         updateTrendsWithLocation(CLLocation.detroit)
+         map.showsUserLocation = true
+         currentBigCityLocation = nil
+         _shouldUpdateTrendsWithNextReceivedLocation = true
       }
    }
    
    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
    {
-      map.showsUserLocation = true
-      manager.stopUpdatingLocation()
-      updateTrendsWithLocation(locations[0])
+      if _shouldUpdateTrendsWithNextReceivedLocation {
+         _shouldUpdateTrendsWithNextReceivedLocation = false
+         updateTrendsWithLocation(locations[0])
+         return
+      }
+      
+      if currentBigCityLocation == nil {
+         map.setCenterCoordinate(locations[0].coordinate, zoomLevel: _currentZoomLevel, animated: true)
+      }
+   }
+   
+   func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+   {
+      print("location error: \(error)")
    }
 }
 
@@ -353,6 +359,16 @@ extension MapViewController
       }
    }
    
+   private func _radiusForZoomLevel(level: Int) -> Int
+   {
+      switch level {
+      case 11: return 10
+      case 10: return 20
+      case 9: return 50
+      default: return 20
+      }
+   }
+   
    private func updateZoomLevelWithIndexPath(indexPath: NSIndexPath)
    {
       var mapZoomLevel: Double
@@ -374,17 +390,44 @@ extension MapViewController
       }
       
       _currentZoomLevel = mapZoomLevel
-      //Updating the menu makes a new call with the new search radius. UI has updated well thus far.
-      if let location = CLLocationManager().location
-      {  
+      
+      if let location = currentBigCityLocation?.location {
+         
          let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
             longitude: location.coordinate.longitude)
          
-         map.setZoomLevel(mapZoomLevel, animated: true)
-         
+         map.setCenterCoordinate(coordinate, zoomLevel: mapZoomLevel, animated: true)
          _trendProvider.makeTrendFromTwitterCall(coordinate, radius: radius, completion: { (tweets, trends) -> Void in
             self.reloadTrends()
          })
+      }
+      else if let location = _locationManager.location
+      {
+         let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude)
+         
+         map.setCenterCoordinate(coordinate, zoomLevel: mapZoomLevel, animated: true)
+         _trendProvider.makeTrendFromTwitterCall(coordinate, radius: radius, completion: { (tweets, trends) -> Void in
+            self.reloadTrends()
+         })
+      }
+   }
+   
+   @IBAction private func _locationButtonPressed()
+   {
+      switch CLLocationManager.authorizationStatus() {
+      case .NotDetermined:
+         _showLocationAlertViewControllerWithDelay(0)
+         break
+      case .Restricted, .Denied:
+         _showAlertForOpeningAppSettings()
+      case .AuthorizedWhenInUse:
+         if let location = _locationManager.location {
+            currentBigCityLocation = nil
+            updateTrendsWithLocation(location)
+         }
+      default:
+         break
       }
    }
 }

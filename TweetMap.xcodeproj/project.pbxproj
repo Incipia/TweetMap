@@ -21,17 +21,21 @@
 		23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9F4A51C2B93FD0058B0FE /* Popover.swift */; };
 		23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */; };
 		23F1B8301C21F0A9003BB13A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B82E1C21F0A9003BB13A /* Main.storyboard */; };
-		23F1B8321C21F0A9003BB13A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B8311C21F0A9003BB13A /* Assets.xcassets */; };
+		23F1B8321C21F0A9003BB13A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B8311C21F0A9003BB13A /* Images.xcassets */; };
 		23F1B8351C21F0A9003BB13A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */; };
 		23F1B8401C21F0A9003BB13A /* TweetMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B83F1C21F0A9003BB13A /* TweetMapTests.swift */; };
 		23F1B84B1C21F0A9003BB13A /* TweetMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B84A1C21F0A9003BB13A /* TweetMapUITests.swift */; };
 		23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F1B8591C2200BB003BB13A /* MapViewController.swift */; };
 		23F2B29D1C718B1800FA0060 /* MaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F2B29C1C718B1800FA0060 /* MaskLayer.swift */; };
+		CE39FBCD1C84C22F00E3E6F1 /* UIAlertViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39FBCC1C84C22F00E3E6F1 /* UIAlertViewController+Extensions.swift */; };
+		CE39FBCF1C84C7EF00E3E6F1 /* TweetMapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39FBCE1C84C7EF00E3E6F1 /* TweetMapLocation.swift */; };
 		CE80AE1B1C7FEF8D00403CE0 /* LocationAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE1A1C7FEF8D00403CE0 /* LocationAlertViewController.swift */; };
 		CE80AE1D1C80DBE800403CE0 /* FadeTransitionManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE1C1C80DBE800403CE0 /* FadeTransitionManger.swift */; };
 		CE80AE1F1C80E3AA00403CE0 /* MGLMapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE1E1C80E3AA00403CE0 /* MGLMapView+Extensions.swift */; };
 		CE80AE211C80F9BA00403CE0 /* TweetMapSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE201C80F9BA00403CE0 /* TweetMapSegmentedControl.swift */; };
 		CE80AE231C81034E00403CE0 /* TrendingLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE221C81034E00403CE0 /* TrendingLabelView.swift */; };
+		CE80AE251C82434D00403CE0 /* TrendArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE241C82434D00403CE0 /* TrendArchiver.swift */; };
+		CE80AE271C82732000403CE0 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80AE261C82732000403CE0 /* SwiftSpinner.swift */; };
 		D4AD193487FA2120CC046CD0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAB3A93084C478EE412DDF7 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +72,7 @@
 		23F1B8271C21F0A9003BB13A /* TweetMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F1B82A1C21F0A9003BB13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23F1B82F1C21F0A9003BB13A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		23F1B8311C21F0A9003BB13A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23F1B8311C21F0A9003BB13A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23F1B8341C21F0A9003BB13A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23F1B8361C21F0A9003BB13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23F1B83B1C21F0A9003BB13A /* TweetMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TweetMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,11 +86,15 @@
 		AE4591F95156D69147DB1D5C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AEAB3A93084C478EE412DDF7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85310E5FA3177DC20FA8ACE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CE39FBCC1C84C22F00E3E6F1 /* UIAlertViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Extensions.swift"; sourceTree = "<group>"; };
+		CE39FBCE1C84C7EF00E3E6F1 /* TweetMapLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetMapLocation.swift; sourceTree = "<group>"; };
 		CE80AE1A1C7FEF8D00403CE0 /* LocationAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlertViewController.swift; sourceTree = "<group>"; };
 		CE80AE1C1C80DBE800403CE0 /* FadeTransitionManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransitionManger.swift; sourceTree = "<group>"; };
 		CE80AE1E1C80E3AA00403CE0 /* MGLMapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MGLMapView+Extensions.swift"; sourceTree = "<group>"; };
 		CE80AE201C80F9BA00403CE0 /* TweetMapSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetMapSegmentedControl.swift; sourceTree = "<group>"; };
 		CE80AE221C81034E00403CE0 /* TrendingLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingLabelView.swift; sourceTree = "<group>"; };
+		CE80AE241C82434D00403CE0 /* TrendArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendArchiver.swift; sourceTree = "<group>"; };
+		CE80AE261C82732000403CE0 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +143,7 @@
 				2386A4951C59668C00467F70 /* SidePanelViewController.swift */,
 				23F1B8331C21F0A9003BB13A /* LaunchScreen.storyboard */,
 				23F1B8361C21F0A9003BB13A /* Info.plist */,
-				23F1B8311C21F0A9003BB13A /* Assets.xcassets */,
+				23F1B8311C21F0A9003BB13A /* Images.xcassets */,
 				23B9F4A51C2B93FD0058B0FE /* Popover.swift */,
 				2344905F1C3B72A700A10C02 /* Utilities.swift */,
 				23F2B29C1C718B1800FA0060 /* MaskLayer.swift */,
@@ -169,6 +177,7 @@
 		23F1B8291C21F0A9003BB13A /* TweetMap */ = {
 			isa = PBXGroup;
 			children = (
+				CE80AE261C82732000403CE0 /* SwiftSpinner.swift */,
 				23F1B8591C2200BB003BB13A /* MapViewController.swift */,
 				2386EEA91C3CA844004C9F74 /* TopTweetsViewController.swift */,
 				2318696E1C293A600088F76E /* SupportingFiles */,
@@ -180,6 +189,9 @@
 				CE80AE1E1C80E3AA00403CE0 /* MGLMapView+Extensions.swift */,
 				CE80AE201C80F9BA00403CE0 /* TweetMapSegmentedControl.swift */,
 				CE80AE221C81034E00403CE0 /* TrendingLabelView.swift */,
+				CE80AE241C82434D00403CE0 /* TrendArchiver.swift */,
+				CE39FBCC1C84C22F00E3E6F1 /* UIAlertViewController+Extensions.swift */,
+				CE39FBCE1C84C7EF00E3E6F1 /* TweetMapLocation.swift */,
 			);
 			path = TweetMap;
 			sourceTree = "<group>";
@@ -329,7 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F1B8351C21F0A9003BB13A /* LaunchScreen.storyboard in Resources */,
-				23F1B8321C21F0A9003BB13A /* Assets.xcassets in Resources */,
+				23F1B8321C21F0A9003BB13A /* Images.xcassets in Resources */,
 				23F1B8301C21F0A9003BB13A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,11 +429,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F1B82B1C21F0A9003BB13A /* AppDelegate.swift in Sources */,
+				CE39FBCF1C84C7EF00E3E6F1 /* TweetMapLocation.swift in Sources */,
 				23AB321F1C73DAFD00F698BE /* TwitterTrendMaker.swift in Sources */,
 				23B9F4A61C2B93FD0058B0FE /* Popover.swift in Sources */,
 				234490621C3B73A700A10C02 /* ZoomLevelTableViewDelegate.swift in Sources */,
+				CE39FBCD1C84C22F00E3E6F1 /* UIAlertViewController+Extensions.swift in Sources */,
 				CE80AE231C81034E00403CE0 /* TrendingLabelView.swift in Sources */,
 				CE80AE1B1C7FEF8D00403CE0 /* LocationAlertViewController.swift in Sources */,
+				CE80AE251C82434D00403CE0 /* TrendArchiver.swift in Sources */,
 				23F1B85A1C2200BB003BB13A /* MapViewController.swift in Sources */,
 				238E48E11C646DE00036FE7E /* Tweet.swift in Sources */,
 				2344905E1C3B6C9900A10C02 /* ZoomLevelTableViewDataSource.swift in Sources */,
@@ -432,6 +447,7 @@
 				23F2B29D1C718B1800FA0060 /* MaskLayer.swift in Sources */,
 				237487501C476CD500626618 /* TwitterNetworkManager.swift in Sources */,
 				2386EEAA1C3CA844004C9F74 /* TopTweetsViewController.swift in Sources */,
+				CE80AE271C82732000403CE0 /* SwiftSpinner.swift in Sources */,
 				2386A4981C5966A800467F70 /* ContainerViewController.swift in Sources */,
 				23AB321D1C73D11B00F698BE /* Dropdown.swift in Sources */,
 				CE80AE1D1C80DBE800403CE0 /* FadeTransitionManger.swift in Sources */,

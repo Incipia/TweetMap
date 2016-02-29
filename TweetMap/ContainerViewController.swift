@@ -16,6 +16,7 @@ enum SlideOutState {
 
 class ContainerViewController: UIViewController {
    
+   private var _currentLocation: TweetMapLocation?
    var centerNavigationController: UINavigationController!
    var mapViewController: MapViewController!
    var sidePanelViewController: SidePanelViewController?
@@ -44,9 +45,9 @@ class ContainerViewController: UIViewController {
       
       centerNavigationController.didMoveToParentViewController(self)
       mapViewController.delegate = self
-      
-      //    let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-      //    centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+
+      let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+      centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
    }
    
    override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -69,15 +70,22 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
             showShadowForCenterViewController(true)
          }
       case .Changed:
+         var newX = recognizer.view!.center.x + recognizer.translationInView(view).x
          
-         guard recognizer.velocityInView(view).x > 0 else { return }
+         // this line prevents the center view from moving left at all -- we only want a side menu to show on the left,
+         // so the view should only ever move to the right
+         newX = max(newX, UIScreen.mainScreen().bounds.width * 0.5)
          
-         recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+         // this line makes it so that you can't drag the view way past the width of the menu -- we need to multiply the
+         // expaned offset by 2 becuase our 'newX' is going to be the used on the 'center' property
+         newX = min(newX, centerPanelExpandedOffset * 2 + 20)
+         
+         recognizer.view!.center.x = newX
          recognizer.setTranslation(CGPointZero, inView: view)
       case .Ended:
          if (sidePanelViewController != nil) {
             // animate the side panel open or closed based on whether the view has moved more or less than halfway
-            let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
+            let hasMovedGreaterThanHalfway = recognizer.view!.center.x >= view.bounds.size.width
             animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
          }
       default:
@@ -102,6 +110,14 @@ private extension UIStoryboard {
 
 extension ContainerViewController: CenterViewControllerDelegate
 {
+   func updateCurrentLocation(location: TweetMapLocation?)
+   {
+      print("updating location: \(location)")
+      _currentLocation = location
+      sidePanelViewController?.selectedLocation = _currentLocation
+      sidePanelViewController?.tableView.reloadData()
+   }
+   
    func navController() -> UINavigationController
    {
       return centerNavigationController
@@ -130,10 +146,10 @@ extension ContainerViewController: CenterViewControllerDelegate
    }
    
    func addLeftPanelViewController() {
-      if (sidePanelViewController == nil) {
+      if (sidePanelViewController == nil)
+      {
          sidePanelViewController = UIStoryboard.leftViewController()
-         print(sidePanelViewController)
-         
+         sidePanelViewController?.selectedLocation = _currentLocation
          addChildSidePanelController(sidePanelViewController!)
       }
    }
@@ -154,9 +170,9 @@ extension ContainerViewController: CenterViewControllerDelegate
    
    
    //MARK: Misc / CENTER PANEL
-   func addChildSidePanelController(sidePanelController: SidePanelViewController) {
+   func addChildSidePanelController(sidePanelController: SidePanelViewController)
+   {
       sidePanelController.delegate = mapViewController
-      
       view.insertSubview(sidePanelController.view, atIndex: 0)
       
       addChildViewController(sidePanelController)

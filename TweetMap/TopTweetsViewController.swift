@@ -29,7 +29,6 @@ class TopTweetsViewController: UITableViewController, TWTRTweetViewDelegate {
    {
       super.viewDidLoad()
       _setupTableView()
-      print(self.navigationController)
    }
    
    override func viewDidAppear(animated: Bool)
