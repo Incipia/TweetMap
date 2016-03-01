@@ -11,7 +11,7 @@ import CoreLocation
 
 enum TweetMapLocation
 {
-   case Austin, NewYorkCity, LosAngeles, Chicago, Washington, Detroit, Atlanta, Seattle, Miami, LasVegas, Honolulu, Anchorage
+   case Austin, NewYorkCity, LosAngeles, Chicago, Washington, Detroit, Atlanta, Seattle, Miami, LasVegas, Honolulu, Anchorage, SanFransisco
    
    var fullName: String {
       switch self {
@@ -27,6 +27,7 @@ enum TweetMapLocation
       case LasVegas: return "Las Vegas, NV"
       case Honolulu: return "Honolulu, HI"
       case Anchorage: return "Anchorage, AK"
+      case SanFransisco: return "San Fransisco, CA"
       }
    }
    
@@ -44,6 +45,7 @@ enum TweetMapLocation
       case LasVegas: return CLLocation(latitude: 36.1215, longitude: -115.1739)
       case Honolulu: return CLLocation(latitude: 21.3000, longitude: -157.8167)
       case Anchorage: return CLLocation(latitude: 61.2167, longitude: -149.9000)
+      case SanFransisco: return CLLocation(latitude: 37.7833, longitude: -122.4167)
       }
    }
 }

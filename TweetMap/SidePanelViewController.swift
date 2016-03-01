@@ -19,7 +19,21 @@ class SidePanelViewController: UIViewController {
    var delegate: SidePanelViewControllerDelegate?
    
    var selectedLocation: TweetMapLocation?
-   var menuOptions: [TweetMapLocation] = [.Austin, .NewYorkCity, .LosAngeles, .Chicago, .Washington, .Detroit, .Atlanta, .Seattle, .Miami, .LasVegas, .Honolulu, .Anchorage]
+   var menuOptions: [TweetMapLocation] = [
+      .Anchorage,
+      .Atlanta,
+      .Austin,
+      .Chicago,
+      .Detroit,
+      .Honolulu,
+      .LasVegas,
+      .LosAngeles,
+      .Miami,
+      .NewYorkCity,
+      .SanFransisco,
+      .Seattle,
+      .Washington
+   ]
    
    struct TableView {
       struct CellIdentifiers {
