@@ -167,19 +167,56 @@ class MapViewController: UIViewController, MGLMapViewDelegate, UIPopoverPresenta
    }
    
    // MARK: - Private
-   private func _setupUI()
-   {
-      // these sublayer lines pull from the MaskLayer class, basically where the 2 functions got moved
-      let maskLayer = MaskLayer()
-      let caLayer = maskLayer.drawShadedRegion()
-      let gradientLayer = maskLayer.drawGradienForTopAndBottom()
-      
-      layerView.layer.addSublayer(caLayer)
-      view.layer.insertSublayer(gradientLayer, atIndex: 1)
-      
-      radiusMenuButton.layer.cornerRadius = radiusMenuButton.frame.height * 0.5
-      _updateTrendsButton.layer.cornerRadius = _updateTrendsButton.frame.height * 0.5
-   }
+    
+    /*
+    The private function _setupUI() shades an exterior region around the map, highlighting the user's location
+    To do this, it calls 2 methods from the MaskLayer class
+    This methods are responsible for returning their own layers, which we combine.
+    To complete the look of the View, we change the cornerRadius of the buttons instead of in the viewDidLoad()
+    This function is not for use outside of this source file
+    */
+    
+    private func _setupUI()
+    {
+        /*
+        The MaskLayer class has 2 functions, drawShadedRegion() and drawGradientForTopAndBottom()
+        Here we assign an instance of MaskLayer to a constant called maskLayer.
+        */
+        let maskLayer = MaskLayer()
+        
+        /*
+        Now, we can call methods  on these objects through dot notation and assign them to local variables.
+        The first method takes no parameters and returns a type of CAShapeLayer.
+        There, 2 separate bezier paths are created, merged, and returned as a CAShapeLayer.
+        We assign this to a constant, caLayer.
+        */
+        let caLayer = maskLayer.drawShadedRegion()
+        
+        /*
+        In drawGradientForTopAndBottom() has no parameters and a return type of CAGradientLayer
+        There, another layer is shaded at the top and bottom while leaving the middle clear.
+        This is done through setting the colors and locations properties of the CAGradientLayer
+        We assign the returned gradient layer to a constant, gradientLayer
+        */
+        let gradientLayer = maskLayer.drawGradienForTopAndBottom()
+        
+        /*
+        layerView is an IBOutlet from above, and we are going to call the addSublayer method on its layer property
+        the addSublayer method takes a parameter of type CALayer. There, we will pass in our caLayer.
+        Same goes for the gradientLayer. We can add the types CAShapeLayer and CAGradientLayer because they are both
+        subclasses of CALayer.
+        */
+        layerView.layer.addSublayer(caLayer)
+        layerView.layer.addSublayer(gradientLayer)
+        
+        /*
+        Finally, we adjust the layout of each button in the view to have rounded corners.
+        This is done by manipulating their layer's cornerRadius property, which we set relative to their size.
+        */
+        radiusMenuButton.layer.cornerRadius = radiusMenuButton.frame.height * 0.5
+        _updateTrendsButton.layer.cornerRadius = _updateTrendsButton.frame.height * 0.5
+        
+    }
    
    private func _showAlertForOpeningAppSettings()
    {
